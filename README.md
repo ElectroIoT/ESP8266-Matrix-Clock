@@ -49,20 +49,44 @@
 **🔆 Brightness**
 - Live brightness slider
 - **Night mode:** dim or switch the display off between chosen hours
+- **Auto brightness** with an optional light sensor (LDR), off until you enable it
 
 **⬆️ Updates over WiFi**
 - Installs new **GitHub releases** by itself at night, over verified HTTPS
 - Or upload a `.bin` on the web page (password protected)
 - **Safe mode** after repeated crashes, so a bad update can be fixed over WiFi
 
+**🔒 Optional login**
+- Protect the settings page with a password
+- Forgot it? Hold the FLASH button for 10 s
+
 **🔘 FLASH button**
-- Short press shows the IP · hold 5 s for WiFi setup
+- Short press shows the IP · hold 5 s for WiFi setup · hold 10 s to remove the password
 
 </td>
 </tr>
 </table>
 
-<p align="center"><img src="docs/pacman.svg" alt="Pac-Man animation on the LED matrix" width="520"></p>
+## 🎬 Animations
+
+All of these are generated from the same digits, sprites and logic as the firmware
+(`tools/make_images.py`), so they show exactly what the clock does. Digit changes are shown at half speed.
+
+**Digit change** (pick one on the settings page, or *Random*):
+
+| Roll down | Roll up | Dissolve |
+|:---:|:---:|:---:|
+| <img src="docs/digits-down.svg" width="270" alt="Roll down"> | <img src="docs/digits-up.svg" width="270" alt="Roll up"> | <img src="docs/digits-dissolve.svg" width="270" alt="Dissolve"> |
+| **Slide** | **Flip** | **Drop & bounce** |
+| <img src="docs/digits-slide.svg" width="270" alt="Slide"> | <img src="docs/digits-flip.svg" width="270" alt="Flip"> | <img src="docs/digits-drop.svg" width="270" alt="Drop and bounce"> |
+
+**Effects** (every hour, at power-on, on special days, or from the try-out buttons):
+
+| Sparkle | Wipe | Rain |
+|:---:|:---:|:---:|
+| <img src="docs/fx-sparkle.svg" width="270" alt="Sparkle"> | <img src="docs/fx-wipe.svg" width="270" alt="Wipe"> | <img src="docs/fx-rain.svg" width="270" alt="Rain"> |
+| **Boxes** | **Pac-Man** | |
+| <img src="docs/fx-boxes.svg" width="270" alt="Boxes"> | <img src="docs/pacman.svg" width="270" alt="Pac-Man"> | |
 
 ## 🧰 Hardware
 
@@ -72,6 +96,7 @@
 | MAX7219 4-in-1 LED matrix | 8x32, the common "FC-16" blue module |
 | 5 V / 1 A USB supply + cable | Weak supplies make the clock restart at high brightness |
 | 5 jumper wires | Female-female for most modules |
+| *Optional:* LDR (photoresistor) + 10 kΩ resistor | For automatic brightness; the clock works fine without it |
 
 <p align="center"><img src="docs/wiring.svg" alt="Wiring: VCC to 5V/VIN, GND to GND, DIN to D7, CS to D6, CLK to D5" width="820"></p>
 
@@ -82,6 +107,18 @@
 | DIN | D7 | GPIO13 (SPI MOSI) |
 | CS | D6 | GPIO12 |
 | CLK | D5 | GPIO14 (SPI SCK) |
+
+### Optional: light sensor for auto brightness
+
+```
+ 3V3 ──[ LDR ]──┬── A0
+                │
+ GND ──[ 10k ]──┘
+```
+
+Then turn on **Auto brightness** on the settings page and choose the brightness for dark and for bright
+light. The page shows the live light level to help you choose. If the display gets *brighter* in the dark,
+turn on **Reverse sensor**. Night mode, when on, takes priority over the sensor.
 
 ## 🚀 Install
 
@@ -137,22 +174,31 @@ a while (for example after a power cut), the clock keeps retrying it every 2 min
 
 | Section | What you can change |
 |---|---|
-| **Brightness** | Live slider, night mode, night hours, night brightness or display off |
+| **Brightness** | Live slider, night mode, night hours, night brightness or display off, auto brightness (light sensor) |
 | **Clock** | 12/24 h, time zone, blinking colon, seconds bar, leading zero, scrolling date |
 | **Animations** | Digit change style (previewed on the clock when you pick one), hourly and power-on effect, try-out buttons |
 | **Message** | Custom text: show now, or repeat every 1/5/15/30/60 minutes |
 | **Special days** | Up to 8 yearly dates, each with a text and an animation |
 | **Updates** | Installed and latest version, automatic updates, check now / install, upload `.bin` |
+| **Settings password** | Set / change / remove the password for this page, log out |
 | **WiFi & system** | Network, signal, IP, uptime, change WiFi, show IP, re-sync time, restart, factory reset |
 
-Settings are stored in flash and survive power cuts and updates. The welcome text is fixed in the firmware
+Settings are stored in flash and survive power cuts and updates.
+
+**Login (optional).** With no password set (the default), anyone on your WiFi can open the settings page.
+Set a password under *Settings password* and the page asks for it; each browser stays logged in until it
+logs out or the password changes. Five wrong tries lock the login for a minute. **Forgot the password?**
+Hold the FLASH button for 10 seconds (the display shows `PW off`) and let go. The page uses plain
+HTTP on your home network, so use a password you don't use anywhere else. The welcome text is fixed in the firmware
 (`WELCOME_TEXT` in `config.h`).
 
 ## ⬆️ Updates
 
 **Automatic, from GitHub.** Clocks with *Automatic updates* on (the default) check this repo's
 [latest release](https://github.com/ElectroIoT/ESP8266-Matrix-Clock/releases/latest) every night around
-03:00 and install it if it's newer. The progress bar shows on the display. Downloads use HTTPS and the
+03:00 and install it if it's newer. They also check **about a minute after power-on**, so a clock that was
+unplugged for months, or is switched off every night, still gets updated. Updates install right after a
+restart, when the ESP8266 has the most free memory. The progress bar shows on the display. Downloads use HTTPS and the
 server certificate is verified against the roots in `src/github_roots.h`. Redirects are followed one
 connection at a time, because the ESP8266 has ~40 KB of RAM and each TLS connection needs ~17 KB.
 
@@ -198,6 +244,7 @@ tools/                release.sh, sync_arduino.sh, make_images.py
 | All LEDs on, nothing else | Check CS is on **D6** and the module is powered from 5 V |
 | Clock keeps restarting | Use a better 5 V supply or a shorter, thicker USB cable; lower the brightness |
 | Text looks scrambled / mirrored | Try another `MATRIX_HW`, or set `FLIP_HORIZONTAL` / `FLIP_VERTICAL` in `config.h` |
+| Forgot the settings password | Hold FLASH for 10 s until the display shows `PW off`, then let go |
 | Setup page doesn't pop up | Stay connected to `MatrixClock-XXXX` and open `http://192.168.4.1` by hand |
 | `matrixclock.local` doesn't open | Some Android phones don't support `.local`. Use the IP (short-press FLASH to see it) |
 | "Getting time..." forever | The WiFi has no internet, or NTP is blocked. Check the router |

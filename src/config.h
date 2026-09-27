@@ -4,7 +4,7 @@
 #ifdef CRASH_TEST
 #define FW_VERSION      "1.0.0"               // safe-mode test build (env:crashtest): always older than any release
 #else
-#define FW_VERSION      "1.2.0"               // bump for every release (tools/release.sh reads it from here)
+#define FW_VERSION      "1.3.0"               // bump for every release (tools/release.sh reads it from here)
 #endif
 
 #include <MD_MAX72xx.h>
@@ -22,7 +22,8 @@
 // ---- Button ------------------------------------------------------------------
 // NodeMCU "FLASH" button. Short press = scroll IP address, hold 5 s = WiFi setup.
 #define PIN_BUTTON      0                     // GPIO0 = D3
-#define BUTTON_HOLD_MS  5000
+#define BUTTON_HOLD_MS  5000                  // hold this long: WiFi setup
+#define BUTTON_PASS_MS  10000                 // hold this long: remove the settings-page password
 
 // ---- Network -----------------------------------------------------------------
 #define AP_PREFIX       "MatrixClock-"        // setup hotspot name, followed by 4 chip-ID hex digits
@@ -44,6 +45,7 @@
 // Each release needs two assets: firmware.bin and version.txt (see tools/release.sh).
 #define GITHUB_REPO     "ElectroIoT/ESP8266-Matrix-Clock"
 #define AUTO_UPDATE_HOUR 3                    // nightly check at 03:xx local time
+#define BOOT_UPDATE_DELAY_MS 60000            // after power-on, install a waiting update after this long
 
 // Password for uploading a .bin from the web page. Only its SHA-256 is compiled in, taken
 // from src/private_config.h (not in git); without it, manual upload is disabled.

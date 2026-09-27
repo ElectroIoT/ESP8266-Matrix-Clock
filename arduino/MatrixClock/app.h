@@ -15,7 +15,9 @@ enum OtaRequest : uint8_t { OTA_NONE, OTA_CHECK, OTA_INSTALL };
 extern uint8_t  otaRequest;      // GitHub update work for the main loop (needs TLS, too slow for a web handler)       // play the digit change animation once, as a preview
 
 bool timeValid();                      // true once NTP has delivered a real time
-void applyBrightness(bool force);      // day / night brightness from settings
+void applyBrightness(bool force);      // day / night / light-sensor brightness from settings
+int  lightPercent();                   // light sensor reading 0..100, -1 = sensor off
+uint8_t brightnessNow();               // brightness currently on the display (16 = off)
 void startNtp();                       // (re)start SNTP with the configured time zone
 void scheduleRestart(uint32_t delayMs);
 void showEventsToday();                // queue today's special-day animation + text, if any

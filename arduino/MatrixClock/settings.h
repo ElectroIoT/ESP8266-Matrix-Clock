@@ -41,6 +41,14 @@ struct Settings {
     uint8_t  msgEvery;      // minutes between repeats of msg, 0 = off
     char     msg[65];       // custom scrolling message
     Event    events[MAX_EVENTS];
+    // ---- added in layout version 3 ----
+    uint8_t  ldrOn;         // auto brightness from a light sensor (LDR) on A0
+    uint8_t  ldrMin;        // brightness in the dark, 0..15
+    uint8_t  ldrMax;        // brightness in bright light, 0..15
+    uint8_t  ldrInvert;     // sensor wired the other way round
+    uint8_t  adminHash[32]; // SHA-256(adminSalt + settings password); all zero = no password
+    uint8_t  adminSalt[16];
+    uint8_t  sessionKey[16];// login cookie value, renewed on every password change
 };
 
 extern Settings cfg;

@@ -30,10 +30,134 @@ static void sendOk() {
     server.send(200, "text/plain", "OK");
 }
 
+// ---- optional settings-page login ------------------------------------------------
+// No password set (the default) = open page. With a password, the browser gets a
+// session cookie after logging in; changing the password renews it (logs everyone out).
+// Forgotten password: hold the FLASH button for 10 s.
+
+static bool hasPassword() {
+    for (uint8_t b : cfg.adminHash)
+        if (b) return true;
+    return false;
+}
+
+static void hashPassword(const String& pw, const uint8_t salt[16], uint8_t out[32]) {
+    br_sha256_context ctx;
+    br_sha256_init(&ctx);
+    br_sha256_update(&ctx, salt, 16);
+    br_sha256_update(&ctx, pw.c_str(), pw.length());
+    br_sha256_out(&ctx, out);
+}
+
+static bool sameBytes(const uint8_t* a, const uint8_t* b, size_t n) {   // constant time
+    uint8_t diff = 0;
+    for (size_t i = 0; i < n; i++) diff |= a[i] ^ b[i];
+    return diff == 0;
+}
+
+static String sessionHex() {
+    char hex[33];
+    for (int i = 0; i < 16; i++) sprintf(hex + 2 * i, "%02x", cfg.sessionKey[i]);
+    return hex;
+}
+
+static bool authed() {
+    if (!hasPassword()) return true;
+    String c = server.header("Cookie");
+    int i = c.indexOf("mc_session=");
+    if (i < 0) return false;
+    String v = c.substring(i + 11, i + 11 + 32);
+    String want = sessionHex();
+    return v.length() == 32 && sameBytes((const uint8_t*)v.c_str(), (const uint8_t*)want.c_str(), 32);
+}
+
+static void setSessionCookie(bool valid) {
+    server.sendHeader("Set-Cookie", valid ? "mc_session=" + sessionHex() + "; Path=/; Max-Age=31536000; HttpOnly; SameSite=Strict"
+                                          : String("mc_session=; Path=/; Max-Age=0; HttpOnly; SameSite=Strict"));
+}
+
+// Who may call a route without logging in.
+enum Access : uint8_t {
+    OPEN,         // always (login, status, style, own-password firmware upload)
+    SETUP_OPEN,   // in WiFi setup mode (so a new owner can connect the clock)
+    SAFE_OPEN,    // in safe mode (only official GitHub releases can be installed)
+    LOGIN,        // needs login when a password is set
+};
+
+// Plain function pointer (not std::function): keeps the wrapper small enough to need no heap
+// per route, which matters on a ~40 KB heap that also has to hold a TLS connection.
+static void route(const char* uri, HTTPMethod method, void (*fn)(), Access access = LOGIN) {
+    server.on(uri, method, [fn, access]() {
+        bool ok = access == OPEN || (access == SETUP_OPEN && appMode == MODE_SETUP) ||
+                  (access == SAFE_OPEN && appMode == MODE_SAFE) || authed();
+        if (!ok) {
+            server.send(401, "text/plain", "Login required");
+            return;
+        }
+        fn();
+    });
+}
+
+static uint8_t  loginFails = 0;
+static uint32_t loginLockedUntil = 0;
+
+static void handleLogin() {
+    if (loginLockedUntil && (int32_t)(millis() - loginLockedUntil) < 0) {
+        server.send(429, "text/plain", "Too many wrong passwords - wait a minute");
+        return;
+    }
+    uint8_t h[32];
+    hashPassword(server.arg("pw"), cfg.adminSalt, h);
+    if (!hasPassword() || sameBytes(h, cfg.adminHash, 32)) {
+        loginFails = 0;
+        setSessionCookie(true);
+        sendOk();
+        return;
+    }
+    if (++loginFails >= 5) {
+        loginFails = 0;
+        loginLockedUntil = millis() + 60000;
+    }
+    delay(400);   // slows down guessing
+    server.send(403, "text/plain", "Wrong password");
+}
+
+// POST /api/password  cur=<current> new=<new password, empty = remove the password>
+static void handlePassword() {
+    if (hasPassword()) {
+        uint8_t h[32];
+        hashPassword(server.arg("cur"), cfg.adminSalt, h);
+        if (!sameBytes(h, cfg.adminHash, 32)) {
+            delay(400);
+            server.send(403, "text/plain", "Current password is wrong");
+            return;
+        }
+    }
+    String pw = server.arg("new");
+    if (!pw.length()) {
+        memset(cfg.adminHash, 0, sizeof(cfg.adminHash));
+        settingsSave();
+        setSessionCookie(false);
+        sendOk();
+        return;
+    }
+    if (pw.length() < 6 || pw.length() > 64) {
+        server.send(400, "text/plain", "Use 6 to 64 characters");
+        return;
+    }
+    ESP.random(cfg.adminSalt, sizeof(cfg.adminSalt));
+    ESP.random(cfg.sessionKey, sizeof(cfg.sessionKey));
+    hashPassword(pw, cfg.adminSalt, cfg.adminHash);
+    settingsSave();
+    setSessionCookie(true);   // this browser stays logged in, every other one is logged out
+    sendOk();
+}
+
 // ---- pages ---------------------------------------------------------------------
 
 static void handleRoot() {
-    const char* page = appMode == MODE_SETUP ? WIFI_HTML : appMode == MODE_SAFE ? SAFE_HTML : MAIN_HTML;
+    const char* page = appMode == MODE_SETUP ? WIFI_HTML : appMode == MODE_SAFE ? SAFE_HTML
+                     : authed() ? MAIN_HTML : LOGIN_HTML;
     server.send_P(200, "text/html", page);
 }
 
@@ -64,13 +188,14 @@ static void handleStatus() {
     bool sta = WiFi.status() == WL_CONNECTED;
     String j = String("{\"time\":") + jsonStr(t) + ",\"ampm\":" + jsonStr(ap) + ",\"date\":" + jsonStr(d) +
                ",\"synced\":" + (timeValid() ? "true" : "false") +
-               ",\"ssid\":" + jsonStr(sta ? WiFi.SSID() : String()) +
+               ",\"ssid\":" + jsonStr(sta && authed() ? WiFi.SSID() : String()) +   // no network name before login
                ",\"ip\":" + jsonStr(sta ? WiFi.localIP().toString() : WiFi.softAPIP().toString()) +
                ",\"rssi\":" + String(sta ? WiFi.RSSI() : 0) + ",\"up\":" + String(millis() / 1000) +
                ",\"version\":" + jsonStr(FW_VERSION) + ",\"latest\":" + jsonStr(ota.latest) +
                ",\"newer\":" + (ota.latest.length() && otaNewer(ota.latest) ? "true" : "false") +
                ",\"otaMsg\":" + jsonStr(ota.message) + ",\"otaBusy\":" + (otaRequest ? "true" : "false") +
-               ",\"safe\":" + (appMode == MODE_SAFE ? "true" : "false") + "}";
+               ",\"safe\":" + (appMode == MODE_SAFE ? "true" : "false") +
+               ",\"light\":" + String(lightPercent()) + ",\"brNow\":" + String(brightnessNow()) + "}";
     server.send(200, "application/json", j);
 }
 
@@ -82,7 +207,10 @@ static void handleConfig() {
                ",\"hourlyAnim\":" + cfg.hourlyAnim + ",\"bootAnim\":" + cfg.bootAnim +
                ",\"tz\":" + jsonStr(cfg.tz) + ",\"ssid\":" + jsonStr(cfg.ssid) +
                ",\"autoUpdate\":" + cfg.autoUpdate + ",\"msg\":" + jsonStr(cfg.msg) + ",\"msgEvery\":" + cfg.msgEvery +
-               ",\"pinUpload\":" + (strlen(UPDATE_PASS_SHA256) ? "true" : "false") + ",\"events\":[";
+               ",\"pinUpload\":" + (strlen(UPDATE_PASS_SHA256) ? "true" : "false") +
+               ",\"ldrOn\":" + cfg.ldrOn + ",\"ldrMin\":" + cfg.ldrMin + ",\"ldrMax\":" + cfg.ldrMax +
+               ",\"ldrInvert\":" + cfg.ldrInvert + ",\"hasPassword\":" + (hasPassword() ? "true" : "false") +
+               ",\"events\":[";
     bool first = true;
     for (int i = 0; i < MAX_EVENTS; i++) {
         const Event& e = cfg.events[i];
@@ -112,6 +240,10 @@ static void handleSet() {
     else if (k == "secondsBar")  flag(cfg.secondsBar);
     else if (k == "showDate")    flag(cfg.showDate);
     else if (k == "autoUpdate")  flag(cfg.autoUpdate);
+    else if (k == "ldrOn")       flag(cfg.ldrOn);
+    else if (k == "ldrInvert")   flag(cfg.ldrInvert);
+    else if (k == "ldrMin")      cfg.ldrMin = constrain(n, 0, 15);
+    else if (k == "ldrMax")      cfg.ldrMax = constrain(n, 0, 15);
     else if (k == "roll")        { cfg.roll = constrain(n, 0, (int)ROLL_RANDOM); digitDemo = true; }
     else if (k == "hourlyAnim")  cfg.hourlyAnim = constrain(n, 0, (int)ANIM_RANDOM);
     else if (k == "bootAnim")    cfg.bootAnim = constrain(n, 0, (int)ANIM_RANDOM);
@@ -276,33 +408,43 @@ static void handleUploadChunk() {
 // ---- setup -----------------------------------------------------------------------
 
 void webBegin() {
-    server.on("/", HTTP_GET, handleRoot);
-    server.on("/wifi", HTTP_GET, []() { server.send_P(200, "text/html", WIFI_HTML); });
-    server.on("/style.css", HTTP_GET, []() {
+    // pages
+    route("/", HTTP_GET, handleRoot, OPEN);   // serves the login page itself when needed
+    route("/login", HTTP_GET, []() { server.send_P(200, "text/html", LOGIN_HTML); }, OPEN);
+    route("/style.css", HTTP_GET, []() {
         server.sendHeader("Cache-Control", "max-age=86400");
         server.send_P(200, "text/css", STYLE_CSS);
-    });
-    server.on("/api/status", HTTP_GET, handleStatus);
-    server.on("/api/config", HTTP_GET, handleConfig);
-    server.on("/api/set", HTTP_POST, handleSet);
-    server.on("/api/scan", HTTP_GET, handleScan);
-    server.on("/api/wifi", HTTP_POST, handleWifi);
-    server.on("/api/show", HTTP_POST, handleShow);
-    server.on("/update", HTTP_GET, []() { server.send_P(200, "text/html", UPDATE_HTML); });
-    server.on("/api/update", HTTP_POST, handleUploadDone, handleUploadChunk);
-    server.on("/api/ota/check", HTTP_POST, []() { otaRequest = OTA_CHECK; sendOk(); });
-    server.on("/api/ota/install", HTTP_POST, []() { otaRequest = OTA_INSTALL; sendOk(); });
-    server.on("/api/message", HTTP_POST, handleMessage);
-    server.on("/api/event/add", HTTP_POST, handleEventAdd);
-    server.on("/api/event/del", HTTP_POST, handleEventDelete);
-    server.on("/api/event/show", HTTP_POST, handleEventShow);
-    server.on("/api/digits", HTTP_POST, []() { digitDemo = true; sendOk(); });
-    server.on("/api/anim", HTTP_POST, []() { animRequest = constrain(server.arg("n").toInt(), 0, (int)ANIM_RANDOM); sendOk(); });
-    server.on("/api/sync", HTTP_POST, []() { startNtp(); sendOk(); });
-    server.on("/api/restart", HTTP_POST, []() { sendOk(); scheduleRestart(800); });
-    server.on("/api/factory", HTTP_POST, []() { settingsDefaults(); settingsSave(); sendOk(); scheduleRestart(800); });
+    }, OPEN);
+    route("/wifi", HTTP_GET, []() { server.send_P(200, "text/html", WIFI_HTML); }, SETUP_OPEN);
+    route("/update", HTTP_GET, []() { server.send_P(200, "text/html", UPDATE_HTML); }, OPEN);
+
+    // open API
+    route("/api/status", HTTP_GET, handleStatus, OPEN);
+    route("/api/login", HTTP_POST, handleLogin, OPEN);
+    route("/api/logout", HTTP_POST, []() { setSessionCookie(false); sendOk(); }, OPEN);
+    server.on("/api/update", HTTP_POST, handleUploadDone, handleUploadChunk);   // has its own update password
+    route("/api/scan", HTTP_GET, handleScan, SETUP_OPEN);
+    route("/api/wifi", HTTP_POST, handleWifi, SETUP_OPEN);
+    route("/api/ota/check", HTTP_POST, []() { otaRequest = OTA_CHECK; sendOk(); }, SAFE_OPEN);
+    route("/api/ota/install", HTTP_POST, []() { otaRequest = OTA_INSTALL; sendOk(); }, SAFE_OPEN);
+    route("/api/restart", HTTP_POST, []() { sendOk(); scheduleRestart(800); }, SAFE_OPEN);
+
+    // settings API (login needed when a password is set)
+    route("/api/config", HTTP_GET, handleConfig);
+    route("/api/set", HTTP_POST, handleSet);
+    route("/api/password", HTTP_POST, handlePassword);
+    route("/api/show", HTTP_POST, handleShow);
+    route("/api/message", HTTP_POST, handleMessage);
+    route("/api/event/add", HTTP_POST, handleEventAdd);
+    route("/api/event/del", HTTP_POST, handleEventDelete);
+    route("/api/event/show", HTTP_POST, handleEventShow);
+    route("/api/digits", HTTP_POST, []() { digitDemo = true; sendOk(); });
+    route("/api/anim", HTTP_POST, []() { animRequest = constrain(server.arg("n").toInt(), 0, (int)ANIM_RANDOM); sendOk(); });
+    route("/api/sync", HTTP_POST, []() { startNtp(); sendOk(); });
+    route("/api/factory", HTTP_POST, []() { settingsDefaults(); settingsSave(); sendOk(); scheduleRestart(800); });
+
     server.onNotFound(handleNotFound);
-    server.collectHeaders("X-Pin");   // update password for /api/update
+    server.collectHeaders("X-Pin", "Cookie");   // update password, login session
     server.begin();
 }
 

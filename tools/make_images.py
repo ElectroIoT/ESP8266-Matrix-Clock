@@ -200,8 +200,193 @@ def setup_flow():
     return '\n'.join(s)
 
 
-for name, fn in (('banner', banner), ('pacman', pacman), ('wiring', wiring), ('setup', setup_flow)):
+# ---- frame-by-frame ports of the firmware animations ---------------------------------
+# Each generator yields (frame, seconds) pairs; frame is a set of lit (x, y) pixels.
+# frames_svg() turns that into one looping SVG in which every LED that ever lights up
+# gets a discrete opacity animation, keyed only at the moments it changes.
+
+W8, H8 = 32, 8
+
+
+def frames_svg(frames, pitch=12):
+    m = Matrix(14, 14, pitch)
+    W, H = int(m.w() + 28), int(m.h() + 28)
+    total = sum(d for _, d in frames)
+    starts, t = [], 0.0
+    for _, d in frames:
+        starts.append(t / total)
+        t += d
+    s = [f"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {W} {H}' width='{W}' height='{H}'>",
+         f"<defs>{GLOW}</defs>", m.background(10), "<g filter='url(#glow)'>"]
+    for y in range(H8):
+        for x in range(W8):
+            states = [(x, y) in f for f, _ in frames]
+            if not any(states):
+                continue
+            vals, keys = [], []
+            for i, on in enumerate(states):
+                if i == 0 or on != states[i - 1]:
+                    vals.append('1' if on else '0')
+                    keys.append(f'{starts[i]:.4f}')
+            if len(vals) == 1:
+                s.append(m.dot(x, y))
+                continue
+            s.append(f"<circle cx='{m.cx(x):g}' cy='{m.cy(y):g}' r='{m.p * 0.36:g}' fill='{RED}' opacity='{vals[0]}'>"
+                     f"<animate attributeName='opacity' values='{';'.join(vals)}' keyTimes='{';'.join(keys)}' "
+                     f"calcMode='discrete' dur='{total:.2f}s' repeatCount='indefinite'/></circle>")
+    s.append('</g></svg>')
+    return '\n'.join(s)
+
+
+def put(frame, x, y):
+    if 0 <= x < W8 and 0 <= y < H8:
+        frame.add((x, y))
+
+
+# -- clock face: same layout, digits and transitions as ClockFace in src/display.cpp
+FRAMES = 12
+
+
+def dpx(d, r, c):
+    return d is not None and 0 <= r < 7 and 0 <= c < 5 and bool(DIGITS[d][r] & (0x10 >> c))
+
+
+def draw_digit(f, x, d, ox=0, oy=0):
+    for r in range(7):
+        for c in range(5):
+            if dpx(d, r - oy, c - ox):
+                put(f, x + c, r)
+
+
+def draw_squashed(f, x, d, h):
+    if h <= 0:
+        return
+    top = 3 - h // 2
+    for r in range(h):
+        for c in range(5):
+            if dpx(d, r * 7 // h, c):
+                put(f, x + c, top + r)
+
+
+def draw_slot(f, style, slot, x, a, b, p):
+    if style == 'up':
+        s = p * 8 // FRAMES
+        draw_digit(f, x, a, 0, -s); draw_digit(f, x, b, 0, 8 - s)
+    elif style == 'dissolve':
+        k = p * 35 // FRAMES
+        for r in range(7):
+            for c in range(5):
+                order = ((r * 5 + c) * 23 + slot * 11) % 35
+                if dpx(b, r, c) if order < k else dpx(a, r, c):
+                    put(f, x + c, r)
+    elif style == 'slide':
+        s = p * 6 // FRAMES
+        draw_digit(f, x, a, -s, 0); draw_digit(f, x, b, 6 - s, 0)
+    elif style == 'flip':
+        half = FRAMES // 2
+        if p < half:
+            draw_squashed(f, x, a, 7 - p * 7 // half)
+        else:
+            draw_squashed(f, x, b, (p - half + 1) * 7 // half)
+    elif style == 'drop':
+        bounce = [-8, -6, -4, -2, 0, -2, -3, -2, 0, -1, 0, 0]
+        draw_digit(f, x, a, 0, p * p // 2); draw_digit(f, x, b, 0, bounce[p])
+    else:   # down
+        s = p * 8 // FRAMES
+        draw_digit(f, x, a, 0, s); draw_digit(f, x, b, 0, s - 8)
+
+
+def face(digits_from, digits_to, style, p):
+    f = set()
+    for c in (0, 1):
+        for r in (1, 2, 4, 5):
+            put(f, COLON_X + c, r)
+    for i in range(4):
+        a, b = digits_from[i], digits_to[i]
+        if p is None or a == b:
+            draw_digit(f, DIGIT_X[i], b)
+        else:
+            draw_slot(f, style, i, DIGIT_X[i], a, b, p)
+    return f
+
+
+def digit_demo(style):
+    t1, t2 = (0, 9, 5, 9), (1, 0, 0, 0)          # 09:59 -> 10:00 -> 09:59 ...
+    frames, step = [], 0.06                       # shown at half the clock's speed so it's easy to follow
+    for a, b in ((t1, t2), (t2, t1)):
+        frames.append((face(a, a, style, None), 1.1))
+        frames += [(face(a, b, style, p), step) for p in range(FRAMES)]
+    return frames_svg(frames)
+
+
+# -- effects: same logic as src/display.cpp (random ones use a fixed seed)
+def fx_sparkle():
+    import random
+    rnd, f, out = random.Random(7), set(), []
+    for i in range(80):
+        on = i < 40
+        for _ in range(7):
+            p = (rnd.randrange(W8), rnd.randrange(H8))
+            (f.add if on else f.discard)(p)
+        if i >= 70:
+            f = set()
+        out.append((set(f), 0.028 * 1.5))
+    out.append((set(), 0.6))
+    return out
+
+
+def fx_wipe():
+    f, out = set(), []
+    for pas in range(2):
+        for x in range(W8):
+            for y in range(H8):
+                (f.add if pas == 0 else f.discard)((x, y))
+            out.append((set(f), 0.03))
+    out.append((set(), 0.6))
+    return out
+
+
+def fx_rain():
+    import random
+    rnd, n, out = random.Random(3), 12, []
+    dx = [rnd.randrange(W8) for _ in range(n)]
+    dy = [-rnd.randrange(14) for _ in range(n)]
+    for i in range(110):
+        f = set()
+        for k in range(n):
+            put(f, dx[k], dy[k]); put(f, dx[k], dy[k] - 1)
+            if i & 1:
+                put(f, dx[k], dy[k] - 2)
+            dy[k] += 1
+            if dy[k] > H8 + 2 and i < 85:
+                dx[k], dy[k] = rnd.randrange(W8), -rnd.randrange(6)
+        out.append((f, 0.05))
+    out.append((set(), 0.4))
+    return out
+
+
+def fx_boxes():
+    out, cx = [], W8 // 2 - 1
+    for _ in range(3):
+        for r in range(W8 // 2 + 2):
+            f = set()
+            x0, x1, y0, y1 = cx - r, cx + 1 + r, 3 - r, 4 + r
+            for x in range(x0, x1 + 1):
+                put(f, x, y0); put(f, x, y1)
+            for y in range(y0, y1 + 1):
+                put(f, x0, y); put(f, x1, y)
+            out.append((f, 0.045))
+    out.append((set(), 0.5))
+    return out
+
+
+IMAGES = [('banner', banner), ('pacman', pacman), ('wiring', wiring), ('setup', setup_flow)]
+IMAGES += [(f'digits-{s}', (lambda s=s: digit_demo(s))) for s in ('down', 'up', 'dissolve', 'slide', 'flip', 'drop')]
+IMAGES += [('fx-sparkle', lambda: frames_svg(fx_sparkle())), ('fx-wipe', lambda: frames_svg(fx_wipe())),
+           ('fx-rain', lambda: frames_svg(fx_rain())), ('fx-boxes', lambda: frames_svg(fx_boxes()))]
+
+for name, fn in IMAGES:
     path = os.path.join(OUT, name + '.svg')
     with open(path, 'w', encoding='utf-8', newline='\n') as f:
         f.write(fn() + '\n')
-    print(f'{path}: {os.path.getsize(path) // 1024} KB')
+    print(f'{name}.svg: {os.path.getsize(path) // 1024} KB')

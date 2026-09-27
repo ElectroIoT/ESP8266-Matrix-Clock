@@ -1,0 +1,478 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 412 124' width='412' height='124'>
+<defs><filter id='glow' x='-50%' y='-50%' width='200%' height='200%'>
+<feGaussianBlur stdDeviation='2.2' result='b'/><feMerge><feMergeNode in='b'/><feMergeNode in='SourceGraphic'/></feMerge></filter></defs>
+<rect x='4' y='4' width='404' height='116' rx='14' fill='#0b0b0d' stroke='#26262c'/>
+<circle cx='20' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='32' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='44' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='56' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='68' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='80' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='92' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='104' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='116' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='128' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='140' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='152' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='164' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='176' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='188' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='200' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='212' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='224' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='236' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='248' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='260' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='272' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='284' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='296' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='308' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='320' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='332' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='344' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='356' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='368' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='380' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='392' cy='20' r='4.32' fill='#2b0d0d'/>
+<circle cx='20' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='32' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='44' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='56' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='68' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='80' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='92' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='104' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='116' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='128' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='140' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='152' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='164' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='176' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='188' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='200' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='212' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='224' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='236' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='248' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='260' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='272' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='284' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='296' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='308' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='320' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='332' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='344' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='356' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='368' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='380' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='392' cy='32' r='4.32' fill='#2b0d0d'/>
+<circle cx='20' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='32' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='44' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='56' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='68' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='80' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='92' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='104' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='116' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='128' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='140' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='152' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='164' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='176' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='188' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='200' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='212' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='224' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='236' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='248' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='260' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='272' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='284' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='296' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='308' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='320' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='332' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='344' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='356' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='368' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='380' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='392' cy='44' r='4.32' fill='#2b0d0d'/>
+<circle cx='20' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='32' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='44' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='56' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='68' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='80' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='92' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='104' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='116' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='128' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='140' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='152' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='164' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='176' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='188' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='200' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='212' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='224' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='236' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='248' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='260' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='272' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='284' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='296' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='308' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='320' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='332' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='344' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='356' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='368' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='380' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='392' cy='56' r='4.32' fill='#2b0d0d'/>
+<circle cx='20' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='32' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='44' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='56' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='68' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='80' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='92' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='104' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='116' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='128' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='140' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='152' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='164' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='176' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='188' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='200' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='212' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='224' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='236' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='248' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='260' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='272' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='284' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='296' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='308' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='320' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='332' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='344' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='356' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='368' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='380' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='392' cy='68' r='4.32' fill='#2b0d0d'/>
+<circle cx='20' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='32' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='44' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='56' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='68' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='80' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='92' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='104' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='116' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='128' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='140' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='152' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='164' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='176' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='188' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='200' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='212' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='224' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='236' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='248' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='260' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='272' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='284' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='296' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='308' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='320' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='332' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='344' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='356' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='368' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='380' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='392' cy='80' r='4.32' fill='#2b0d0d'/>
+<circle cx='20' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='32' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='44' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='56' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='68' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='80' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='92' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='104' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='116' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='128' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='140' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='152' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='164' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='176' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='188' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='200' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='212' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='224' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='236' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='248' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='260' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='272' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='284' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='296' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='308' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='320' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='332' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='344' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='356' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='368' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='380' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='392' cy='92' r='4.32' fill='#2b0d0d'/>
+<circle cx='20' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='32' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='44' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='56' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='68' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='80' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='92' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='104' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='116' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='128' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='140' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='152' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='164' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='176' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='188' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='200' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='212' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='224' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='236' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='248' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='260' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='272' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='284' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='296' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='308' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='320' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='332' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='344' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='356' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='368' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='380' cy='104' r='4.32' fill='#2b0d0d'/>
+<circle cx='392' cy='104' r='4.32' fill='#2b0d0d'/>
+<g filter='url(#glow)'>
+<circle cx='20' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.0847;0.1017' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='32' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1271;0.1525;0.2797;0.3051;0.3898;0.4068;0.6864;0.7119' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='44' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1271;0.1525;0.1864;0.2034;0.4322;0.4746;0.5000;0.5254' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='56' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7034;0.7288' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='68' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0254;0.0508;0.1017;0.1186;0.4407;0.4576' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='92' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3220;0.3390;0.5593;0.5763' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='104' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3305;0.3559;0.4068;0.4237' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='116' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0847;0.1017;0.5254;0.5424;0.6186;0.6441' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='140' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3136;0.3390' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='164' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.0508;0.0678' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='176' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3305;0.3559' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='188' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.0678;0.0847;0.2797;0.3051' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='200' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0508;0.0678;0.4237;0.4407;0.5593;0.5763' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='212' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1102;0.1356;0.2373;0.2542;0.4831;0.5085;0.7203;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='224' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3390;0.3559;0.4576;0.4746;0.5593;0.5763;0.6949;0.7119' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='248' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.2288;0.2542;0.4322;0.4576;0.5847;0.6102' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='260' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3136;0.3390;0.5085;0.5254;0.5932;0.6102;0.7203;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='272' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.4492;0.4746;0.5763;0.5932;0.6610;0.6780' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='284' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.2542;0.2712;0.3475;0.3729;0.6864;0.7119' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='296' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1102;0.1356;0.1780;0.2034;0.7203;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='308' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1864;0.2034;0.2542;0.2712;0.5424;0.5593;0.5678;0.5932;0.6356;0.6610' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='332' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.2797;0.3051;0.3814;0.4068;0.4915;0.5085;0.6186;0.6441' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='344' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1695;0.1864;0.2458;0.2712;0.3983;0.4237;0.5593;0.5763' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='356' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.1695;0.1864' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='368' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7034;0.7288' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='380' cy='20' r='4.32' fill='#ff3b3b' opacity='1'><animate attributeName='opacity' values='1;0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.0339;0.0932;0.1186;0.1525;0.1695;0.3475;0.3729;0.3814;0.4068' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='392' cy='20' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.1949;0.2203;0.6525;0.6780' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='20' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.0932;0.1186' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='32' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1356;0.1525;0.2881;0.3051;0.3983;0.4237;0.6949;0.7119' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='44' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1356;0.1525;0.1949;0.2203;0.4407;0.4746;0.5085;0.5254' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='56' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7119;0.7288' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='68' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0339;0.0508;0.1102;0.1356;0.4492;0.4746' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='92' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3305;0.3559;0.5678;0.5932' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='104' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3390;0.3559;0.4153;0.4407' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='116' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0932;0.1186;0.5339;0.5593;0.6271;0.6441' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='140' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3220;0.3390' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='164' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.0593;0.0847' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='176' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3390;0.3559' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='188' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.0763;0.1017;0.2881;0.3051' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='200' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0593;0.0847;0.4322;0.4576;0.5678;0.5932' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='212' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1186;0.1356;0.2458;0.2712;0.4915;0.5085;0.7288;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='224' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3475;0.3729;0.4661;0.4915;0.5678;0.5932;0.7034;0.7288' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='248' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.2373;0.2542;0.4407;0.4576;0.5932;0.6102' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='260' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3220;0.3390;0.5169;0.5424;0.6017;0.6271;0.7288;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='272' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.4576;0.4746;0.5847;0.6102;0.6695;0.6949' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='284' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.2627;0.2881;0.3559;0.3729;0.6949;0.7288' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='296' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1186;0.1356;0.1864;0.2034;0.7288;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='308' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1949;0.2203;0.2627;0.2881;0.5508;0.5932;0.6441;0.6610' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='332' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.2881;0.3051;0.3898;0.4068;0.5000;0.5254;0.6271;0.6441' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='344' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1780;0.2034;0.2542;0.2712;0.4068;0.4237;0.5678;0.5932' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='356' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.1780;0.2034' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='368' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7119;0.7288' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='380' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.0085;0.0508;0.1017;0.1186;0.1610;0.1864;0.3559;0.3729;0.3898;0.4068' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='392' cy='32' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.2034;0.2203;0.6610;0.6780' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='20' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.1017;0.1186' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='32' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1441;0.1695;0.2966;0.3220;0.4068;0.4237;0.7034;0.7288' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='44' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1441;0.1695;0.2034;0.2203;0.4492;0.4915;0.5169;0.5424' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='56' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7203;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='68' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0424;0.0678;0.1186;0.1356;0.4576;0.4746' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='92' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3390;0.3559;0.5763;0.5932' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='104' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3475;0.3729;0.4237;0.4407' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='116' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1017;0.1186;0.5424;0.5593;0.6356;0.6610' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='140' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3305;0.3559' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='164' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.0678;0.0847' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='176' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3475;0.3729' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='188' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.0847;0.1017;0.2966;0.3220' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='200' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0678;0.0847;0.4407;0.4576;0.5763;0.5932' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='212' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1271;0.1525;0.2542;0.2712;0.5000;0.5254;0.7373;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='224' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3559;0.3729;0.4746;0.4915;0.5763;0.5932;0.7119;0.7288' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='248' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.2458;0.2712;0.4492;0.4746;0.6017;0.6271' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='260' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3305;0.3559;0.5254;0.5424;0.6102;0.6271;0.7373;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='272' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.4661;0.4915;0.5932;0.6102;0.6780;0.6949' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='284' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.2712;0.2881;0.3644;0.3898;0.7034;0.7288' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='296' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1271;0.1525;0.1949;0.2203;0.7373;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='308' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.2034;0.2203;0.2712;0.2881;0.5593;0.5763;0.5847;0.6102;0.6525;0.6780' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='332' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.2966;0.3220;0.3983;0.4237;0.5085;0.5254;0.6356;0.6610' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='344' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1864;0.2034;0.2627;0.2881;0.4153;0.4407;0.5763;0.5932' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='356' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.1864;0.2034' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='368' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7203;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='380' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.0169;0.0508;0.1102;0.1356;0.1695;0.1864;0.3644;0.3898;0.3983;0.4237' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='392' cy='44' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.2119;0.2373;0.6695;0.6949' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='20' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.1102;0.1356' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='32' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1525;0.1695;0.3051;0.3220;0.4153;0.4407;0.7119;0.7288' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='44' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1525;0.1695;0.2119;0.2373;0.4576;0.4915;0.5254;0.5424' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='56' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7288;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='68' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0508;0.0678;0.1271;0.1525;0.4661;0.4915' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='92' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3475;0.3729;0.5847;0.6102' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='104' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3559;0.3729;0.4322;0.4576' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='116' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1102;0.1356;0.5508;0.5763;0.6441;0.6610' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='140' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3390;0.3559' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='164' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.0763;0.1017' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='176' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3559;0.3729' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='188' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.0932;0.1186;0.3051;0.3220' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='200' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0763;0.1017;0.4492;0.4746;0.5847;0.6102' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='212' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1356;0.1525;0.2627;0.2881;0.5085;0.5254;0.7458;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='224' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3644;0.3898;0.4831;0.5085;0.5847;0.6102;0.7203;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='248' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.2542;0.2712;0.4576;0.4746;0.6102;0.6271' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='260' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3390;0.3559;0.5339;0.5593;0.6186;0.6441;0.7458;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='272' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.4746;0.4915;0.6017;0.6271;0.6864;0.7119' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='284' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.2797;0.3051;0.3729;0.3898;0.7119;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='296' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1356;0.1525;0.2034;0.2203;0.7458;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='308' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.2119;0.2373;0.2797;0.3051;0.5678;0.6102;0.6610;0.6780' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='332' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3051;0.3220;0.4068;0.4237;0.5169;0.5424;0.6441;0.6610' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='344' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1949;0.2203;0.2712;0.2881;0.4237;0.4407;0.5847;0.6102' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='356' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.1949;0.2203' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='368' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7288;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='380' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.0254;0.0678;0.1186;0.1356;0.1780;0.2034;0.3729;0.3898;0.4068;0.4237' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='392' cy='56' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.2203;0.2373;0.6780;0.6949' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='20' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.1186;0.1356' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='32' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1610;0.1864;0.3136;0.3390;0.4237;0.4407;0.7203;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='44' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1610;0.1864;0.2203;0.2373;0.4661;0.5085;0.5339;0.5593' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='56' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7373;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='68' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0593;0.0847;0.1356;0.1525;0.4746;0.4915' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='92' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3559;0.3729;0.5932;0.6102' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='104' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3644;0.3898;0.4407;0.4576' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='116' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1186;0.1356;0.5593;0.5763;0.6525;0.6780' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='140' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3475;0.3729' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='164' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.0847;0.1017' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='176' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3644;0.3898' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='188' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.1017;0.1186;0.3136;0.3390' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='200' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0847;0.1017;0.4576;0.4746;0.5932;0.6102' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='212' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1441;0.1695;0.2712;0.2881;0.5169;0.5424;0.7542;0.7797' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='224' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3729;0.3898;0.4915;0.5085;0.5932;0.6102;0.7288;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='248' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.2627;0.2881;0.4661;0.4915;0.6186;0.6441' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='260' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3475;0.3729;0.5424;0.5593;0.6271;0.6441;0.7542;0.7797' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='272' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.4831;0.5085;0.6102;0.6271;0.6949;0.7119' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='284' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.2881;0.3051;0.3814;0.4068;0.7203;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='296' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1441;0.1695;0.2119;0.2373;0.7542;0.7797' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='308' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.2203;0.2373;0.2881;0.3051;0.5763;0.5932;0.6017;0.6271;0.6695;0.6949' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='332' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3136;0.3390;0.4153;0.4407;0.5254;0.5424;0.6525;0.6780' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='344' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.2034;0.2203;0.2797;0.3051;0.4322;0.4576;0.5932;0.6102' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='356' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.2034;0.2203' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='368' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7373;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='380' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.0339;0.0678;0.1271;0.1525;0.1864;0.2034;0.3814;0.4068;0.4153;0.4407' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='392' cy='68' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.2288;0.2542;0.6864;0.7119' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='20' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.1271;0.1525' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='32' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1695;0.1864;0.3220;0.3390;0.4322;0.4576;0.7288;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='44' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1695;0.1864;0.2288;0.2542;0.4746;0.5085;0.5424;0.5593' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='56' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7458;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='68' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0678;0.0847;0.1441;0.1695;0.4831;0.5085' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='92' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3644;0.3898;0.6017;0.6271' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='104' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3729;0.3898;0.4492;0.4746' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='116' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1271;0.1525;0.5678;0.5932;0.6610;0.6780' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='140' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3559;0.3729' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='164' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.0932;0.1186' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='176' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3729;0.3898' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='188' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.1102;0.1356;0.3220;0.3390' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='200' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0932;0.1186;0.4661;0.4915;0.6017;0.6271' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='212' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1525;0.1695;0.2797;0.3051;0.5254;0.5424;0.7627;0.7797' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='224' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3814;0.4068;0.5000;0.5254;0.6017;0.6271;0.7373;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='248' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.2712;0.2881;0.4746;0.4915;0.6271;0.6441' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='260' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3559;0.3729;0.5508;0.5763;0.6356;0.6610;0.7627;0.7797' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='272' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.4915;0.5085;0.6186;0.6441;0.7034;0.7288' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='284' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.2966;0.3220;0.3898;0.4068;0.7288;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='296' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1525;0.1695;0.2203;0.2373;0.7627;0.7797' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='308' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.2288;0.2542;0.2966;0.3220;0.5847;0.6271;0.6780;0.6949' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='332' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3220;0.3390;0.4237;0.4407;0.5339;0.5593;0.6610;0.6780' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='344' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.2119;0.2373;0.2881;0.3051;0.4407;0.4576;0.6017;0.6271' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='356' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.2119;0.2373' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='368' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7458;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='380' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.0424;0.0847;0.1356;0.1525;0.1949;0.2203;0.3898;0.4068;0.4237;0.4407' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='392' cy='80' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.2373;0.2542;0.6949;0.7119' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='20' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.1356;0.1525' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='32' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1780;0.2034;0.3305;0.3559;0.4407;0.4576;0.7373;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='44' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1780;0.2034;0.2373;0.2542;0.4831;0.5254;0.5508;0.5763' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='56' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7542;0.7797' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='68' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0763;0.1017;0.1525;0.1695;0.4915;0.5085' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='92' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3729;0.3898;0.6102;0.6271' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='104' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3814;0.4068;0.4576;0.4746' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='116' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1356;0.1525;0.5763;0.5932;0.6695;0.6949' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='140' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3644;0.3898' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='164' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.1017;0.1186' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='176' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3814;0.4068' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='188' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.1186;0.1356;0.3305;0.3559' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='200' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1017;0.1186;0.4746;0.4915;0.6102;0.6271' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='212' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1610;0.1864;0.2881;0.3051;0.5339;0.5593;0.7712;0.7966' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='224' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3898;0.4068;0.5085;0.5254;0.6102;0.6271;0.7458;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='248' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.2797;0.3051;0.4831;0.5085;0.6356;0.6610' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='260' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3644;0.3898;0.5593;0.5763;0.6441;0.6610;0.7712;0.7966' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='272' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.5000;0.5254;0.6271;0.6441;0.7119;0.7288' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='284' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.3051;0.3220;0.3983;0.4237;0.7373;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='296' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1610;0.1864;0.2288;0.2542;0.7712;0.7966' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='308' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.2373;0.2542;0.3051;0.3220;0.5932;0.6102;0.6186;0.6441;0.6864;0.7119' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='332' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3305;0.3559;0.4322;0.4576;0.5424;0.5593;0.6695;0.6949' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='344' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.2203;0.2373;0.2966;0.3220;0.4492;0.4746;0.6102;0.6271' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='356' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.2203;0.2373' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='368' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7542;0.7797' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='380' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.0508;0.0847;0.1441;0.1695;0.2034;0.2203;0.3983;0.4237;0.4322;0.4576' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='392' cy='92' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.2458;0.2712;0.7034;0.7288' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='20' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.1441;0.1695' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='32' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1864;0.2034;0.3390;0.3559;0.4492;0.4746;0.7458;0.7627' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='44' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1864;0.2034;0.2458;0.2712;0.4915;0.5254;0.5593;0.5763' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='56' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7627;0.7797' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='68' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.0847;0.1017;0.1610;0.1864;0.5000;0.5254' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='92' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3814;0.4068;0.6186;0.6441' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='104' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.3898;0.4068;0.4661;0.4915' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='116' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1441;0.1695;0.5847;0.6102;0.6780;0.6949' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='140' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3729;0.3898' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='164' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.1102;0.1356' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='176' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.3898;0.4068' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='188' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.1271;0.1525;0.3390;0.3559' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='200' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1102;0.1356;0.4831;0.5085;0.6186;0.6441' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='212' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.1695;0.1864;0.2966;0.3220;0.5424;0.5593;0.7797;0.7966' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='224' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3983;0.4237;0.5169;0.5424;0.6186;0.6441;0.7542;0.7797' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='248' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.2881;0.3051;0.4915;0.5085;0.6441;0.6610' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='260' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3729;0.3898;0.5678;0.5932;0.6525;0.6780;0.7797;0.7966' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='272' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.5085;0.5254;0.6356;0.6610;0.7203;0.7458' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='284' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.3136;0.3390;0.4068;0.4237;0.7458;0.7797' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='296' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0' keyTimes='0.0000;0.1695;0.1864;0.2373;0.2542;0.7797;0.7966' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='308' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.2458;0.2712;0.3136;0.3390;0.6017;0.6441;0.6949;0.7119' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='332' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.3390;0.3559;0.4407;0.4576;0.5508;0.5763;0.6780;0.6949' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='344' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.2288;0.2542;0.3051;0.3220;0.4576;0.4746;0.6186;0.6441' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='356' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.2288;0.2542' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='368' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0' keyTimes='0.0000;0.7627;0.7797' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='380' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0;1;0;1;0;1;0' keyTimes='0.0000;0.0593;0.1017;0.1525;0.1695;0.2119;0.2373;0.4068;0.4237;0.4407;0.4576' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+<circle cx='392' cy='104' r='4.32' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1;0;1;0' keyTimes='0.0000;0.2542;0.2712;0.7119;0.7288' calcMode='discrete' dur='5.90s' repeatCount='indefinite'/></circle>
+</g></svg>

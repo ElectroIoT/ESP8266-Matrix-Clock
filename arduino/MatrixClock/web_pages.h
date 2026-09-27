@@ -71,6 +71,13 @@ static const char MAIN_HTML[] PROGMEM = R"HTML(<!DOCTYPE html><html lang=en><hea
 <div class=row><span>From</span><select id=nightFrom class=hr></select></div>
 <div class=row><span>Until</span><select id=nightTo class=hr></select></div>
 <div class=row><span>Night brightness</span><select id=nightBr></select></div>
+</div>
+<div class=row><span>Auto brightness<small>Needs a light sensor (LDR) on A0 - see README</small></span><label class=sw><input type=checkbox id=ldrOn><span></span></label></div>
+<div id=ldr>
+<div class=row><span>Light now</span><b id=light>-</b></div>
+<div class=row><span>Brightness in the dark</span><select id=ldrMin class=b15></select></div>
+<div class=row><span>Brightness in bright light</span><select id=ldrMax class=b15></select></div>
+<div class=row><span>Reverse sensor<small>Turn on if the display gets brighter in the dark</small></span><label class=sw><input type=checkbox id=ldrInvert><span></span></label></div>
 </div></div>
 
 <div class=card><h2>Clock</h2>
@@ -116,6 +123,15 @@ static const char MAIN_HTML[] PROGMEM = R"HTML(<!DOCTYPE html><html lang=en><hea
 <a class=btn id=upl href=/update>Upload .bin</a></div>
 </div>
 
+<div class=card><h2>Settings password</h2>
+<p class=mut id=pwState style="margin:0 0 10px"></p>
+<input type=password id=pwCur class=full placeholder="Current password" autocomplete=current-password style=display:none>
+<input type=password id=pwNew class=full placeholder="New password (6+ characters)" autocomplete=new-password>
+<input type=password id=pwNew2 class=full placeholder="Repeat new password" autocomplete=new-password>
+<div class=btns style=margin-top:0><button class=p id=pwSet>Set password</button><button id=pwDel class=d style=display:none>Remove password</button>
+<button id=logout style=display:none>Log out</button></div>
+</div>
+
 <div class=card><h2>WiFi &amp; system</h2>
 <div class=stat><span>Network</span><b id=ssid>-</b><span>Signal</span><b id=rssi>-</b><span>IP address</span><b id=ip>-</b><span>Uptime</span><b id=up>-</b></div>
 <div class=btns><a class=btn href=/wifi>Change WiFi</a><button id=sip>Show IP on clock</button><button id=sync>Re-sync time</button>
@@ -125,11 +141,13 @@ static const char MAIN_HTML[] PROGMEM = R"HTML(<!DOCTYPE html><html lang=en><hea
 </div><div id=toast></div>
 <script>
 const $=i=>document.getElementById(i);
-const post=(u,d)=>fetch(u,{method:'POST',body:new URLSearchParams(d||{})});
+const toLogin=r=>{if(r.status==401){location='/login';throw 0}return r};
+const post=(u,d)=>fetch(u,{method:'POST',body:new URLSearchParams(d||{})}).then(toLogin);
 function toast(t){const e=$('toast');e.textContent=t;e.style.opacity=1;clearTimeout(e.t);e.t=setTimeout(()=>e.style.opacity=0,1600)}
 const hr=h=>h==0?'12 AM':h<12?h+' AM':h==12?'12 PM':(h-12)+' PM';
 document.querySelectorAll('.hr').forEach(s=>{for(let h=0;h<24;h++)s.add(new Option(hr(h),h))});
 for(let b=0;b<=16;b++)$('nightBr').add(new Option(b==16?'Display off':b,b));
+document.querySelectorAll('.b15').forEach(s=>{for(let b=0;b<=15;b++)s.add(new Option(b,b))});
 const AN=['Off','Sparkle','Wipe','Rain','Boxes','Pac-Man','Random'];
 document.querySelectorAll('.an').forEach(s=>AN.forEach((n,i)=>s.add(new Option(n,i))));
 AN.slice(1,6).forEach((n,i)=>{const b=document.createElement('button');b.textContent='▶ '+n;b.onclick=()=>post('/api/anim',{n:i+1});$('try').appendChild(b)});
@@ -141,12 +159,14 @@ const TZ=[['IST-5:30','India (UTC+5:30)'],['<+0545>-5:45','Nepal (UTC+5:45)'],['
 ['PST8PDT,M3.2.0,M11.1.0','US Pacific'],['AEST-10AEDT,M10.1.0,M4.1.0/3','Australia (Sydney)']];
 TZ.forEach(z=>$('tz').add(new Option(z[1],z[0])));
 function set(k,v){return post('/api/set',{k,v}).then(r=>toast(r.ok?'Saved':'Could not save'))}
-const K=['autoDim','nightFrom','nightTo','nightBr','fmt24','tz','blinkColon','secondsBar','leadingZero','showDate','roll','hourlyAnim','bootAnim','autoUpdate'];
-function load(){fetch('/api/config').then(r=>r.json()).then(c=>{
+const K=['autoDim','nightFrom','nightTo','nightBr','fmt24','tz','blinkColon','secondsBar','leadingZero','showDate','roll','hourlyAnim','bootAnim','autoUpdate','ldrOn','ldrMin','ldrMax','ldrInvert'];
+function load(){fetch('/api/config').then(toLogin).then(r=>r.json()).then(c=>{
  $('br').value=c.br;$('brv').textContent=c.br;
  if(![...$('tz').options].some(o=>o.value==c.tz))$('tz').add(new Option(c.tz,c.tz));
  K.forEach(k=>{const e=$(k);if(e.type=='checkbox')e.checked=!!c[k];else e.value=c[k]});
  $('night').style.display=c.autoDim?'':'none';
+ $('ldr').style.display=c.ldrOn?'':'none';
+ pw(c.hasPassword);
  $('msg').value=c.msg;$('msgEvery').value=c.msgEvery;
  if(!c.pinUpload)$('upl').style.display='none';
  evs(c.events);
@@ -175,9 +195,22 @@ $('msgClear').onclick=()=>{$('msg').value='';$('msgEvery').value=0;msg(0).then(r
 $('otaChk').onclick=()=>post('/api/ota/check').then(()=>toast('Checking GitHub...'));
 $('otaGo').onclick=()=>{if(confirm('Install the update now? The clock restarts when it is done.'))
  post('/api/ota/install').then(()=>toast('Installing - watch the clock'))};
+function pw(on){$('pwState').textContent=on?'Settings are protected: this page asks for the password.'
+ :'No password: anyone on this WiFi can change the settings.';
+ $('pwCur').style.display=$('pwDel').style.display=$('logout').style.display=on?'':'none';
+ $('pwSet').textContent=on?'Change password':'Set password'}
+const pwClear=()=>['pwCur','pwNew','pwNew2'].forEach(i=>$(i).value='');
+$('pwSet').onclick=()=>{const n=$('pwNew').value;
+ if(n.length<6){toast('Use at least 6 characters');return}
+ if(n!=$('pwNew2').value){toast('The two passwords differ');return}
+ post('/api/password',{cur:$('pwCur').value,new:n}).then(r=>reply(r,'Password saved')).then(ok=>{if(ok){pwClear();load()}})};
+$('pwDel').onclick=()=>{if(!confirm('Remove the password? Anyone on this WiFi can then change settings.'))return;
+ post('/api/password',{cur:$('pwCur').value,new:''}).then(r=>reply(r,'Password removed')).then(ok=>{if(ok){pwClear();load()}})};
+$('logout').onclick=()=>post('/api/logout').then(()=>location='/login');
 load();
 K.forEach(k=>$(k).onchange=e=>{const t=e.target;set(k,t.type=='checkbox'?(t.checked?1:0):t.value);
- if(k=='autoDim')$('night').style.display=t.checked?'':'none'});
+ if(k=='autoDim')$('night').style.display=t.checked?'':'none';
+ if(k=='ldrOn')$('ldr').style.display=t.checked?'':'none'});
 let bt;$('br').oninput=e=>{$('brv').textContent=e.target.value;clearTimeout(bt);bt=setTimeout(()=>post('/api/set',{k:'br',v:e.target.value,live:1}),60)};
 $('br').onchange=e=>{clearTimeout(bt);set('br',e.target.value)};
 $('sip').onclick=()=>post('/api/show',{t:'ip'}).then(()=>toast('Watch the clock'));
@@ -191,7 +224,9 @@ function poll(){fetch('/api/status').then(r=>r.json()).then(s=>{$('tm').textCont
  $('rssi').textContent=q(s.rssi)+' ('+s.rssi+' dBm)';$('ip').textContent=s.ip;$('up').textContent=up(s.up);
  $('ver').textContent='v'+s.version;$('lat').textContent=s.latest?'v'+s.latest:'-';
  $('otaMsg').textContent=s.otaBusy?'Working... the clock may pause for a moment':s.otaMsg;
- $('otaGo').style.display=s.newer&&!s.otaBusy?'':'none'})
+ $('otaGo').style.display=s.newer&&!s.otaBusy?'':'none';
+ $('light').textContent=s.light<0?'-':s.light+'% · brightness '+s.brNow;
+ $('brv').textContent=$('ldrOn').checked?$('br').value+' (auto: '+s.brNow+')':$('br').value})
  .catch(()=>$('dt').textContent='Clock not reachable').finally(()=>setTimeout(poll,1000))}
 poll();
 </script></body></html>)HTML";
@@ -216,7 +251,7 @@ address in the browser (or try <b>http://matrixclock.local</b>) to set brightnes
 const $=i=>document.getElementById(i);
 function toast(t){const e=$('toast');e.textContent=t;e.style.opacity=1;clearTimeout(e.t);e.t=setTimeout(()=>e.style.opacity=0,2200)}
 function scan(){const l=$('list');l.textContent='Scanning...';
- fetch('/api/scan').then(r=>r.json()).then(a=>{a.sort((x,y)=>y.r-x.r);l.innerHTML='';
+ fetch('/api/scan').then(r=>{if(r.status==401){location='/login';throw 0}return r.json()}).then(a=>{a.sort((x,y)=>y.r-x.r);l.innerHTML='';
   if(!a.length){l.textContent='No networks found. Type the name below.';return}
   a.forEach(n=>{const d=document.createElement('div');d.className='net';const s=n.r>-55?4:n.r>-67?3:n.r>-75?2:1;
    const t=document.createElement('span');t.textContent=(n.l?'🔒 ':'')+n.s;d.appendChild(t);
@@ -286,4 +321,22 @@ function poll(){fetch('/api/status').then(r=>r.json()).then(s=>{$('ver').textCon
  $('lat').textContent=s.latest?'v'+s.latest:'-';$('msg').textContent=s.otaBusy?'Working...':s.otaMsg})
  .catch(()=>$('msg').textContent='Clock busy or restarting...').finally(()=>setTimeout(poll,2000))}
 poll();
+</script></body></html>)HTML";
+
+static const char LOGIN_HTML[] PROGMEM = R"HTML(<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1"><title>Matrix Clock - Log in</title>
+<link rel=stylesheet href=/style.css></head><body><div class=w>
+<div class=hero><div class=clk><span id=tm>--:--</span></div><div class=dt>Settings are password protected</div></div>
+<div class=card><h2>Log in</h2>
+<form id=f><input type=password id=pw class=full placeholder="Settings password" autocomplete=current-password autofocus>
+<div class=btns style=margin-top:0><button class=p>Log in</button></div></form>
+<p class=mut id=msg></p>
+<p class=mut>Forgot it? Hold the clock's FLASH button for 10 seconds (the display shows "PW off"), then let go.</p></div>
+</div>
+<script>
+const $=i=>document.getElementById(i);
+fetch('/api/status').then(r=>r.json()).then(s=>$('tm').textContent=s.time+' '+s.ampm);
+$('f').onsubmit=e=>{e.preventDefault();$('msg').textContent='';
+ fetch('/api/login',{method:'POST',body:new URLSearchParams({pw:$('pw').value})})
+ .then(r=>r.ok?location='/':r.text().then(t=>{$('msg').textContent=t;$('pw').select()}))};
 </script></body></html>)HTML";

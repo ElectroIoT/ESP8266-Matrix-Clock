@@ -9,8 +9,9 @@ struct BootRecord {
     uint32_t magic;
     uint32_t crashes;
     uint32_t intentional;   // set by restart() just before a deliberate ESP.restart()
+    uint32_t installUpdate; // install the GitHub update straight after this restart
 };
-static const uint32_t MAGIC = 0x5AFE0C02;
+static const uint32_t MAGIC = 0x5AFE0C03;
 // User RTC blocks 0-31 (the first 128 bytes) hold eboot's "install the new firmware"
 // command after an update -- writing there would silently cancel the update.
 static const uint32_t RTC_SLOT = 64;
@@ -35,7 +36,7 @@ static bool wasCrash(uint32_t reason) {
 
 bool safeModeCheck() {
     ESP.rtcUserMemoryRead(RTC_SLOT, (uint32_t*)&rec, sizeof(rec));
-    if (rec.magic != MAGIC) rec = {MAGIC, 0, 0};
+    if (rec.magic != MAGIC) rec = {MAGIC, 0, 0, 0};
     uint32_t reason = ESP.getResetInfoPtr()->reason;
     rec.crashes = wasCrash(reason) ? rec.crashes + 1 : 0;   // power-on, reset button, deliberate restart: back to 0
     rec.intentional = 0;
@@ -54,4 +55,16 @@ void restart() {
     rec.intentional = 1;
     store();
     ESP.restart();
+}
+
+void restartToUpdate() {
+    rec.installUpdate = 1;
+    restart();
+}
+
+bool takeUpdateRequest() {
+    if (!rec.installUpdate) return false;
+    rec.installUpdate = 0;   // one attempt per request: a failed install must not loop
+    store();
+    return true;
 }

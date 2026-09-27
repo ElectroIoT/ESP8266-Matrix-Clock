@@ -32,6 +32,7 @@ struct SecureClient {
     BearSSL::X509List         roots;
     BearSSL::WiFiClientSecure client;
     explicit SecureClient(const char* pemSet) : roots(pemSet) {
+        Serial.printf("OTA heap: %u free, largest block %u\n", ESP.getFreeHeap(), ESP.getMaxFreeBlockSize());
         client.setTrustAnchors(&roots);
         client.setX509Time(time(nullptr));   // certificate dates need the real time (NTP)
         client.setTimeout(15000);

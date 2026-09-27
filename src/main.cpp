@@ -52,13 +52,45 @@ static bool inNight(int hour) {
     return hour >= cfg.nightFrom || hour < cfg.nightTo;   // window over midnight, e.g. 22 -> 7
 }
 
+// ---- optional light sensor (LDR) on A0 -------------------------------------------
+static float lightLevel = -1;   // smoothed reading 0..1023 (bright = high), -1 = not read yet
+
+static void readLight() {
+    static uint32_t last = 0;
+    if (!cfg.ldrOn) {
+        lightLevel = -1;
+        return;
+    }
+    if (millis() - last < 250) return;   // reading A0 too often disturbs WiFi
+    last = millis();
+    int raw = analogRead(A0);
+    if (cfg.ldrInvert) raw = 1023 - raw;
+    lightLevel = lightLevel < 0 ? raw : lightLevel * 0.85f + raw * 0.15f;
+}
+
+int lightPercent() {
+    return lightLevel < 0 ? -1 : (int)(lightLevel * 100 / 1023 + 0.5f);
+}
+
+uint8_t brightnessNow() {
+    return appliedBr;
+}
+
 void applyBrightness(bool force) {
     uint8_t want = cfg.brightness;
+    bool night = false;
     if (cfg.autoDim && timeValid()) {
         time_t now = time(nullptr);
         struct tm t;
         localtime_r(&now, &t);
-        if (inNight(t.tm_hour)) want = cfg.nightBr;
+        night = inNight(t.tm_hour);
+    }
+    if (night) {
+        want = cfg.nightBr;   // night mode wins over the light sensor
+    } else if (cfg.ldrOn && lightLevel >= 0) {
+        float exact = cfg.ldrMin + (cfg.ldrMax - cfg.ldrMin) * lightLevel / 1023.0f;
+        // hysteresis: only change step when the light has clearly moved, so it doesn't flicker
+        want = (appliedBr > 15 || fabsf(exact - appliedBr) > 0.7f) ? (uint8_t)lroundf(exact) : appliedBr;
     }
     if (want == appliedBr && !force) return;
     if (want > 15) {
@@ -94,7 +126,17 @@ void showEventsToday() {
 static void runOta() {
     uint8_t req = otaRequest;
     otaRequest = OTA_NONE;
-    if (otaCheck() && req == OTA_INSTALL) otaInstall();
+    if (mdnsOn) MDNS.end();   // frees its buffers: TLS needs every KB of heap
+    if (otaCheck() && req == OTA_INSTALL) {
+        if (appMode == MODE_SAFE) {
+            otaInstall();     // safe mode runs almost nothing, the heap is fine as it is
+        } else {
+            Serial.println(F("Update available: restarting to install it with a fresh heap"));
+            scrollText("Update");
+            restartToUpdate();
+        }
+    }
+    if (mdnsOn && MDNS.begin(HOSTNAME)) MDNS.addService("http", "tcp", 80);
 }
 
 // =================================================================================
@@ -115,30 +157,47 @@ void serviceWait(uint32_t ms) {
     } while (millis() - start < ms);
 }
 
-// FLASH button: short press = scroll IP, hold = forget WiFi and open setup
-static void handleButton() {
+// FLASH button, acted on when released:
+//   short press      -> scroll the IP address
+//   hold 5..10 s     -> forget WiFi and open the setup hotspot
+//   hold 10 s+       -> remove the settings-page password (forgotten password)
+// While held, the display shows what letting go will do. Returns true while that
+// hint is on screen, so the normal display code leaves it alone.
+static bool handleButton() {
     static uint32_t downAt = 0;
-    static bool     held = false;
     bool down = digitalRead(PIN_BUTTON) == LOW;
 
     if (down) {
-        if (!downAt) {
-            downAt = millis() | 1;
-            held = false;
-        } else if (!held && millis() - downAt > BUTTON_HOLD_MS) {
-            held = true;
-            Serial.println(F("Button held: forgetting WiFi"));
-            cfg.ssid[0] = 0;
-            cfg.pass[0] = 0;
-            settingsSave();
-            scrollText("WiFi reset");
-            restart();
-        }
-    } else if (downAt) {
-        if (!held && millis() - downAt > 40 && appMode == MODE_CLOCK)
-            scrollRequest = String("IP ") + WiFi.localIP().toString();
-        downAt = 0;
+        if (!downAt) downAt = millis() | 1;
+        uint32_t held = millis() - downAt;
+        if (held < 1500) return false;
+        fbClear();
+        drawText(1, held >= BUTTON_PASS_MS ? "PW off" : held >= BUTTON_HOLD_MS ? "WiFi" : "hold");
+        fbShow();
+        return true;
     }
+    if (!downAt) return false;
+
+    uint32_t held = millis() - downAt;
+    downAt = 0;
+    if (held >= BUTTON_PASS_MS) {
+        Serial.println(F("Button: settings password removed"));
+        memset(cfg.adminHash, 0, sizeof(cfg.adminHash));
+        settingsSave();
+        scrollText("Password removed");
+    } else if (held >= BUTTON_HOLD_MS) {
+        Serial.println(F("Button: forgetting WiFi"));
+        cfg.ssid[0] = 0;
+        cfg.pass[0] = 0;
+        settingsSave();
+        scrollText("WiFi reset");
+        restart();
+    } else if (held > 40 && held < 1500 && appMode == MODE_CLOCK) {
+        scrollRequest = String("IP ") + WiFi.localIP().toString();
+    }
+    fbClear();
+    fbShow();
+    return false;
 }
 
 // =================================================================================
@@ -209,6 +268,7 @@ static void clockLoop() {
     static uint32_t secStart = 0;
     static int      lastSec = -1;
     static bool     haveTime = false;
+    static uint32_t bootUpdateAt = 0;   // millis() for the post-boot update install, 0 = none
     static Marquee  waitMsg;
     static String   slideText;       // text sliding through, pushing the clock out and back in
     static int      slidePos = -1;   // -1 = no slide running
@@ -240,10 +300,17 @@ static void clockLoop() {
     if (!haveTime) {
         haveTime = true;
         Serial.printf("Time synced, heap %u (largest block %u)\n", ESP.getFreeHeap(), ESP.getMaxFreeBlockSize());
+        if (takeUpdateRequest()) otaInstall();   // restarts on success; on failure the clock just carries on
         face.reset();
         applyBrightness(true);
         showEventsToday();
-        otaCheck();   // so the web page can tell whether an update is waiting
+        // Check GitHub right away. A clock that was switched off for a while (or is off every
+        // night at 3 AM) installs a waiting update a minute after power-on instead of never.
+        if (otaCheck() && cfg.autoUpdate) bootUpdateAt = millis() + BOOT_UPDATE_DELAY_MS;
+    }
+    if (bootUpdateAt && (int32_t)(millis() - bootUpdateAt) >= 0) {
+        bootUpdateAt = 0;
+        otaRequest = OTA_INSTALL;
     }
 
     time_t now = time(nullptr);
@@ -382,7 +449,8 @@ void loop() {
     }
 
     service();
-    handleButton();
+    readLight();
+    if (handleButton()) return;   // button hint on screen
     if      (appMode == MODE_SETUP) setupLoop();
     else if (appMode == MODE_SAFE)  safeLoop();
     else                            clockLoop();

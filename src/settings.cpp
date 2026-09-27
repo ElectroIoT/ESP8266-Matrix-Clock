@@ -4,14 +4,23 @@
 
 // Bump when the Settings layout changes, so old flash contents are replaced by defaults.
 static const uint32_t MAGIC = 0x4D434B31;   // "MCK1"
-static const uint8_t  SETTINGS_VER = 2;
+static const uint8_t  SETTINGS_VER = 3;
 
 static void defaultsV2() {   // fields added in layout version 2
-    cfg.ver        = SETTINGS_VER;
     cfg.autoUpdate = 1;
     cfg.msgEvery   = 0;
     memset(cfg.msg, 0, sizeof(cfg.msg));
     memset(cfg.events, 0, sizeof(cfg.events));
+}
+
+static void defaultsV3() {   // fields added in layout version 3
+    cfg.ldrOn     = 0;
+    cfg.ldrMin    = 0;
+    cfg.ldrMax    = 12;
+    cfg.ldrInvert = 0;
+    memset(cfg.adminHash, 0, sizeof(cfg.adminHash));
+    memset(cfg.adminSalt, 0, sizeof(cfg.adminSalt));
+    memset(cfg.sessionKey, 0, sizeof(cfg.sessionKey));
 }
 
 Settings cfg;
@@ -34,11 +43,16 @@ void settingsDefaults() {
     cfg.bootAnim    = ANIM_SPARKLE;
     strlcpy(cfg.tz, DEF_TZ, sizeof(cfg.tz));
     defaultsV2();
+    defaultsV3();
+    cfg.ver = SETTINGS_VER;
 }
 
+// EEPROM keeps a RAM copy of the whole area while open, so it is only opened to read
+// or write: that ~1.2 KB of heap is needed for TLS during updates.
 void settingsLoad() {
     EEPROM.begin(sizeof(Settings));
     EEPROM.get(0, cfg);
+    EEPROM.end();
     if (cfg.magic != MAGIC) {
         settingsDefaults();
         return;
@@ -56,10 +70,18 @@ void settingsLoad() {
     if (cfg.hourlyAnim > ANIM_RANDOM) cfg.hourlyAnim = ANIM_OFF;
     if (cfg.bootAnim > ANIM_RANDOM) cfg.bootAnim = ANIM_OFF;
 
-    if (cfg.ver != SETTINGS_VER) {   // flash written by an older firmware: new fields hold erased-flash garbage
-        defaultsV2();
+    // Flash written by an older firmware: fields it didn't know hold erased-flash garbage.
+    // (0xFF is > SETTINGS_VER, i.e. "older than version 2".)
+    if (cfg.ver != SETTINGS_VER) {
+        if (cfg.ver < 2 || cfg.ver > SETTINGS_VER) defaultsV2();
+        if (cfg.ver < 3 || cfg.ver > SETTINGS_VER) defaultsV3();
+        cfg.ver = SETTINGS_VER;
         settingsSave();
     }
+    cfg.ldrOn = cfg.ldrOn ? 1 : 0;
+    cfg.ldrInvert = cfg.ldrInvert ? 1 : 0;
+    if (cfg.ldrMin > 15) cfg.ldrMin = 0;
+    if (cfg.ldrMax > 15) cfg.ldrMax = 12;
     cfg.autoUpdate = cfg.autoUpdate ? 1 : 0;
     if (cfg.msgEvery > 60) cfg.msgEvery = 0;
     cfg.msg[sizeof(cfg.msg) - 1] = 0;
@@ -70,6 +92,7 @@ void settingsLoad() {
 }
 
 void settingsSave() {
+    EEPROM.begin(sizeof(Settings));
     EEPROM.put(0, cfg);
-    EEPROM.commit();
+    EEPROM.end();   // commits and frees the buffer
 }
