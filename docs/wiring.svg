@@ -1,0 +1,104 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 400' width='900' height='400'>
+<rect width='900' height='400' rx='20' fill='#14161c'/>
+<rect x='50' y='70' width='230' height='270' rx='12' fill='#10353a' stroke='#1f6b72' stroke-width='2'/>
+<rect x='120' y='40' width='90' height='42' rx='6' fill='#c9ccd4'/><rect x='140' y='52' width='50' height='18' rx='3' fill='#8b9099'/>
+<rect x='95' y='120' width='140' height='90' rx='6' fill='#1e2126' stroke='#3a3f48'/>
+<text x='165' y='160' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='18' font-weight='700' fill='#e8eaf0'>ESP8266</text>
+<text x='165' y='184' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#9aa0ad'>NodeMCU / D1 mini</text>
+<rect x='560' y='90' width='300' height='220' rx='12' fill='#12324f' stroke='#2a5d8a' stroke-width='2'/>
+<rect x='580' y='110' width='58' height='58' rx='4' fill='#0b0b0d'/>
+<circle cx='589.0' cy='119.0' r='4' fill='#ff3b3b'/>
+<circle cx='602.3' cy='119.0' r='4' fill='#2b0d0d'/>
+<circle cx='615.6' cy='119.0' r='4' fill='#2b0d0d'/>
+<circle cx='628.9' cy='119.0' r='4' fill='#ff3b3b'/>
+<circle cx='589.0' cy='132.3' r='4' fill='#2b0d0d'/>
+<circle cx='602.3' cy='132.3' r='4' fill='#2b0d0d'/>
+<circle cx='615.6' cy='132.3' r='4' fill='#ff3b3b'/>
+<circle cx='628.9' cy='132.3' r='4' fill='#2b0d0d'/>
+<circle cx='589.0' cy='145.6' r='4' fill='#2b0d0d'/>
+<circle cx='602.3' cy='145.6' r='4' fill='#ff3b3b'/>
+<circle cx='615.6' cy='145.6' r='4' fill='#2b0d0d'/>
+<circle cx='628.9' cy='145.6' r='4' fill='#2b0d0d'/>
+<circle cx='589.0' cy='158.9' r='4' fill='#ff3b3b'/>
+<circle cx='602.3' cy='158.9' r='4' fill='#2b0d0d'/>
+<circle cx='615.6' cy='158.9' r='4' fill='#2b0d0d'/>
+<circle cx='628.9' cy='158.9' r='4' fill='#ff3b3b'/>
+<rect x='648' y='110' width='58' height='58' rx='4' fill='#0b0b0d'/>
+<circle cx='657.0' cy='119.0' r='4' fill='#2b0d0d'/>
+<circle cx='670.3' cy='119.0' r='4' fill='#2b0d0d'/>
+<circle cx='683.6' cy='119.0' r='4' fill='#ff3b3b'/>
+<circle cx='696.9' cy='119.0' r='4' fill='#2b0d0d'/>
+<circle cx='657.0' cy='132.3' r='4' fill='#2b0d0d'/>
+<circle cx='670.3' cy='132.3' r='4' fill='#ff3b3b'/>
+<circle cx='683.6' cy='132.3' r='4' fill='#2b0d0d'/>
+<circle cx='696.9' cy='132.3' r='4' fill='#2b0d0d'/>
+<circle cx='657.0' cy='145.6' r='4' fill='#ff3b3b'/>
+<circle cx='670.3' cy='145.6' r='4' fill='#2b0d0d'/>
+<circle cx='683.6' cy='145.6' r='4' fill='#2b0d0d'/>
+<circle cx='696.9' cy='145.6' r='4' fill='#ff3b3b'/>
+<circle cx='657.0' cy='158.9' r='4' fill='#2b0d0d'/>
+<circle cx='670.3' cy='158.9' r='4' fill='#2b0d0d'/>
+<circle cx='683.6' cy='158.9' r='4' fill='#ff3b3b'/>
+<circle cx='696.9' cy='158.9' r='4' fill='#2b0d0d'/>
+<rect x='716' y='110' width='58' height='58' rx='4' fill='#0b0b0d'/>
+<circle cx='725.0' cy='119.0' r='4' fill='#2b0d0d'/>
+<circle cx='738.3' cy='119.0' r='4' fill='#ff3b3b'/>
+<circle cx='751.6' cy='119.0' r='4' fill='#2b0d0d'/>
+<circle cx='764.9' cy='119.0' r='4' fill='#2b0d0d'/>
+<circle cx='725.0' cy='132.3' r='4' fill='#ff3b3b'/>
+<circle cx='738.3' cy='132.3' r='4' fill='#2b0d0d'/>
+<circle cx='751.6' cy='132.3' r='4' fill='#2b0d0d'/>
+<circle cx='764.9' cy='132.3' r='4' fill='#ff3b3b'/>
+<circle cx='725.0' cy='145.6' r='4' fill='#2b0d0d'/>
+<circle cx='738.3' cy='145.6' r='4' fill='#2b0d0d'/>
+<circle cx='751.6' cy='145.6' r='4' fill='#ff3b3b'/>
+<circle cx='764.9' cy='145.6' r='4' fill='#2b0d0d'/>
+<circle cx='725.0' cy='158.9' r='4' fill='#2b0d0d'/>
+<circle cx='738.3' cy='158.9' r='4' fill='#ff3b3b'/>
+<circle cx='751.6' cy='158.9' r='4' fill='#2b0d0d'/>
+<circle cx='764.9' cy='158.9' r='4' fill='#2b0d0d'/>
+<rect x='784' y='110' width='58' height='58' rx='4' fill='#0b0b0d'/>
+<circle cx='793.0' cy='119.0' r='4' fill='#ff3b3b'/>
+<circle cx='806.3' cy='119.0' r='4' fill='#2b0d0d'/>
+<circle cx='819.6' cy='119.0' r='4' fill='#2b0d0d'/>
+<circle cx='832.9' cy='119.0' r='4' fill='#ff3b3b'/>
+<circle cx='793.0' cy='132.3' r='4' fill='#2b0d0d'/>
+<circle cx='806.3' cy='132.3' r='4' fill='#2b0d0d'/>
+<circle cx='819.6' cy='132.3' r='4' fill='#ff3b3b'/>
+<circle cx='832.9' cy='132.3' r='4' fill='#2b0d0d'/>
+<circle cx='793.0' cy='145.6' r='4' fill='#2b0d0d'/>
+<circle cx='806.3' cy='145.6' r='4' fill='#ff3b3b'/>
+<circle cx='819.6' cy='145.6' r='4' fill='#2b0d0d'/>
+<circle cx='832.9' cy='145.6' r='4' fill='#2b0d0d'/>
+<circle cx='793.0' cy='158.9' r='4' fill='#ff3b3b'/>
+<circle cx='806.3' cy='158.9' r='4' fill='#2b0d0d'/>
+<circle cx='819.6' cy='158.9' r='4' fill='#2b0d0d'/>
+<circle cx='832.9' cy='158.9' r='4' fill='#ff3b3b'/>
+<text x='710' y='205' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='16' font-weight='700' fill='#e8eaf0'>MAX7219 4-in-1 (8x32)</text>
+<circle cx='575' cy='235' r='5' fill='#ff4d4d'/>
+<text x='590' y='240' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#e8eaf0'>VCC</text>
+<circle cx='265' cy='235' r='5' fill='#ff4d4d'/>
+<text x='252' y='240' text-anchor='end' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#e8eaf0'>5V / VIN</text>
+<path d='M270 235 C 420 235, 420 235, 570 235' fill='none' stroke='#ff4d4d' stroke-width='3.5' stroke-linecap='round'/>
+<circle cx='575' cy='251' r='5' fill='#9aa0ad'/>
+<text x='590' y='256' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#e8eaf0'>GND</text>
+<circle cx='265' cy='257' r='5' fill='#9aa0ad'/>
+<text x='252' y='262' text-anchor='end' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#e8eaf0'>GND</text>
+<path d='M270 257 C 420 257, 420 251, 570 251' fill='none' stroke='#9aa0ad' stroke-width='3.5' stroke-linecap='round'/>
+<circle cx='575' cy='267' r='5' fill='#35d07f'/>
+<text x='590' y='272' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#e8eaf0'>DIN</text>
+<circle cx='265' cy='279' r='5' fill='#35d07f'/>
+<text x='252' y='284' text-anchor='end' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#e8eaf0'>D7</text>
+<path d='M270 279 C 420 279, 420 267, 570 267' fill='none' stroke='#35d07f' stroke-width='3.5' stroke-linecap='round'/>
+<circle cx='575' cy='283' r='5' fill='#ffc53d'/>
+<text x='590' y='288' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#e8eaf0'>CS</text>
+<circle cx='265' cy='301' r='5' fill='#ffc53d'/>
+<text x='252' y='306' text-anchor='end' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#e8eaf0'>D6</text>
+<path d='M270 301 C 420 301, 420 283, 570 283' fill='none' stroke='#ffc53d' stroke-width='3.5' stroke-linecap='round'/>
+<circle cx='575' cy='299' r='5' fill='#4da3ff'/>
+<text x='590' y='304' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#e8eaf0'>CLK</text>
+<circle cx='265' cy='323' r='5' fill='#4da3ff'/>
+<text x='252' y='328' text-anchor='end' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#e8eaf0'>D5</text>
+<path d='M270 323 C 420 323, 420 299, 570 299' fill='none' stroke='#4da3ff' stroke-width='3.5' stroke-linecap='round'/>
+<text x='450.0' y='375' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='14' fill='#9aa0ad'>Use a 5 V / 1 A supply · CLK and DIN are the ESP8266 hardware SPI pins</text>
+</svg>

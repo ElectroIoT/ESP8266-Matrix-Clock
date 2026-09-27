@@ -1,0 +1,19 @@
+// =====================================================================================
+//  ESP8266 Matrix Clock -- Arduino IDE version
+//  https://github.com/ElectroIoT/ESP8266-Matrix-Clock
+//
+//  This folder is generated from ../../src by tools/sync_arduino.sh -- the code is the
+//  same as the PlatformIO version. Edit settings in the "config.h" tab.
+//
+//  1. Boards Manager: install "esp8266 by ESP8266 Community" (3.x)
+//     (File > Preferences > Additional boards manager URLs:
+//      https://arduino.esp8266.com/stable/package_esp8266com_index.json)
+//  2. Library Manager: install "MD_MAX72XX" by majicdesigns
+//  3. Tools > Board: "NodeMCU 1.0 (ESP-12E Module)"  (or "LOLIN(WEMOS) D1 R2 & mini")
+//     Tools > Flash Size: "4MB (FS:2MB OTA:~1019KB)"
+//     Tools > CPU Frequency: "160 MHz"
+//  4. Upload. Then set up WiFi from your phone (see README).
+//
+//  Wiring: MAX7219 DIN -> D7, CLK -> D5, CS -> D6, VCC -> 5V (VIN), GND -> GND
+// =====================================================================================
+

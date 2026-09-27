@@ -3,3 +3,4 @@
 *.bin
 src/private_config.h
 release/
+arduino/MatrixClock/private_config.h

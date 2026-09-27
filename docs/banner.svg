@@ -1,0 +1,382 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 330' width='900' height='330'>
+<defs><filter id='glow' x='-50%' y='-50%' width='200%' height='200%'>
+<feGaussianBlur stdDeviation='2.2' result='b'/><feMerge><feMergeNode in='b'/><feMergeNode in='SourceGraphic'/></feMerge></filter><clipPath id='cell'><rect x='594.0' y='52' width='80' height='112'/></clipPath>
+<linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#15161c'/><stop offset='1' stop-color='#1d1015'/></linearGradient></defs>
+<rect width='900' height='330' rx='20' fill='url(#bg)'/>
+<rect x='176.0' y='34' width='548' height='164' rx='14' fill='#0b0b0d' stroke='#26262c'/>
+<circle cx='202' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='218' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='234' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='250' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='266' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='282' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='298' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='314' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='330' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='346' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='362' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='378' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='394' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='410' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='426' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='442' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='458' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='474' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='490' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='506' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='522' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='538' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='554' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='570' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='586' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='602' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='618' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='634' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='650' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='666' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='682' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='698' cy='60' r='5.76' fill='#2b0d0d'/>
+<circle cx='202' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='218' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='234' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='250' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='266' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='282' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='298' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='314' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='330' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='346' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='362' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='378' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='394' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='410' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='426' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='442' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='458' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='474' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='490' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='506' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='522' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='538' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='554' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='570' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='586' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='602' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='618' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='634' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='650' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='666' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='682' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='698' cy='76' r='5.76' fill='#2b0d0d'/>
+<circle cx='202' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='218' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='234' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='250' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='266' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='282' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='298' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='314' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='330' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='346' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='362' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='378' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='394' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='410' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='426' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='442' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='458' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='474' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='490' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='506' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='522' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='538' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='554' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='570' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='586' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='602' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='618' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='634' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='650' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='666' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='682' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='698' cy='92' r='5.76' fill='#2b0d0d'/>
+<circle cx='202' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='218' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='234' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='250' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='266' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='282' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='298' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='314' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='330' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='346' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='362' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='378' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='394' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='410' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='426' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='442' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='458' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='474' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='490' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='506' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='522' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='538' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='554' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='570' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='586' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='602' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='618' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='634' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='650' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='666' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='682' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='698' cy='108' r='5.76' fill='#2b0d0d'/>
+<circle cx='202' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='218' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='234' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='250' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='266' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='282' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='298' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='314' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='330' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='346' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='362' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='378' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='394' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='410' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='426' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='442' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='458' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='474' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='490' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='506' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='522' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='538' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='554' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='570' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='586' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='602' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='618' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='634' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='650' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='666' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='682' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='698' cy='124' r='5.76' fill='#2b0d0d'/>
+<circle cx='202' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='218' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='234' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='250' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='266' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='282' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='298' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='314' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='330' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='346' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='362' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='378' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='394' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='410' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='426' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='442' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='458' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='474' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='490' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='506' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='522' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='538' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='554' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='570' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='586' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='602' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='618' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='634' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='650' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='666' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='682' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='698' cy='140' r='5.76' fill='#2b0d0d'/>
+<circle cx='202' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='218' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='234' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='250' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='266' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='282' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='298' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='314' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='330' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='346' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='362' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='378' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='394' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='410' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='426' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='442' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='458' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='474' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='490' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='506' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='522' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='538' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='554' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='570' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='586' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='602' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='618' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='634' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='650' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='666' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='682' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='698' cy='156' r='5.76' fill='#2b0d0d'/>
+<circle cx='202' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='218' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='234' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='250' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='266' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='282' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='298' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='314' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='330' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='346' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='362' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='378' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='394' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='410' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='426' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='442' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='458' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='474' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='490' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='506' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='522' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='538' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='554' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='570' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='586' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='602' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='618' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='634' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='650' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='666' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='682' cy='172' r='5.76' fill='#2b0d0d'/>
+<circle cx='698' cy='172' r='5.76' fill='#2b0d0d'/>
+<g filter='url(#glow)'>
+<circle cx='266' cy='60' r='5.76' fill='#ff3b3b'/>
+<circle cx='250' cy='76' r='5.76' fill='#ff3b3b'/>
+<circle cx='266' cy='76' r='5.76' fill='#ff3b3b'/>
+<circle cx='266' cy='92' r='5.76' fill='#ff3b3b'/>
+<circle cx='266' cy='108' r='5.76' fill='#ff3b3b'/>
+<circle cx='266' cy='124' r='5.76' fill='#ff3b3b'/>
+<circle cx='266' cy='140' r='5.76' fill='#ff3b3b'/>
+<circle cx='250' cy='156' r='5.76' fill='#ff3b3b'/>
+<circle cx='266' cy='156' r='5.76' fill='#ff3b3b'/>
+<circle cx='282' cy='156' r='5.76' fill='#ff3b3b'/>
+<circle cx='346' cy='60' r='5.76' fill='#ff3b3b'/>
+<circle cx='362' cy='60' r='5.76' fill='#ff3b3b'/>
+<circle cx='378' cy='60' r='5.76' fill='#ff3b3b'/>
+<circle cx='330' cy='76' r='5.76' fill='#ff3b3b'/>
+<circle cx='394' cy='76' r='5.76' fill='#ff3b3b'/>
+<circle cx='394' cy='92' r='5.76' fill='#ff3b3b'/>
+<circle cx='378' cy='108' r='5.76' fill='#ff3b3b'/>
+<circle cx='362' cy='124' r='5.76' fill='#ff3b3b'/>
+<circle cx='346' cy='140' r='5.76' fill='#ff3b3b'/>
+<circle cx='330' cy='156' r='5.76' fill='#ff3b3b'/>
+<circle cx='346' cy='156' r='5.76' fill='#ff3b3b'/>
+<circle cx='362' cy='156' r='5.76' fill='#ff3b3b'/>
+<circle cx='378' cy='156' r='5.76' fill='#ff3b3b'/>
+<circle cx='394' cy='156' r='5.76' fill='#ff3b3b'/>
+<circle cx='554' cy='60' r='5.76' fill='#ff3b3b'/>
+<circle cx='538' cy='76' r='5.76' fill='#ff3b3b'/>
+<circle cx='554' cy='76' r='5.76' fill='#ff3b3b'/>
+<circle cx='522' cy='92' r='5.76' fill='#ff3b3b'/>
+<circle cx='554' cy='92' r='5.76' fill='#ff3b3b'/>
+<circle cx='506' cy='108' r='5.76' fill='#ff3b3b'/>
+<circle cx='554' cy='108' r='5.76' fill='#ff3b3b'/>
+<circle cx='506' cy='124' r='5.76' fill='#ff3b3b'/>
+<circle cx='522' cy='124' r='5.76' fill='#ff3b3b'/>
+<circle cx='538' cy='124' r='5.76' fill='#ff3b3b'/>
+<circle cx='554' cy='124' r='5.76' fill='#ff3b3b'/>
+<circle cx='570' cy='124' r='5.76' fill='#ff3b3b'/>
+<circle cx='554' cy='140' r='5.76' fill='#ff3b3b'/>
+<circle cx='554' cy='156' r='5.76' fill='#ff3b3b'/>
+<g><animate attributeName='opacity' values='1;0' dur='1s' calcMode='discrete' repeatCount='indefinite'/>
+<circle cx='442' cy='76' r='5.76' fill='#ff3b3b'/>
+<circle cx='442' cy='92' r='5.76' fill='#ff3b3b'/>
+<circle cx='442' cy='124' r='5.76' fill='#ff3b3b'/>
+<circle cx='442' cy='140' r='5.76' fill='#ff3b3b'/>
+<circle cx='458' cy='76' r='5.76' fill='#ff3b3b'/>
+<circle cx='458' cy='92' r='5.76' fill='#ff3b3b'/>
+<circle cx='458' cy='124' r='5.76' fill='#ff3b3b'/>
+<circle cx='458' cy='140' r='5.76' fill='#ff3b3b'/>
+</g>
+<g clip-path='url(#cell)'><g>
+<animateTransform attributeName='transform' type='translate' values='0 0;0 0;0 128;0 128' keyTimes='0;0.500;0.567;1' dur='6.0s' repeatCount='indefinite'/>
+<circle cx='602' cy='60' r='5.76' fill='#ff3b3b'/>
+<circle cx='618' cy='60' r='5.76' fill='#ff3b3b'/>
+<circle cx='634' cy='60' r='5.76' fill='#ff3b3b'/>
+<circle cx='650' cy='60' r='5.76' fill='#ff3b3b'/>
+<circle cx='666' cy='60' r='5.76' fill='#ff3b3b'/>
+<circle cx='602' cy='76' r='5.76' fill='#ff3b3b'/>
+<circle cx='602' cy='92' r='5.76' fill='#ff3b3b'/>
+<circle cx='618' cy='92' r='5.76' fill='#ff3b3b'/>
+<circle cx='634' cy='92' r='5.76' fill='#ff3b3b'/>
+<circle cx='650' cy='92' r='5.76' fill='#ff3b3b'/>
+<circle cx='666' cy='108' r='5.76' fill='#ff3b3b'/>
+<circle cx='666' cy='124' r='5.76' fill='#ff3b3b'/>
+<circle cx='602' cy='140' r='5.76' fill='#ff3b3b'/>
+<circle cx='666' cy='140' r='5.76' fill='#ff3b3b'/>
+<circle cx='618' cy='156' r='5.76' fill='#ff3b3b'/>
+<circle cx='634' cy='156' r='5.76' fill='#ff3b3b'/>
+<circle cx='650' cy='156' r='5.76' fill='#ff3b3b'/>
+<circle cx='634' cy='-68' r='5.76' fill='#ff3b3b'/>
+<circle cx='650' cy='-68' r='5.76' fill='#ff3b3b'/>
+<circle cx='618' cy='-52' r='5.76' fill='#ff3b3b'/>
+<circle cx='602' cy='-36' r='5.76' fill='#ff3b3b'/>
+<circle cx='602' cy='-20' r='5.76' fill='#ff3b3b'/>
+<circle cx='618' cy='-20' r='5.76' fill='#ff3b3b'/>
+<circle cx='634' cy='-20' r='5.76' fill='#ff3b3b'/>
+<circle cx='650' cy='-20' r='5.76' fill='#ff3b3b'/>
+<circle cx='602' cy='-4' r='5.76' fill='#ff3b3b'/>
+<circle cx='666' cy='-4' r='5.76' fill='#ff3b3b'/>
+<circle cx='602' cy='12' r='5.76' fill='#ff3b3b'/>
+<circle cx='666' cy='12' r='5.76' fill='#ff3b3b'/>
+<circle cx='618' cy='28' r='5.76' fill='#ff3b3b'/>
+<circle cx='634' cy='28' r='5.76' fill='#ff3b3b'/>
+<circle cx='650' cy='28' r='5.76' fill='#ff3b3b'/>
+</g></g>
+<circle cx='202' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.030' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='218' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.061' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='234' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.091' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='250' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.121' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='266' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.152' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='282' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.182' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='298' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.212' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='314' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.242' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='330' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.273' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='346' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.303' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='362' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.333' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='378' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.364' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='394' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.394' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='410' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.424' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='426' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.455' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='442' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.485' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='458' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.515' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='474' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.545' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='490' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.576' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='506' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.606' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='522' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.636' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='538' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.667' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='554' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.697' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='570' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.727' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='586' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.758' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='602' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.788' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='618' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.818' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='634' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.848' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='650' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.879' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='666' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.909' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='682' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.939' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+<circle cx='698' cy='172' r='5.76' fill='#ff3b3b' opacity='0'><animate attributeName='opacity' values='0;1' keyTimes='0;0.970' calcMode='discrete' dur='6.0s' repeatCount='indefinite'/></circle>
+</g>
+<text x='450.0' y='260' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='38' font-weight='700' fill='#f2f3f7'>ESP8266 Matrix Clock</text>
+<text x='450.0' y='294' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='18' fill='#9aa0ad'>WiFi setup from your phone · web settings · animations · updates from GitHub</text>
+</svg>

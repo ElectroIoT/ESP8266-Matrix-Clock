@@ -1,0 +1,38 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 250' width='900' height='250'>
+<rect width='900' height='250' rx='20' fill='#14161c'/>
+<g>
+<rect x='32.0' y='40' width='185' height='170' rx='16' fill='#1c1f28' stroke='#3a3f4b' stroke-width='2'><animate attributeName='stroke' values='#3a3f4b;#ff3b3b;#ff3b3b;#3a3f4b' keyTimes='0;0.1;0.25;0.35' dur='2.4s' begin='0.0s' repeatCount='indefinite'/></rect>
+<circle cx='124.5' cy='82' r='22' fill='#ff3b3b'><animate attributeName='r' values='22;27;22;22' keyTimes='0;0.1;0.25;1' dur='2.4s' begin='0.0s' repeatCount='indefinite'/></circle>
+<text x='124.5' y='90' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='22' font-weight='700' fill='#fff'>1</text>
+<text x='124.5' y='138' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='19' font-weight='700' fill='#f2f3f7'>Power on</text>
+<text x='124.5' y='164' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13.5' fill='#9aa0ad'>Clock shows</text>
+<text x='124.5' y='184' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13.5' fill='#9aa0ad'>"WiFi setup"</text>
+</g>
+<path d='M223.0 125 l18 0 m-7 -7 l7 7 l-7 7' fill='none' stroke='#5a5f6b' stroke-width='3' stroke-linecap='round'/>
+<g>
+<rect x='249.0' y='40' width='185' height='170' rx='16' fill='#1c1f28' stroke='#3a3f4b' stroke-width='2'><animate attributeName='stroke' values='#3a3f4b;#ff3b3b;#ff3b3b;#3a3f4b' keyTimes='0;0.1;0.25;0.35' dur='2.4s' begin='0.6s' repeatCount='indefinite'/></rect>
+<circle cx='341.5' cy='82' r='22' fill='#ff3b3b'><animate attributeName='r' values='22;27;22;22' keyTimes='0;0.1;0.25;1' dur='2.4s' begin='0.6s' repeatCount='indefinite'/></circle>
+<text x='341.5' y='90' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='22' font-weight='700' fill='#fff'>2</text>
+<text x='341.5' y='138' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='19' font-weight='700' fill='#f2f3f7'>Join WiFi</text>
+<text x='341.5' y='164' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13.5' fill='#9aa0ad'>MatrixClock-XXXX</text>
+<text x='341.5' y='184' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13.5' fill='#9aa0ad'>on your phone</text>
+</g>
+<path d='M440.0 125 l18 0 m-7 -7 l7 7 l-7 7' fill='none' stroke='#5a5f6b' stroke-width='3' stroke-linecap='round'/>
+<g>
+<rect x='466.0' y='40' width='185' height='170' rx='16' fill='#1c1f28' stroke='#3a3f4b' stroke-width='2'><animate attributeName='stroke' values='#3a3f4b;#ff3b3b;#ff3b3b;#3a3f4b' keyTimes='0;0.1;0.25;0.35' dur='2.4s' begin='1.2s' repeatCount='indefinite'/></rect>
+<circle cx='558.5' cy='82' r='22' fill='#ff3b3b'><animate attributeName='r' values='22;27;22;22' keyTimes='0;0.1;0.25;1' dur='2.4s' begin='1.2s' repeatCount='indefinite'/></circle>
+<text x='558.5' y='90' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='22' font-weight='700' fill='#fff'>3</text>
+<text x='558.5' y='138' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='19' font-weight='700' fill='#f2f3f7'>Pick network</text>
+<text x='558.5' y='164' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13.5' fill='#9aa0ad'>Setup page opens,</text>
+<text x='558.5' y='184' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13.5' fill='#9aa0ad'>enter password</text>
+</g>
+<path d='M657.0 125 l18 0 m-7 -7 l7 7 l-7 7' fill='none' stroke='#5a5f6b' stroke-width='3' stroke-linecap='round'/>
+<g>
+<rect x='683.0' y='40' width='185' height='170' rx='16' fill='#1c1f28' stroke='#3a3f4b' stroke-width='2'><animate attributeName='stroke' values='#3a3f4b;#ff3b3b;#ff3b3b;#3a3f4b' keyTimes='0;0.1;0.25;0.35' dur='2.4s' begin='1.7999999999999998s' repeatCount='indefinite'/></rect>
+<circle cx='775.5' cy='82' r='22' fill='#ff3b3b'><animate attributeName='r' values='22;27;22;22' keyTimes='0;0.1;0.25;1' dur='2.4s' begin='1.7999999999999998s' repeatCount='indefinite'/></circle>
+<text x='775.5' y='90' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='22' font-weight='700' fill='#fff'>4</text>
+<text x='775.5' y='138' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='19' font-weight='700' fill='#f2f3f7'>Done!</text>
+<text x='775.5' y='164' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13.5' fill='#9aa0ad'>Clock scrolls its IP,</text>
+<text x='775.5' y='184' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13.5' fill='#9aa0ad'>open it for settings</text>
+</g>
+</svg>
