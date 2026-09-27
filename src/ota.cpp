@@ -1,6 +1,7 @@
 #include "ota.h"
 #include "config.h"
 #include "display.h"
+#include "web.h"
 #include "github_roots.h"
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
@@ -25,16 +26,23 @@ struct SecureClient {
     }
 };
 
-// TLS needs a ~17 KB receive buffer plus ~8 KB of working memory. If the heap can't give
+// TLS needs one ~17.3 KB I/O buffer plus ~9 KB of working memory. If the heap can't give
 // that, skip this round instead of letting BearSSL abort (which would reboot the clock).
-static const uint32_t TLS_MIN_BLOCK = 24000;
+static const uint32_t TLS_MIN_BLOCK = 18000;
+static const uint32_t TLS_MIN_FREE  = 26000;
 static bool enoughMemory(const SecureClient&) {
-    uint32_t block = ESP.getMaxFreeBlockSize();
-    if (block >= TLS_MIN_BLOCK) return true;
+    uint32_t block = ESP.getMaxFreeBlockSize(), free = ESP.getFreeHeap();
+    if (block >= TLS_MIN_BLOCK && free >= TLS_MIN_FREE) return true;
     ota.message = "Not enough memory for the update check, try again later";
-    Serial.printf("OTA skipped: largest free block %u\n", block);
+    Serial.printf("OTA skipped: free %u, largest block %u\n", free, block);
     return false;
 }
+
+// Pauses the web server while TLS runs: queued browser requests would otherwise eat the heap.
+struct WebPause {
+    WebPause()  { webPause(true); }
+    ~WebPause() { webPause(false); }
+};
 
 static bool ready() {
     if (WiFi.status() != WL_CONNECTED) {
@@ -71,6 +79,7 @@ bool otaCheck() {
     ota.checkedAt = millis() | 1;
     if (!ready()) return false;
 
+    WebPause paused;
     SecureClient sc;
     if (!enoughMemory(sc)) return false;
     HTTPClient http;
@@ -112,6 +121,7 @@ void otaInstall() {
     drawText(1, "Update");
     fbShow();
 
+    WebPause paused;
     SecureClient sc;
     if (!enoughMemory(sc)) {
         scrollText("Update failed");

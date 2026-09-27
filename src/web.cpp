@@ -310,6 +310,11 @@ void webStartPortal() {
     dnsOn = true;
 }
 
+void webPause(bool pause) {
+    if (pause) server.stop();
+    else       server.begin();
+}
+
 void webLoop() {
     if (dnsOn) dns.processNextRequest();
     server.handleClient();
