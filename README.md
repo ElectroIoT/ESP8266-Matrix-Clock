@@ -30,6 +30,10 @@
 - Scrolling date once a minute
 - **8 digit animations:** Roll down, Roll up, Dissolve, Slide, Flip, Drop & bounce, Random, Instant
 
+**🧱 Any size**
+- 4 to 16 modules (8x32 up to 8x128), set on the settings page
+- Mirror / flip / upside down, 4 module types, seconds on wide displays
+
 **🎆 Effects**
 - Sparkle, Wipe, Rain, Boxes and **Pac-Man**
 - Every hour and/or at power-on, with try-out buttons
@@ -93,7 +97,7 @@ All of these are generated from the same digits, sprites and logic as the firmwa
 | Part | Notes |
 |---|---|
 | ESP8266 board | NodeMCU v2/v3 or Wemos D1 mini |
-| MAX7219 4-in-1 LED matrix | 8x32, the common "FC-16" blue module |
+| MAX7219 4-in-1 LED matrix | 8x32, the common "FC-16" blue module. Chain more for 8x64 and up |
 | 5 V / 1 A USB supply + cable | Weak supplies make the clock restart at high brightness |
 | 5 jumper wires | Female-female for most modules |
 | *Optional:* LDR (photoresistor) + 10 kΩ resistor | For automatic brightness; the clock works fine without it |
@@ -107,6 +111,30 @@ All of these are generated from the same digits, sprites and logic as the firmwa
 | DIN | D7 | GPIO13 (SPI MOSI) |
 | CS | D6 | GPIO12 |
 | CLK | D5 | GPIO14 (SPI SCK) |
+
+### Optional: more modules (8x40 up to 8x128)
+
+<p align="center"><img src="docs/chain.svg" alt="Chaining two 4-in-1 boards: OUT of board 1 to IN of board 2, 5 V supply to a rail feeding both boards and the ESP8266, 1000 µF capacitor at each board" width="860"></p>
+
+1. Connect **OUT** of the last board (DOUT, CS, CLK) to **IN** of the next one (DIN, CS, CLK). The chain grows
+   away from the end where the ESP8266 is connected.
+2. On the settings page → **Display**, set **Modules** to the new total. The clock restarts. Press
+   **Show module numbers**: module 1 must be the one next to the ESP8266 wires.
+3. With 6 or more modules, the clock also shows **seconds** (can be switched off).
+
+**Power.** Every extra module draws current, and animations like *Wipe* light every LED at once.
+Above 4 modules, don't power the display through the NodeMCU's USB port:
+
+| Modules | 5 V supply | Notes |
+|---|---|---|
+| 4 | 1 A (good USB adapter) | Powered through VIN is fine |
+| 8 | 2 A | Separate 5 V supply to the boards, ESP8266 VIN from the same 5 V |
+| 12 | 3 A | Feed 5 V into both ends of the chain |
+| 16 | 4 A | Feed 5 V into both ends, thick wires (22 AWG or thicker) |
+
+Put a **470-1000 µF electrolytic capacitor** (10 V or more) across 5 V and GND at each board's power input,
+with the **+ leg to 5 V**. It smooths out the current spikes that cause random restarts. All GNDs
+(supply, boards, ESP8266) must be connected together.
 
 ### Optional: light sensor for auto brightness
 
@@ -152,8 +180,8 @@ There are two copies of the same code. Use whichever tool you prefer.
 6. Press **Upload**.
 </details>
 
-> **Display scrambled, mirrored or upside down?** Change `MATRIX_HW`, `FLIP_HORIZONTAL` or
-> `FLIP_VERTICAL` in `config.h` and upload again.
+> **Display scrambled, mirrored or upside down?** Open the settings page → **Display** and change
+> *Module type*, *Mirror left-right* or *Flip top-bottom*. There's no need to re-flash.
 
 ## 📶 First-time setup (for whoever receives the clock)
 
@@ -175,6 +203,7 @@ a while (for example after a power cut), the clock keeps retrying it every 2 min
 | Section | What you can change |
 |---|---|
 | **Brightness** | Live slider, night mode, night hours, night brightness or display off, auto brightness (light sensor) |
+| **Display** | Number of 8x8 modules (4-16), module type, mirror, flip (both = upside down), show seconds, show module numbers |
 | **Clock** | 12/24 h, time zone, blinking colon, seconds bar, leading zero, scrolling date |
 | **Animations** | Digit change style (previewed on the clock when you pick one), hourly and power-on effect, try-out buttons |
 | **Message** | Custom text: show now, or repeat every 1/5/15/30/60 minutes |
@@ -243,11 +272,29 @@ tools/                release.sh, sync_arduino.sh, make_images.py
 |---|---|
 | All LEDs on, nothing else | Check CS is on **D6** and the module is powered from 5 V |
 | Clock keeps restarting | Use a better 5 V supply or a shorter, thicker USB cable; lower the brightness |
-| Text looks scrambled / mirrored | Try another `MATRIX_HW`, or set `FLIP_HORIZONTAL` / `FLIP_VERTICAL` in `config.h` |
+| Text looks scrambled / mirrored | Settings page → Display: try another *Module type*, or *Mirror* / *Flip* |
+| Added modules show the wrong part of the clock | Settings page → Display → *Show module numbers*: 1 must be where the wires come in |
 | Forgot the settings password | Hold FLASH for 10 s until the display shows `PW off`, then let go |
 | Setup page doesn't pop up | Stay connected to `MatrixClock-XXXX` and open `http://192.168.4.1` by hand |
 | `matrixclock.local` doesn't open | Some Android phones don't support `.local`. Use the IP (short-press FLASH to see it) |
 | "Getting time..." forever | The WiFi has no internet, or NTP is blocked. Check the router |
+
+## 🙏 Credits
+
+This project's own code is MIT licensed. It builds on these open-source projects, which are downloaded
+by PlatformIO / the Arduino IDE and not copied into this repository:
+
+| Project | Used for | License |
+|---|---|---|
+| [MD_MAX72XX](https://github.com/MajicDesigns/MD_MAX72XX) by Marco Colli (majicdesigns) | MAX7219 driver and the text font | LGPL-2.1 |
+| [ESP8266 Arduino core](https://github.com/esp8266/Arduino) | WiFi, web server, DNS, mDNS, HTTP client, OTA updater | LGPL-2.1 |
+| [BearSSL](https://bearssl.org/) (bundled with the ESP8266 core) | HTTPS for updates, SHA-256 | MIT |
+| [lwIP](https://savannah.nongnu.org/projects/lwip/) (bundled with the ESP8266 core) | TCP/IP | BSD |
+
+The 5x7 clock digits, the 3x5 module-number digits and all animations are drawn from scratch for this
+project. *Pac-Man* is a trademark of Bandai Namco Entertainment; the Pac-Man effect is an unofficial homage
+and isn't affiliated with or endorsed by them. The root certificates in `src/github_roots.h` are public
+CA certificates (ISRG / Let's Encrypt, Sectigo).
 
 ## 📄 License
 

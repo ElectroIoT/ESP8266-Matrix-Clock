@@ -170,6 +170,75 @@ def wiring():
     return '\n'.join(s)
 
 
+# ---- more modules: chaining, power supply, capacitors -------------------------------
+def chain():
+    W, H = 960, 560
+    s = [f"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {W} {H}' width='{W}' height='{H}'>",
+         f"<rect width='{W}' height='{H}' rx='20' fill='#14161c'/>",
+         f"<text x='{W / 2}' y='42' text-anchor='middle' {FONT} font-size='22' font-weight='700' fill='#f2f3f7'>"
+         "Adding more modules (example: 8 modules = 8x64)</text>"]
+
+    def board(x, y, label):
+        s.append(f"<rect x='{x}' y='{y}' width='330' height='112' rx='10' fill='#12324f' stroke='#2a5d8a' stroke-width='2'/>")
+        for i in range(4):
+            bx = x + 12 + i * 78
+            s.append(f"<rect x='{bx}' y='{y + 12}' width='70' height='70' rx='4' fill='#0b0b0d'/>")
+            for r in range(5):
+                for c in range(5):
+                    lit = (r + 2 * c + i) % 4 == 0
+                    s.append(f"<circle cx='{bx + 9 + c * 13:.1f}' cy='{y + 21 + r * 13:.1f}' r='4.2' fill='{RED if lit else OFF}'/>")
+        s.append(f"<text x='{x + 165}' y='{y + 102}' text-anchor='middle' {FONT} font-size='13' fill='#cfd6e4'>{label}</text>")
+
+    def cap(x, top, bottom):   # electrolytic capacitor from the 5 V rail (top) to the GND rail (bottom)
+        mid = (top + bottom) / 2
+        s.append(f"<line x1='{x}' y1='{top}' x2='{x}' y2='{mid - 8}' stroke='#ff4d4d' stroke-width='3'/>")
+        s.append(f"<rect x='{x - 16}' y='{mid - 8}' width='32' height='5' fill='#e8eaf0'/>")
+        s.append(f"<path d='M{x - 16} {mid + 6} Q {x} {mid - 2} {x + 16} {mid + 6}' fill='none' stroke='#e8eaf0' stroke-width='5'/>")
+        s.append(f"<line x1='{x}' y1='{mid + 4}' x2='{x}' y2='{bottom}' stroke='#9aa0ad' stroke-width='3'/>")
+        s.append(f"<text x='{x + 22}' y='{mid - 8}' {FONT} font-size='13' fill='#ffc53d'>+</text>")
+        s.append(f"<text x='{x + 22}' y='{mid + 16}' {FONT} font-size='12' fill='#ffc53d'>1000 µF</text>")
+
+    # boards: data enters board 1 on the right, leaves on the left into board 2
+    board(80, 80, 'Board 2 (modules 5-8)')
+    board(520, 80, 'Board 1 (modules 1-4)')
+    s.append(f"<text x='855' y='150' {FONT} font-size='12' fill='#9aa0ad'>IN</text>")
+    s.append(f"<text x='465' y='118' text-anchor='middle' {FONT} font-size='12' fill='#9aa0ad'>OUT → IN</text>")
+    data = [('DOUT→DIN', '#35d07f', 128), ('CS', '#ffc53d', 140), ('CLK', '#4da3ff', 152)]
+    for name, col, y in data:   # board 1 OUT -> board 2 IN
+        s.append(f"<path d='M520 {y} L410 {y}' stroke='{col}' stroke-width='3.5' stroke-linecap='round'/>")
+
+    # 5 V rail and ground rail under the boards
+    s.append("<path d='M60 250 L900 250' stroke='#ff4d4d' stroke-width='6' stroke-linecap='round'/>")
+    s.append("<path d='M60 330 L900 330' stroke='#9aa0ad' stroke-width='6' stroke-linecap='round'/>")
+    s.append(f"<text x='66' y='240' {FONT} font-size='13' fill='#ff8080'>5 V</text>")
+    s.append(f"<text x='66' y='352' {FONT} font-size='13' fill='#b8bdc8'>GND</text>")
+    for bx in (245, 685):   # each board's VCC / GND tapped from the rails, with a capacitor at its input
+        s.append(f"<path d='M{bx - 40} 192 L{bx - 40} 250' stroke='#ff4d4d' stroke-width='3.5'/>")
+        s.append(f"<path d='M{bx + 40} 192 L{bx + 40} 330' stroke='#9aa0ad' stroke-width='3.5'/>")
+        s.append(f"<text x='{bx - 36}' y='210' {FONT} font-size='11' fill='#cfd6e4'>VCC</text>")
+        s.append(f"<text x='{bx + 44}' y='210' {FONT} font-size='11' fill='#cfd6e4'>GND</text>")
+        cap(bx, 250, 330)
+
+    # power supply
+    s.append("<rect x='80' y='400' width='240' height='120' rx='12' fill='#262a33' stroke='#4a4f5b' stroke-width='2'/>")
+    s.append(f"<text x='200' y='448' text-anchor='middle' {FONT} font-size='18' font-weight='700' fill='#f2f3f7'>5 V power supply</text>")
+    s.append(f"<text x='200' y='474' text-anchor='middle' {FONT} font-size='13' fill='#9aa0ad'>2 A for 8 modules (see table)</text>")
+    s.append("<path d='M150 400 L150 250' stroke='#ff4d4d' stroke-width='4'/><path d='M250 400 L250 330' stroke='#9aa0ad' stroke-width='4'/>")
+
+    # ESP8266
+    s.append("<rect x='600' y='400' width='280' height='120' rx='12' fill='#10353a' stroke='#1f6b72' stroke-width='2'/>")
+    s.append(f"<text x='740' y='440' text-anchor='middle' {FONT} font-size='18' font-weight='700' fill='#f2f3f7'>ESP8266 (NodeMCU)</text>")
+    s.append(f"<text x='740' y='464' text-anchor='middle' {FONT} font-size='13' fill='#9aa0ad'>VIN from the 5 V rail, GND common</text>")
+    s.append(f"<text x='740' y='500' text-anchor='middle' {FONT} font-size='13' fill='#cfd6e4'>D7 → DIN · D6 → CS · D5 → CLK</text>")
+    s.append("<path d='M640 400 L640 250' stroke='#ff4d4d' stroke-width='3.5'/><path d='M670 400 L670 330' stroke='#9aa0ad' stroke-width='3.5'/>")
+    for name, col, y in data:   # ESP -> board 1 IN (right end)
+        x = {128: 930, 140: 918, 152: 906}[y]
+        s.append(f"<path d='M880 {400 + (y - 128) * 2 + 20} L{x} {400 + (y - 128) * 2 + 20} L{x} {y} L852 {y}' fill='none' "
+                 f"stroke='{col}' stroke-width='3.5' stroke-linejoin='round' stroke-linecap='round'/>")
+    s.append('</svg>')
+    return '\n'.join(s)
+
+
 # ---- setup flow ---------------------------------------------------------------------
 def setup_flow():
     W, H = 900, 250
@@ -380,7 +449,7 @@ def fx_boxes():
     return out
 
 
-IMAGES = [('banner', banner), ('pacman', pacman), ('wiring', wiring), ('setup', setup_flow)]
+IMAGES = [('banner', banner), ('pacman', pacman), ('wiring', wiring), ('setup', setup_flow), ('chain', chain)]
 IMAGES += [(f'digits-{s}', (lambda s=s: digit_demo(s))) for s in ('down', 'up', 'dissolve', 'slide', 'flip', 'drop')]
 IMAGES += [('fx-sparkle', lambda: frames_svg(fx_sparkle())), ('fx-wipe', lambda: frames_svg(fx_wipe())),
            ('fx-rain', lambda: frames_svg(fx_rain())), ('fx-boxes', lambda: frames_svg(fx_boxes()))]

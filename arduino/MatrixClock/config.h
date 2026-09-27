@@ -4,7 +4,7 @@
 #ifdef CRASH_TEST
 #define FW_VERSION      "1.0.0"               // safe-mode test build (env:crashtest): always older than any release
 #else
-#define FW_VERSION      "1.3.0"               // bump for every release (tools/release.sh reads it from here)
+#define FW_VERSION      "1.4.0"               // bump for every release (tools/release.sh reads it from here)
 #endif
 
 #include <MD_MAX72xx.h>
@@ -14,10 +14,11 @@
 //   DIN -> D7 (GPIO13, hardware SPI MOSI)
 //   CS  -> D6 (GPIO12)
 #define PIN_CS          D6
-#define MATRIX_HW       MD_MAX72XX::FC16_HW   // the common blue 4-in-1 modules; try GENERIC_HW / PAROLA_HW if text looks scrambled
-#define MATRIX_MODULES  4                     // 4 x 8 = 32 columns
-#define FLIP_VERTICAL   0                     // set to 1 if everything shows upside down
-#define FLIP_HORIZONTAL 0                     // set to 1 if everything shows mirrored
+// Defaults only: module count, type and orientation are set on the web page (Display card).
+#define MATRIX_TYPE     MT_FC16               // MT_FC16 (common blue 4-in-1), MT_GENERIC, MT_PAROLA, MT_ICSTATION
+#define MATRIX_MODULES  4                     // 4 x 8 = 32 columns; up to 16
+#define FLIP_VERTICAL   0                     // 1 = flip top-bottom
+#define FLIP_HORIZONTAL 0                     // 1 = mirror left-right (both = upside down)
 
 // ---- Button ------------------------------------------------------------------
 // NodeMCU "FLASH" button. Short press = scroll IP address, hold 5 s = WiFi setup.
@@ -46,6 +47,8 @@
 #define GITHUB_REPO     "ElectroIoT/ESP8266-Matrix-Clock"
 #define AUTO_UPDATE_HOUR 3                    // nightly check at 03:xx local time
 #define BOOT_UPDATE_DELAY_MS 60000            // after power-on, install a waiting update after this long
+#define OTA_RETRY_MS    2700000               // failed for a temporary reason: retry after 45 min (DNS may give another server)
+#define OTA_RETRIES     6                     // ... at most this many times per power-on
 
 // Password for uploading a .bin from the web page. Only its SHA-256 is compiled in, taken
 // from src/private_config.h (not in git); without it, manual upload is disabled.

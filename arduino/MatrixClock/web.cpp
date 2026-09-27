@@ -209,7 +209,8 @@ static void handleConfig() {
                ",\"autoUpdate\":" + cfg.autoUpdate + ",\"msg\":" + jsonStr(cfg.msg) + ",\"msgEvery\":" + cfg.msgEvery +
                ",\"pinUpload\":" + (strlen(UPDATE_PASS_SHA256) ? "true" : "false") +
                ",\"ldrOn\":" + cfg.ldrOn + ",\"ldrMin\":" + cfg.ldrMin + ",\"ldrMax\":" + cfg.ldrMax +
-               ",\"ldrInvert\":" + cfg.ldrInvert + ",\"hasPassword\":" + (hasPassword() ? "true" : "false") +
+               ",\"ldrInvert\":" + cfg.ldrInvert + ",\"modules\":" + cfg.modules + ",\"hwType\":" + cfg.hwType +
+               ",\"flipH\":" + cfg.flipH + ",\"flipV\":" + cfg.flipV + ",\"showSecs\":" + cfg.showSecs + ",\"hasPassword\":" + (hasPassword() ? "true" : "false") +
                ",\"events\":[";
     bool first = true;
     for (int i = 0; i < MAX_EVENTS; i++) {
@@ -244,6 +245,17 @@ static void handleSet() {
     else if (k == "ldrInvert")   flag(cfg.ldrInvert);
     else if (k == "ldrMin")      cfg.ldrMin = constrain(n, 0, 15);
     else if (k == "ldrMax")      cfg.ldrMax = constrain(n, 0, 15);
+    else if (k == "flipH")       flag(cfg.flipH);
+    else if (k == "flipV")       flag(cfg.flipV);
+    else if (k == "showSecs")    flag(cfg.showSecs);
+    else if (k == "modules" || k == "hwType") {   // the display driver is set up at boot: restart to apply
+        if (k == "modules") cfg.modules = constrain(n, (int)MIN_MODULES, (int)MAX_MODULES);
+        else                cfg.hwType = constrain(n, 0, (int)MT_ICSTATION);
+        settingsSave();
+        server.send(200, "text/plain", "Restarting to apply");
+        scheduleRestart(1000);
+        return;
+    }
     else if (k == "roll")        { cfg.roll = constrain(n, 0, (int)ROLL_RANDOM); digitDemo = true; }
     else if (k == "hourlyAnim")  cfg.hourlyAnim = constrain(n, 0, (int)ANIM_RANDOM);
     else if (k == "bootAnim")    cfg.bootAnim = constrain(n, 0, (int)ANIM_RANDOM);
@@ -439,6 +451,7 @@ void webBegin() {
     route("/api/event/del", HTTP_POST, handleEventDelete);
     route("/api/event/show", HTTP_POST, handleEventShow);
     route("/api/digits", HTTP_POST, []() { digitDemo = true; sendOk(); });
+    route("/api/modules", HTTP_POST, []() { moduleTest = true; sendOk(); });
     route("/api/anim", HTTP_POST, []() { animRequest = constrain(server.arg("n").toInt(), 0, (int)ANIM_RANDOM); sendOk(); });
     route("/api/sync", HTTP_POST, []() { startNtp(); sendOk(); });
     route("/api/factory", HTTP_POST, []() { settingsDefaults(); settingsSave(); sendOk(); scheduleRestart(800); });

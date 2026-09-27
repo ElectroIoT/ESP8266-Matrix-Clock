@@ -6,6 +6,7 @@
 struct OtaState {
     String   latest;        // newest version seen on GitHub, empty = not checked yet
     String   message;       // last result / error, shown on the web page
+    bool     retry = false; // last attempt failed for a temporary reason (network, memory): try again later
     uint32_t checkedAt = 0; // millis() of the last check, 0 = never
 };
 extern OtaState ota;

@@ -24,6 +24,7 @@ uint8_t  animRequest = ANIM_OFF;
 String   scrollRequest;
 uint32_t restartAt = 0;
 bool     digitDemo = false;
+bool     moduleTest = false;
 uint8_t  otaRequest = OTA_NONE;
 
 static bool      mdnsOn = false;
@@ -280,6 +281,11 @@ static void clockLoop() {
         playAnim(a);
         face.reset();
     }
+    if (moduleTest) {
+        moduleTest = false;
+        showModuleNumbers();
+        face.reset();
+    }
     if (digitDemo) {
         digitDemo = false;
         face.demo();
@@ -310,6 +316,19 @@ static void clockLoop() {
     }
     if (bootUpdateAt && (int32_t)(millis() - bootUpdateAt) >= 0) {
         bootUpdateAt = 0;
+        otaRequest = OTA_INSTALL;
+    }
+    // A check or install that failed for a temporary reason is retried later.
+    static uint32_t retryAt = 0;
+    static uint8_t  retries = 0;
+    if (ota.retry && cfg.autoUpdate && !retryAt && retries < OTA_RETRIES) {
+        ota.retry = false;
+        retries++;
+        retryAt = (millis() + OTA_RETRY_MS) | 1;
+        Serial.printf("OTA: retry %u in %u min\n", retries, OTA_RETRY_MS / 60000);
+    }
+    if (retryAt && (int32_t)(millis() - retryAt) >= 0) {
+        retryAt = 0;
         otaRequest = OTA_INSTALL;
     }
 
@@ -404,8 +423,8 @@ void setup() {
     pinMode(PIN_BUTTON, INPUT_PULLUP);
     randomSeed(RANDOM_REG32);
 
+    settingsLoad();   // first: module count, type and orientation are settings
     displayBegin();
-    settingsLoad();
     applyBrightness(true);
 
     WiFi.persistent(false);   // WiFi credentials live only in our settings, not in the SDK's own flash area

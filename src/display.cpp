@@ -3,26 +3,31 @@
 #include "settings.h"
 #include <SPI.h>
 
-static MD_MAX72XX mx(MATRIX_HW, PIN_CS, MATRIX_MODULES);
-static uint8_t fb[W];   // one byte per column, bit 0 = top row
+int W = 32;
+static MD_MAX72XX* mx = nullptr;   // created in displayBegin(), once the module count is known
+static uint8_t fb[MAX_W];          // one byte per column, bit 0 = top row
 
 // =================================================================================
 // Low level
 // =================================================================================
 
 void displayBegin() {
-    mx.begin();
-    mx.control(MD_MAX72XX::UPDATE, MD_MAX72XX::OFF);   // we push whole frames ourselves
+    static const MD_MAX72XX::moduleType_t TYPES[] = {MD_MAX72XX::FC16_HW, MD_MAX72XX::GENERIC_HW,
+                                                     MD_MAX72XX::PAROLA_HW, MD_MAX72XX::ICSTATION_HW};
+    W = cfg.modules * 8;
+    mx = new MD_MAX72XX(TYPES[cfg.hwType], PIN_CS, cfg.modules);
+    mx->begin();
+    mx->control(MD_MAX72XX::UPDATE, MD_MAX72XX::OFF);   // we push whole frames ourselves
     fbClear();
     fbShow();
 }
 
 void displayIntensity(uint8_t level) {
-    mx.control(MD_MAX72XX::INTENSITY, level > 15 ? 15 : level);
+    mx->control(MD_MAX72XX::INTENSITY, level > 15 ? 15 : level);
 }
 
 void displayPower(bool on) {
-    mx.control(MD_MAX72XX::SHUTDOWN, on ? MD_MAX72XX::OFF : MD_MAX72XX::ON);
+    mx->control(MD_MAX72XX::SHUTDOWN, on ? MD_MAX72XX::OFF : MD_MAX72XX::ON);
 }
 
 void fbClear() {
@@ -44,10 +49,10 @@ static uint8_t reverseBits(uint8_t b) {
 
 void fbShow() {
     for (int x = 0; x < W; x++) {
-        uint8_t v = FLIP_VERTICAL ? reverseBits(fb[x]) : fb[x];
-        mx.setColumn(FLIP_HORIZONTAL ? x : (W - 1 - x), v);   // library column 0 is the right-most one
+        uint8_t v = cfg.flipV ? reverseBits(fb[x]) : fb[x];
+        mx->setColumn(cfg.flipH ? x : (W - 1 - x), v);   // library column 0 is the right-most one
     }
-    mx.update();
+    mx->update();
 }
 
 // =================================================================================
@@ -57,7 +62,7 @@ void fbShow() {
 static uint8_t glyph(char c, uint8_t* cols) {
     uint8_t ch = (uint8_t)c;
     if (ch < 32 || ch > 126) ch = '?';
-    return mx.getChar(ch, 8, cols);
+    return mx->getChar(ch, 8, cols);
 }
 
 int textWidth(const String& s) {
@@ -116,8 +121,11 @@ static const uint8_t DIGITS[10][7] PROGMEM = {
     {0x0E, 0x11, 0x11, 0x0F, 0x01, 0x02, 0x0C},   // 9
 };
 static const uint8_t BLANK = 10;                    // "digit" that draws nothing (hidden leading zero)
-static const int     DIGIT_X[4] = {2, 8, 19, 25};   // H H : M M  -> 28 px wide, centred
-static const int     COLON_X = 15;                  // 2 px wide
+// Layout, relative to the left edge of the face; the face is centred on the display.
+static const int     FACE_HM_W = 28;                             // H H : M M
+static const int     FACE_HMS_W = 45;                            // H H : M M : S S (needs 6+ modules)
+static const int     DIGIT_X[6] = {0, 6, 17, 23, 34, 40};
+static const int     COLON_X[2] = {13, 30};                      // 2 px wide each
 static const uint8_t FRAMES = 12;                   // digit change length: 12 frames x 30 ms
 
 static bool digitPx(uint8_t d, int r, int c) {      // pixel of digit d; false outside the 5x7 cell
@@ -157,7 +165,7 @@ void ClockFace::demo() {
 }
 
 void ClockFace::tick() {
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < SLOTS; i++)
         if (phase[i]) phase[i]--;
 }
 
@@ -215,11 +223,15 @@ void ClockFace::draw(const struct tm& t, uint16_t ms, int dx) {
         h %= 12;
         if (h == 0) h = 12;
     }
-    uint8_t want[4] = {(uint8_t)(h / 10), (uint8_t)(h % 10), (uint8_t)(t.tm_min / 10), (uint8_t)(t.tm_min % 10)};
+    const bool secs = cfg.showSecs && W >= FACE_HMS_W + 2;   // seconds need 6+ modules
+    const int  slots = secs ? 6 : 4;
+    const int  x0 = dx + (W - (secs ? FACE_HMS_W : FACE_HM_W)) / 2;
+    uint8_t want[SLOTS] = {(uint8_t)(h / 10), (uint8_t)(h % 10), (uint8_t)(t.tm_min / 10), (uint8_t)(t.tm_min % 10),
+                           (uint8_t)(t.tm_sec / 10), (uint8_t)(t.tm_sec % 10)};
     if (want[0] == 0 && !cfg.leadingZero) want[0] = BLANK;
 
     bool changed = false;
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < slots; i++) {
         if (want[i] == cur[i] && !fresh) continue;
         prev[i]  = cur[i];
         cur[i]   = want[i];
@@ -231,7 +243,7 @@ void ClockFace::draw(const struct tm& t, uint16_t ms, int dx) {
     if (demoPending) {
         demoPending = false;
         if (cfg.roll != ROLL_NONE) {
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < slots; i++) {
                 prev[i]  = cur[i] == 8 ? 0 : 8;
                 phase[i] = FRAMES;
             }
@@ -244,15 +256,12 @@ void ClockFace::draw(const struct tm& t, uint16_t ms, int dx) {
         style = cfg.roll == ROLL_RANDOM ? PICK[random(sizeof(PICK))] : cfg.roll;
     }
 
-    for (int i = 0; i < 4; i++) drawSlot(i, DIGIT_X[i] + dx);
+    for (int i = 0; i < slots; i++) drawSlot(i, x0 + DIGIT_X[i]);
 
     if (!cfg.blinkColon || ms < 500) {
-        for (int c = 0; c < 2; c++) {
-            fbSet(COLON_X + dx + c, 1, true);
-            fbSet(COLON_X + dx + c, 2, true);
-            fbSet(COLON_X + dx + c, 4, true);
-            fbSet(COLON_X + dx + c, 5, true);
-        }
+        for (int k = 0; k < (secs ? 2 : 1); k++)
+            for (int c = 0; c < 2; c++)
+                for (int y : {1, 2, 4, 5}) fbSet(x0 + COLON_X[k] + c, y, true);
     }
 
     if (cfg.secondsBar) {
@@ -363,6 +372,39 @@ void playAnim(uint8_t anim) {
         case ANIM_PACMAN:  animPacman();  break;
         default: break;
     }
+    fbClear();
+    fbShow();
+}
+
+// 3x5 digits for two-digit module numbers, one byte per row, bit 2 = left-most pixel
+static const uint8_t TINY[10][5] PROGMEM = {
+    {7, 5, 5, 5, 7}, {2, 6, 2, 2, 7}, {7, 1, 7, 4, 7}, {7, 1, 3, 1, 7}, {5, 5, 7, 1, 1},
+    {7, 4, 7, 1, 7}, {7, 4, 7, 5, 7}, {7, 1, 2, 2, 2}, {7, 5, 7, 5, 7}, {7, 5, 7, 1, 7},
+};
+
+static void drawTiny(int x, int y, uint8_t d) {
+    for (int r = 0; r < 5; r++) {
+        uint8_t bits = pgm_read_byte(&TINY[d][r]);
+        for (int c = 0; c < 3; c++)
+            if (bits & (4 >> c)) fbSet(x + c, y + r, true);
+    }
+}
+
+void showModuleNumbers() {
+    fbClear();
+    for (int m = 0; m < W / 8; m++) {
+        int x = m * 8, n = m + 1;
+        if (n < 10) {
+            drawDigit(x + 1, n);
+        } else {
+            drawTiny(x, 1, n / 10);
+            drawTiny(x + 4, 1, n % 10);
+        }
+        fbSet(x, 7, true);        // module edges on the bottom row
+        fbSet(x + 7, 7, true);
+    }
+    fbShow();
+    serviceWait(5000);
     fbClear();
     fbShow();
 }

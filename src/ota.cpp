@@ -42,6 +42,7 @@ struct SecureClient {
         if (block >= TLS_MIN_BLOCK && free >= TLS_MIN_FREE) return true;
         ota.message = "Not enough memory right now, try again later";
         Serial.printf("OTA skipped: free %u, largest block %u\n", free, block);
+        ota.retry = true;
         return false;   // skip instead of letting BearSSL abort, which would reboot the clock
     }
 };
@@ -91,7 +92,10 @@ static String resolve(String url) {
             continue;
         }
         if (code == HTTP_CODE_NOT_FOUND) ota.message = "No release published yet";
-        else ota.message = "Could not reach GitHub (" + HTTPClient::errorToString(code) + ")";
+        else {
+            ota.message = "Could not reach GitHub (" + HTTPClient::errorToString(code) + ")";
+            ota.retry = true;   // e.g. one GitHub server unreachable from this network; DNS picks another later
+        }
         Serial.printf("OTA: %s [%s]\n", ota.message.c_str(), host.c_str());
         return "";
     }
@@ -146,6 +150,7 @@ bool otaCheck() {
         http.setTimeout(15000);
         if (!http.begin(sc.client, url) || http.GET() != HTTP_CODE_OK) {
             ota.message = "Could not download version.txt";
+            ota.retry = true;
             http.end();
             return false;
         }
@@ -159,6 +164,7 @@ bool otaCheck() {
         return false;
     }
     ota.latest = v;
+    ota.retry = false;
     bool newer = otaNewer(v);
     ota.message = newer ? "Version " + v + " is available" : String("Up to date");
     Serial.printf("Update check: latest %s, running %s\n", v.c_str(), FW_VERSION);
@@ -204,6 +210,7 @@ void otaInstall() {
         restart();
     }
     ota.message = "Update failed: " + ESPhttpUpdate.getLastErrorString();
+    ota.retry = true;
     Serial.println(ota.message);
     scrollText("Update failed");
 }

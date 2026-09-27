@@ -1,0 +1,257 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 960 560' width='960' height='560'>
+<rect width='960' height='560' rx='20' fill='#14161c'/>
+<text x='480.0' y='42' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='22' font-weight='700' fill='#f2f3f7'>Adding more modules (example: 8 modules = 8x64)</text>
+<rect x='80' y='80' width='330' height='112' rx='10' fill='#12324f' stroke='#2a5d8a' stroke-width='2'/>
+<rect x='92' y='92' width='70' height='70' rx='4' fill='#0b0b0d'/>
+<circle cx='101.0' cy='101.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='114.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='127.0' cy='101.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='140.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='153.0' cy='101.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='101.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='114.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='127.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='140.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='153.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='101.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='114.0' cy='127.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='127.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='140.0' cy='127.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='153.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='101.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='114.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='127.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='140.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='153.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='101.0' cy='153.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='114.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='127.0' cy='153.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='140.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='153.0' cy='153.0' r='4.2' fill='#ff3b3b'/>
+<rect x='170' y='92' width='70' height='70' rx='4' fill='#0b0b0d'/>
+<circle cx='179.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='192.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='205.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='218.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='231.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='179.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='192.0' cy='114.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='205.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='218.0' cy='114.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='231.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='179.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='192.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='205.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='218.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='231.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='179.0' cy='140.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='192.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='205.0' cy='140.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='218.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='231.0' cy='140.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='179.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='192.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='205.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='218.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='231.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<rect x='248' y='92' width='70' height='70' rx='4' fill='#0b0b0d'/>
+<circle cx='257.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='270.0' cy='101.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='283.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='296.0' cy='101.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='309.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='257.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='270.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='283.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='296.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='309.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='257.0' cy='127.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='270.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='283.0' cy='127.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='296.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='309.0' cy='127.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='257.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='270.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='283.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='296.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='309.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='257.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='270.0' cy='153.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='283.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='296.0' cy='153.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='309.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<rect x='326' y='92' width='70' height='70' rx='4' fill='#0b0b0d'/>
+<circle cx='335.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='348.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='361.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='374.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='387.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='335.0' cy='114.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='348.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='361.0' cy='114.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='374.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='387.0' cy='114.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='335.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='348.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='361.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='374.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='387.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='335.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='348.0' cy='140.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='361.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='374.0' cy='140.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='387.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='335.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='348.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='361.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='374.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='387.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<text x='245' y='182' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#cfd6e4'>Board 2 (modules 5-8)</text>
+<rect x='520' y='80' width='330' height='112' rx='10' fill='#12324f' stroke='#2a5d8a' stroke-width='2'/>
+<rect x='532' y='92' width='70' height='70' rx='4' fill='#0b0b0d'/>
+<circle cx='541.0' cy='101.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='554.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='567.0' cy='101.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='580.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='593.0' cy='101.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='541.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='554.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='567.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='580.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='593.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='541.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='554.0' cy='127.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='567.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='580.0' cy='127.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='593.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='541.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='554.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='567.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='580.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='593.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='541.0' cy='153.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='554.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='567.0' cy='153.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='580.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='593.0' cy='153.0' r='4.2' fill='#ff3b3b'/>
+<rect x='610' y='92' width='70' height='70' rx='4' fill='#0b0b0d'/>
+<circle cx='619.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='632.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='645.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='658.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='671.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='619.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='632.0' cy='114.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='645.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='658.0' cy='114.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='671.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='619.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='632.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='645.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='658.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='671.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='619.0' cy='140.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='632.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='645.0' cy='140.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='658.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='671.0' cy='140.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='619.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='632.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='645.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='658.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='671.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<rect x='688' y='92' width='70' height='70' rx='4' fill='#0b0b0d'/>
+<circle cx='697.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='710.0' cy='101.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='723.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='736.0' cy='101.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='749.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='697.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='710.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='723.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='736.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='749.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='697.0' cy='127.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='710.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='723.0' cy='127.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='736.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='749.0' cy='127.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='697.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='710.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='723.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='736.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='749.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='697.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='710.0' cy='153.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='723.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='736.0' cy='153.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='749.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<rect x='766' y='92' width='70' height='70' rx='4' fill='#0b0b0d'/>
+<circle cx='775.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='788.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='801.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='814.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='827.0' cy='101.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='775.0' cy='114.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='788.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='801.0' cy='114.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='814.0' cy='114.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='827.0' cy='114.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='775.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='788.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='801.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='814.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='827.0' cy='127.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='775.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='788.0' cy='140.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='801.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='814.0' cy='140.0' r='4.2' fill='#ff3b3b'/>
+<circle cx='827.0' cy='140.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='775.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='788.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='801.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='814.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<circle cx='827.0' cy='153.0' r='4.2' fill='#2b0d0d'/>
+<text x='685' y='182' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#cfd6e4'>Board 1 (modules 1-4)</text>
+<text x='855' y='150' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='12' fill='#9aa0ad'>IN</text>
+<text x='465' y='118' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='12' fill='#9aa0ad'>OUT → IN</text>
+<path d='M520 128 L410 128' stroke='#35d07f' stroke-width='3.5' stroke-linecap='round'/>
+<path d='M520 140 L410 140' stroke='#ffc53d' stroke-width='3.5' stroke-linecap='round'/>
+<path d='M520 152 L410 152' stroke='#4da3ff' stroke-width='3.5' stroke-linecap='round'/>
+<path d='M60 250 L900 250' stroke='#ff4d4d' stroke-width='6' stroke-linecap='round'/>
+<path d='M60 330 L900 330' stroke='#9aa0ad' stroke-width='6' stroke-linecap='round'/>
+<text x='66' y='240' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#ff8080'>5 V</text>
+<text x='66' y='352' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#b8bdc8'>GND</text>
+<path d='M205 192 L205 250' stroke='#ff4d4d' stroke-width='3.5'/>
+<path d='M285 192 L285 330' stroke='#9aa0ad' stroke-width='3.5'/>
+<text x='209' y='210' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='11' fill='#cfd6e4'>VCC</text>
+<text x='289' y='210' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='11' fill='#cfd6e4'>GND</text>
+<line x1='245' y1='250' x2='245' y2='282.0' stroke='#ff4d4d' stroke-width='3'/>
+<rect x='229' y='282.0' width='32' height='5' fill='#e8eaf0'/>
+<path d='M229 296.0 Q 245 288.0 261 296.0' fill='none' stroke='#e8eaf0' stroke-width='5'/>
+<line x1='245' y1='294.0' x2='245' y2='330' stroke='#9aa0ad' stroke-width='3'/>
+<text x='267' y='282.0' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#ffc53d'>+</text>
+<text x='267' y='306.0' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='12' fill='#ffc53d'>1000 µF</text>
+<path d='M645 192 L645 250' stroke='#ff4d4d' stroke-width='3.5'/>
+<path d='M725 192 L725 330' stroke='#9aa0ad' stroke-width='3.5'/>
+<text x='649' y='210' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='11' fill='#cfd6e4'>VCC</text>
+<text x='729' y='210' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='11' fill='#cfd6e4'>GND</text>
+<line x1='685' y1='250' x2='685' y2='282.0' stroke='#ff4d4d' stroke-width='3'/>
+<rect x='669' y='282.0' width='32' height='5' fill='#e8eaf0'/>
+<path d='M669 296.0 Q 685 288.0 701 296.0' fill='none' stroke='#e8eaf0' stroke-width='5'/>
+<line x1='685' y1='294.0' x2='685' y2='330' stroke='#9aa0ad' stroke-width='3'/>
+<text x='707' y='282.0' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#ffc53d'>+</text>
+<text x='707' y='306.0' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='12' fill='#ffc53d'>1000 µF</text>
+<rect x='80' y='400' width='240' height='120' rx='12' fill='#262a33' stroke='#4a4f5b' stroke-width='2'/>
+<text x='200' y='448' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='18' font-weight='700' fill='#f2f3f7'>5 V power supply</text>
+<text x='200' y='474' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#9aa0ad'>2 A for 8 modules (see table)</text>
+<path d='M150 400 L150 250' stroke='#ff4d4d' stroke-width='4'/><path d='M250 400 L250 330' stroke='#9aa0ad' stroke-width='4'/>
+<rect x='600' y='400' width='280' height='120' rx='12' fill='#10353a' stroke='#1f6b72' stroke-width='2'/>
+<text x='740' y='440' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='18' font-weight='700' fill='#f2f3f7'>ESP8266 (NodeMCU)</text>
+<text x='740' y='464' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#9aa0ad'>VIN from the 5 V rail, GND common</text>
+<text x='740' y='500' text-anchor='middle' font-family='Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='13' fill='#cfd6e4'>D7 → DIN · D6 → CS · D5 → CLK</text>
+<path d='M640 400 L640 250' stroke='#ff4d4d' stroke-width='3.5'/><path d='M670 400 L670 330' stroke='#9aa0ad' stroke-width='3.5'/>
+<path d='M880 420 L930 420 L930 128 L852 128' fill='none' stroke='#35d07f' stroke-width='3.5' stroke-linejoin='round' stroke-linecap='round'/>
+<path d='M880 444 L918 444 L918 140 L852 140' fill='none' stroke='#ffc53d' stroke-width='3.5' stroke-linejoin='round' stroke-linecap='round'/>
+<path d='M880 468 L906 468 L906 152 L852 152' fill='none' stroke='#4da3ff' stroke-width='3.5' stroke-linejoin='round' stroke-linecap='round'/>
+</svg>

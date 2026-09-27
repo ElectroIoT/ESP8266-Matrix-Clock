@@ -80,6 +80,16 @@ static const char MAIN_HTML[] PROGMEM = R"HTML(<!DOCTYPE html><html lang=en><hea
 <div class=row><span>Reverse sensor<small>Turn on if the display gets brighter in the dark</small></span><label class=sw><input type=checkbox id=ldrInvert><span></span></label></div>
 </div></div>
 
+<div class=card><h2>Display</h2>
+<div class=row><span>Modules<small>8x8 blocks in the chain (restarts)</small></span><select id=modules></select></div>
+<div class=row><span>Module type<small>Change if text looks scrambled (restarts)</small></span><select id=hwType>
+<option value=0>FC-16 (common blue 4-in-1)</option><option value=1>Generic</option><option value=2>Parola</option><option value=3>IC-Station</option></select></div>
+<div class=row><span>Mirror left-right</span><label class=sw><input type=checkbox id=flipH><span></span></label></div>
+<div class=row><span>Flip top-bottom<small>Both on = upside down</small></span><label class=sw><input type=checkbox id=flipV><span></span></label></div>
+<div class=row><span>Show seconds<small>Needs 6 or more modules</small></span><label class=sw><input type=checkbox id=showSecs><span></span></label></div>
+<div class=btns><button id=modTest>Show module numbers</button></div>
+</div>
+
 <div class=card><h2>Clock</h2>
 <div class=row><span>Time format</span><select id=fmt24><option value=0>12 hour</option><option value=1>24 hour</option></select></div>
 <div class=row><span>Time zone</span><select id=tz></select></div>
@@ -147,6 +157,7 @@ function toast(t){const e=$('toast');e.textContent=t;e.style.opacity=1;clearTime
 const hr=h=>h==0?'12 AM':h<12?h+' AM':h==12?'12 PM':(h-12)+' PM';
 document.querySelectorAll('.hr').forEach(s=>{for(let h=0;h<24;h++)s.add(new Option(hr(h),h))});
 for(let b=0;b<=16;b++)$('nightBr').add(new Option(b==16?'Display off':b,b));
+for(let m=4;m<=16;m++)$('modules').add(new Option(m+' (8x'+m*8+')',m));
 document.querySelectorAll('.b15').forEach(s=>{for(let b=0;b<=15;b++)s.add(new Option(b,b))});
 const AN=['Off','Sparkle','Wipe','Rain','Boxes','Pac-Man','Random'];
 document.querySelectorAll('.an').forEach(s=>AN.forEach((n,i)=>s.add(new Option(n,i))));
@@ -159,7 +170,7 @@ const TZ=[['IST-5:30','India (UTC+5:30)'],['<+0545>-5:45','Nepal (UTC+5:45)'],['
 ['PST8PDT,M3.2.0,M11.1.0','US Pacific'],['AEST-10AEDT,M10.1.0,M4.1.0/3','Australia (Sydney)']];
 TZ.forEach(z=>$('tz').add(new Option(z[1],z[0])));
 function set(k,v){return post('/api/set',{k,v}).then(r=>toast(r.ok?'Saved':'Could not save'))}
-const K=['autoDim','nightFrom','nightTo','nightBr','fmt24','tz','blinkColon','secondsBar','leadingZero','showDate','roll','hourlyAnim','bootAnim','autoUpdate','ldrOn','ldrMin','ldrMax','ldrInvert'];
+const K=['autoDim','nightFrom','nightTo','nightBr','fmt24','tz','blinkColon','secondsBar','leadingZero','showDate','roll','hourlyAnim','bootAnim','autoUpdate','ldrOn','ldrMin','ldrMax','ldrInvert','flipH','flipV','showSecs'];
 function load(){fetch('/api/config').then(toLogin).then(r=>r.json()).then(c=>{
  $('br').value=c.br;$('brv').textContent=c.br;
  if(![...$('tz').options].some(o=>o.value==c.tz))$('tz').add(new Option(c.tz,c.tz));
@@ -167,6 +178,7 @@ function load(){fetch('/api/config').then(toLogin).then(r=>r.json()).then(c=>{
  $('night').style.display=c.autoDim?'':'none';
  $('ldr').style.display=c.ldrOn?'':'none';
  pw(c.hasPassword);
+ $('modules').value=c.modules;$('hwType').value=c.hwType;
  $('msg').value=c.msg;$('msgEvery').value=c.msgEvery;
  if(!c.pinUpload)$('upl').style.display='none';
  evs(c.events);
@@ -206,6 +218,9 @@ $('pwSet').onclick=()=>{const n=$('pwNew').value;
  post('/api/password',{cur:$('pwCur').value,new:n}).then(r=>reply(r,'Password saved')).then(ok=>{if(ok){pwClear();load()}})};
 $('pwDel').onclick=()=>{if(!confirm('Remove the password? Anyone on this WiFi can then change settings.'))return;
  post('/api/password',{cur:$('pwCur').value,new:''}).then(r=>reply(r,'Password removed')).then(ok=>{if(ok){pwClear();load()}})};
+['modules','hwType'].forEach(k=>$(k).onchange=e=>{if(!confirm('The clock restarts to apply this. Continue?')){load();return}
+ post('/api/set',{k,v:e.target.value}).then(()=>toast('Restarting - reload this page in 20 s'))});
+$('modTest').onclick=()=>post('/api/modules').then(()=>toast('Watch the clock'));
 $('logout').onclick=()=>post('/api/logout').then(()=>location='/login');
 load();
 K.forEach(k=>$(k).onchange=e=>{const t=e.target;set(k,t.type=='checkbox'?(t.checked?1:0):t.value);

@@ -5,6 +5,10 @@
 
 enum Anim : uint8_t { ANIM_OFF, ANIM_SPARKLE, ANIM_WIPE, ANIM_RAIN, ANIM_BOXES, ANIM_PACMAN, ANIM_RANDOM };
 // Digit change animation. Values are stored in flash: only ever append.
+// MAX7219 module board types (MD_MAX72XX hardware types). Stored in flash: only append.
+enum MatrixType : uint8_t { MT_FC16, MT_GENERIC, MT_PAROLA, MT_ICSTATION };
+static const uint8_t MIN_MODULES = 4, MAX_MODULES = 16;
+
 enum Roll : uint8_t { ROLL_DOWN, ROLL_UP, ROLL_NONE, ROLL_DISSOLVE, ROLL_SLIDE, ROLL_FLIP, ROLL_DROP, ROLL_RANDOM };
 
 // A yearly special day (birthday, anniversary...). month 0 = empty slot.
@@ -49,6 +53,12 @@ struct Settings {
     uint8_t  adminHash[32]; // SHA-256(adminSalt + settings password); all zero = no password
     uint8_t  adminSalt[16];
     uint8_t  sessionKey[16];// login cookie value, renewed on every password change
+    // ---- added in layout version 4 ----
+    uint8_t  modules;       // 8x8 modules in the chain, MIN_MODULES..MAX_MODULES
+    uint8_t  hwType;        // MatrixType
+    uint8_t  flipH;         // mirror left-right
+    uint8_t  flipV;         // flip top-bottom (both flips = upside down)
+    uint8_t  showSecs;      // show :SS when the display is wide enough
 };
 
 extern Settings cfg;

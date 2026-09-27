@@ -1,17 +1,19 @@
-// 32x8 frame buffer, text, clock face and animations on top of MD_MAX72XX
+// Frame buffer (8 px high, 32..128 px wide), text, clock face and animations on top of MD_MAX72XX
 #pragma once
 
 #include <Arduino.h>
 #include <time.h>
 
-static const int W = 32;   // display width in pixels
+extern int W;              // display width in pixels: 8 x number of modules (set by displayBegin)
 static const int H = 8;    // display height in pixels
+static const int MAX_W = 128;
 
 // Provided by main.cpp: waits while keeping WiFi / web server responsive.
 void serviceWait(uint32_t ms);
 
 // ---- low level ----------------------------------------------------------------
-void displayBegin();
+void displayBegin();                    // after settingsLoad(): module count / type come from settings
+void showModuleNumbers();               // numbers each 8x8 module, to check the chain order
 void displayIntensity(uint8_t level);   // 0..15
 void displayPower(bool on);
 void fbClear();
@@ -39,9 +41,10 @@ struct ClockFace {
     void tick();                                         // advance digit animations, once per frame
 private:
     void    drawSlot(int i, int x);
-    uint8_t cur[4]   = {0};
-    uint8_t prev[4]  = {0};
-    uint8_t phase[4] = {0};   // frames of the change animation left, 0 = settled
+    static const int SLOTS = 6;   // H H M M S S
+    uint8_t cur[SLOTS]   = {0};
+    uint8_t prev[SLOTS]  = {0};
+    uint8_t phase[SLOTS] = {0};   // frames of the change animation left, 0 = settled
     uint8_t style = 0;        // Roll style of the running animation (a fixed pick when set to Random)
     bool    fresh = true;
     bool    demoPending = false;

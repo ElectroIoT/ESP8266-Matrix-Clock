@@ -4,7 +4,7 @@
 
 // Bump when the Settings layout changes, so old flash contents are replaced by defaults.
 static const uint32_t MAGIC = 0x4D434B31;   // "MCK1"
-static const uint8_t  SETTINGS_VER = 3;
+static const uint8_t  SETTINGS_VER = 4;
 
 static void defaultsV2() {   // fields added in layout version 2
     cfg.autoUpdate = 1;
@@ -21,6 +21,14 @@ static void defaultsV3() {   // fields added in layout version 3
     memset(cfg.adminHash, 0, sizeof(cfg.adminHash));
     memset(cfg.adminSalt, 0, sizeof(cfg.adminSalt));
     memset(cfg.sessionKey, 0, sizeof(cfg.sessionKey));
+}
+
+static void defaultsV4() {   // fields added in layout version 4
+    cfg.modules  = MATRIX_MODULES;
+    cfg.hwType   = MATRIX_TYPE;
+    cfg.flipH    = FLIP_HORIZONTAL;
+    cfg.flipV    = FLIP_VERTICAL;
+    cfg.showSecs = 1;
 }
 
 Settings cfg;
@@ -44,6 +52,7 @@ void settingsDefaults() {
     strlcpy(cfg.tz, DEF_TZ, sizeof(cfg.tz));
     defaultsV2();
     defaultsV3();
+    defaultsV4();
     cfg.ver = SETTINGS_VER;
 }
 
@@ -75,6 +84,7 @@ void settingsLoad() {
     if (cfg.ver != SETTINGS_VER) {
         if (cfg.ver < 2 || cfg.ver > SETTINGS_VER) defaultsV2();
         if (cfg.ver < 3 || cfg.ver > SETTINGS_VER) defaultsV3();
+        if (cfg.ver < 4 || cfg.ver > SETTINGS_VER) defaultsV4();
         cfg.ver = SETTINGS_VER;
         settingsSave();
     }
@@ -82,6 +92,11 @@ void settingsLoad() {
     cfg.ldrInvert = cfg.ldrInvert ? 1 : 0;
     if (cfg.ldrMin > 15) cfg.ldrMin = 0;
     if (cfg.ldrMax > 15) cfg.ldrMax = 12;
+    if (cfg.modules < MIN_MODULES || cfg.modules > MAX_MODULES) cfg.modules = MATRIX_MODULES;
+    if (cfg.hwType > MT_ICSTATION) cfg.hwType = MATRIX_TYPE;
+    cfg.flipH = cfg.flipH ? 1 : 0;
+    cfg.flipV = cfg.flipV ? 1 : 0;
+    cfg.showSecs = cfg.showSecs ? 1 : 0;
     cfg.autoUpdate = cfg.autoUpdate ? 1 : 0;
     if (cfg.msgEvery > 60) cfg.msgEvery = 0;
     cfg.msg[sizeof(cfg.msg) - 1] = 0;
