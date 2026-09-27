@@ -33,14 +33,18 @@ struct Marquee {
 
 // ---- clock face -----------------------------------------------------------------
 struct ClockFace {
-    void reset();                                        // next draw shows digits without rolling
+    void reset();                                        // next draw shows digits without animating
+    void demo();                                         // animate all digits once (preview on the web page)
     void draw(const struct tm& t, uint16_t ms, int dx);  // dx shifts the face horizontally (slide transitions)
-    void tick();                                         // advance digit-roll animations, once per frame
+    void tick();                                         // advance digit animations, once per frame
 private:
-    uint8_t cur[4]  = {0};
-    uint8_t prev[4] = {0};
-    uint8_t phase[4] = {0};   // frames of roll animation left, 0 = settled
+    void    drawSlot(int i, int x);
+    uint8_t cur[4]   = {0};
+    uint8_t prev[4]  = {0};
+    uint8_t phase[4] = {0};   // frames of the change animation left, 0 = settled
+    uint8_t style = 0;        // Roll style of the running animation (a fixed pick when set to Random)
     bool    fresh = true;
+    bool    demoPending = false;
 };
 
 // ---- animations (blocking, ~2-4 s) ---------------------------------------------

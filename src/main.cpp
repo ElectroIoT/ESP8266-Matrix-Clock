@@ -21,6 +21,7 @@ String   apName;
 uint8_t  animRequest = ANIM_OFF;
 String   scrollRequest;
 uint32_t restartAt = 0;
+bool     digitDemo = false;
 
 static bool      mdnsOn = false;
 static uint8_t   appliedBr = 255;   // brightness currently on the display, 16 = switched off
@@ -189,6 +190,10 @@ static void clockLoop() {
         playAnim(a);
         face.reset();
     }
+    if (digitDemo) {
+        digitDemo = false;
+        face.demo();
+    }
 
     if (millis() - lastFrame < 30) return;   // ~33 frames per second
     lastFrame = millis();
@@ -262,7 +267,7 @@ void setup() {
     webBegin();
 
     if (cfg.bootAnim) playAnim(cfg.bootAnim);
-    if (cfg.welcome[0]) scrollText(cfg.welcome);
+    scrollText(WELCOME_TEXT);
 
     if (!cfg.ssid[0] || !connectWiFi()) {
         startSetupMode();

@@ -4,7 +4,8 @@
 #include <Arduino.h>
 
 enum Anim : uint8_t { ANIM_OFF, ANIM_SPARKLE, ANIM_WIPE, ANIM_RAIN, ANIM_BOXES, ANIM_PACMAN, ANIM_RANDOM };
-enum Roll : uint8_t { ROLL_DOWN, ROLL_UP, ROLL_NONE };
+// Digit change animation. Values are stored in flash: only ever append.
+enum Roll : uint8_t { ROLL_DOWN, ROLL_UP, ROLL_NONE, ROLL_DISSOLVE, ROLL_SLIDE, ROLL_FLIP, ROLL_DROP, ROLL_RANDOM };
 
 struct Settings {
     uint32_t magic;
@@ -24,7 +25,7 @@ struct Settings {
     uint8_t  hourlyAnim;    // Anim
     uint8_t  bootAnim;      // Anim
     char     tz[48];
-    char     welcome[64];
+    char     unused[64];    // was the editable welcome text; kept so the flash layout stays compatible
 };
 
 extern Settings cfg;

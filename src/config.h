@@ -27,7 +27,11 @@
 #define NTP_SERVER_2    "time.google.com"
 #define NTP_SERVER_3    "pool.ntp.org"
 
+// ---- Welcome text ----------------------------------------------------------------
+// Scrolls at every power-on. Fixed in the firmware on purpose: it is not a setting
+// and cannot be changed from the web page.
+#define WELCOME_TEXT    "manoranjan.dev"
+
 // ---- Defaults for first boot / factory reset (all changeable on the web page) --
 #define DEF_TZ          "IST-5:30"            // POSIX TZ string, India
-#define DEF_WELCOME     "manoranjan.dev"
 #define DEF_BRIGHTNESS  4                     // 0..15

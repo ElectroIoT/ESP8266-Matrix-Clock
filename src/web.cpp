@@ -70,7 +70,7 @@ static void handleConfig() {
                ",\"leadingZero\":" + cfg.leadingZero + ",\"blinkColon\":" + cfg.blinkColon +
                ",\"secondsBar\":" + cfg.secondsBar + ",\"showDate\":" + cfg.showDate + ",\"roll\":" + cfg.roll +
                ",\"hourlyAnim\":" + cfg.hourlyAnim + ",\"bootAnim\":" + cfg.bootAnim +
-               ",\"tz\":" + jsonStr(cfg.tz) + ",\"welcome\":" + jsonStr(cfg.welcome) + ",\"ssid\":" + jsonStr(cfg.ssid) + "}";
+               ",\"tz\":" + jsonStr(cfg.tz) + ",\"ssid\":" + jsonStr(cfg.ssid) + "}";
     server.send(200, "application/json", j);
 }
 
@@ -90,10 +90,9 @@ static void handleSet() {
     else if (k == "blinkColon")  flag(cfg.blinkColon);
     else if (k == "secondsBar")  flag(cfg.secondsBar);
     else if (k == "showDate")    flag(cfg.showDate);
-    else if (k == "roll")        cfg.roll = constrain(n, 0, (int)ROLL_NONE);
+    else if (k == "roll")        { cfg.roll = constrain(n, 0, (int)ROLL_RANDOM); digitDemo = true; }
     else if (k == "hourlyAnim")  cfg.hourlyAnim = constrain(n, 0, (int)ANIM_RANDOM);
     else if (k == "bootAnim")    cfg.bootAnim = constrain(n, 0, (int)ANIM_RANDOM);
-    else if (k == "welcome")     strlcpy(cfg.welcome, v.c_str(), sizeof(cfg.welcome));
     else if (k == "tz") {
         if (!v.length() || v.length() >= sizeof(cfg.tz)) { server.send(400, "text/plain", "Invalid time zone"); return; }
         strlcpy(cfg.tz, v.c_str(), sizeof(cfg.tz));
@@ -139,8 +138,7 @@ static void handleWifi() {
 }
 
 static void handleShow() {
-    if (server.arg("t") == "ip") scrollRequest = String("IP ") + WiFi.localIP().toString();
-    else                         scrollRequest = cfg.welcome;
+    scrollRequest = String("IP ") + WiFi.localIP().toString();
     sendOk();
 }
 
@@ -159,6 +157,7 @@ void webBegin() {
     server.on("/api/scan", HTTP_GET, handleScan);
     server.on("/api/wifi", HTTP_POST, handleWifi);
     server.on("/api/show", HTTP_POST, handleShow);
+    server.on("/api/digits", HTTP_POST, []() { digitDemo = true; sendOk(); });
     server.on("/api/anim", HTTP_POST, []() { animRequest = constrain(server.arg("n").toInt(), 0, (int)ANIM_RANDOM); sendOk(); });
     server.on("/api/sync", HTTP_POST, []() { startNtp(); sendOk(); });
     server.on("/api/restart", HTTP_POST, []() { sendOk(); scheduleRestart(800); });

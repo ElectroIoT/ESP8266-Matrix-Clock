@@ -24,7 +24,6 @@ void settingsDefaults() {
     cfg.hourlyAnim  = ANIM_RANDOM;
     cfg.bootAnim    = ANIM_SPARKLE;
     strlcpy(cfg.tz, DEF_TZ, sizeof(cfg.tz));
-    strlcpy(cfg.welcome, DEF_WELCOME, sizeof(cfg.welcome));
 }
 
 void settingsLoad() {
@@ -38,13 +37,12 @@ void settingsLoad() {
     cfg.ssid[sizeof(cfg.ssid) - 1] = 0;
     cfg.pass[sizeof(cfg.pass) - 1] = 0;
     cfg.tz[sizeof(cfg.tz) - 1] = 0;
-    cfg.welcome[sizeof(cfg.welcome) - 1] = 0;
     if (!cfg.tz[0]) strlcpy(cfg.tz, DEF_TZ, sizeof(cfg.tz));
     if (cfg.brightness > 15) cfg.brightness = DEF_BRIGHTNESS;
     if (cfg.nightFrom > 23) cfg.nightFrom = 22;
     if (cfg.nightTo > 23) cfg.nightTo = 7;
     if (cfg.nightBr > 16) cfg.nightBr = 0;
-    if (cfg.roll > ROLL_NONE) cfg.roll = ROLL_DOWN;
+    if (cfg.roll > ROLL_RANDOM) cfg.roll = ROLL_DOWN;
     if (cfg.hourlyAnim > ANIM_RANDOM) cfg.hourlyAnim = ANIM_OFF;
     if (cfg.bootAnim > ANIM_RANDOM) cfg.bootAnim = ANIM_OFF;
 }

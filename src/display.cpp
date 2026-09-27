@@ -99,7 +99,7 @@ void scrollText(const String& s) {
 }
 
 // =================================================================================
-// Clock face: HH:MM with rolling digits, blinking colon and a seconds bar
+// Clock face: HH:MM with animated digits, blinking colon and a seconds bar
 // =================================================================================
 
 // 5x7 digits, one byte per row, bit 4 = left-most pixel
@@ -118,28 +118,95 @@ static const uint8_t DIGITS[10][7] PROGMEM = {
 static const uint8_t BLANK = 10;                    // "digit" that draws nothing (hidden leading zero)
 static const int     DIGIT_X[4] = {2, 8, 19, 25};   // H H : M M  -> 28 px wide, centred
 static const int     COLON_X = 15;                  // 2 px wide
-static const uint8_t ROLL_FRAMES = 8;
+static const uint8_t FRAMES = 12;                   // digit change length: 12 frames x 30 ms
 
-// Draw digit d with its top-left at (x, y); rows are clipped to 0..6 so the
-// seconds bar on row 7 stays clean while digits roll.
-static void drawDigit(int x, int y, uint8_t d) {
-    if (d > 9) return;
-    for (int r = 0; r < 7; r++) {
-        int yy = y + r;
-        if (yy < 0 || yy > 6) continue;
-        uint8_t bits = pgm_read_byte(&DIGITS[d][r]);
+static bool digitPx(uint8_t d, int r, int c) {      // pixel of digit d; false outside the 5x7 cell
+    if (d > 9 || r < 0 || r > 6 || c < 0 || c > 4) return false;
+    return pgm_read_byte(&DIGITS[d][r]) & (0x10 >> c);
+}
+
+// Draw digit d into the 5x7 cell whose top-left is x, shifted by (ox, oy) and
+// clipped to the cell, so neighbours and the seconds bar (row 7) stay untouched.
+static void drawDigit(int x, uint8_t d, int ox = 0, int oy = 0) {
+    for (int r = 0; r < 7; r++)
         for (int c = 0; c < 5; c++)
-            if (bits & (0x10 >> c)) fbSet(x + c, yy, true);
-    }
+            if (digitPx(d, r - oy, c - ox)) fbSet(x + c, r, true);
+}
+
+// Digit squeezed to h rows (0..7) around the middle row, for the flip effect.
+static void drawDigitSquashed(int x, uint8_t d, int h) {
+    if (h <= 0) return;
+    int top = 3 - h / 2;
+    for (int r = 0; r < h; r++)
+        for (int c = 0; c < 5; c++)
+            if (digitPx(d, r * 7 / h, c)) fbSet(x + c, top + r, true);
+}
+
+// Order in which the 35 cell pixels switch over in the dissolve effect:
+// (i * 23 + k) mod 35 visits every value once because 23 and 35 are coprime.
+static uint8_t dissolveOrder(int slot, int r, int c) {
+    return ((r * 5 + c) * 23 + slot * 11) % 35;
 }
 
 void ClockFace::reset() {
     fresh = true;
 }
 
+void ClockFace::demo() {
+    demoPending = true;
+}
+
 void ClockFace::tick() {
     for (int i = 0; i < 4; i++)
         if (phase[i]) phase[i]--;
+}
+
+void ClockFace::drawSlot(int i, int x) {
+    if (!phase[i]) {
+        drawDigit(x, cur[i]);
+        return;
+    }
+    const int p = FRAMES - phase[i];   // 0 .. FRAMES-1
+    const uint8_t a = prev[i], b = cur[i];
+    switch (style) {
+        case ROLL_UP: {
+            int s = p * 8 / FRAMES;
+            drawDigit(x, a, 0, -s);
+            drawDigit(x, b, 0, 8 - s);
+            break;
+        }
+        case ROLL_DISSOLVE: {
+            int k = p * 35 / FRAMES;
+            for (int r = 0; r < 7; r++)
+                for (int c = 0; c < 5; c++)
+                    if (dissolveOrder(i, r, c) < k ? digitPx(b, r, c) : digitPx(a, r, c)) fbSet(x + c, r, true);
+            break;
+        }
+        case ROLL_SLIDE: {
+            int s = p * 6 / FRAMES;
+            drawDigit(x, a, -s, 0);
+            drawDigit(x, b, 6 - s, 0);
+            break;
+        }
+        case ROLL_FLIP: {
+            const int half = FRAMES / 2;
+            if (p < half) drawDigitSquashed(x, a, 7 - p * 7 / half);
+            else          drawDigitSquashed(x, b, (p - half + 1) * 7 / half);
+            break;
+        }
+        case ROLL_DROP: {
+            static const int8_t BOUNCE[FRAMES] = {-8, -6, -4, -2, 0, -2, -3, -2, 0, -1, 0, 0};
+            drawDigit(x, a, 0, p * p / 2);   // old digit falls away, accelerating
+            drawDigit(x, b, 0, BOUNCE[p]);   // new one drops in and bounces
+            break;
+        }
+        default: {                           // ROLL_DOWN
+            int s = p * 8 / FRAMES;
+            drawDigit(x, a, 0, s);
+            drawDigit(x, b, 0, s - 8);
+            break;
+        }
+    }
 }
 
 void ClockFace::draw(const struct tm& t, uint16_t ms, int dx) {
@@ -151,29 +218,33 @@ void ClockFace::draw(const struct tm& t, uint16_t ms, int dx) {
     uint8_t want[4] = {(uint8_t)(h / 10), (uint8_t)(h % 10), (uint8_t)(t.tm_min / 10), (uint8_t)(t.tm_min % 10)};
     if (want[0] == 0 && !cfg.leadingZero) want[0] = BLANK;
 
+    bool changed = false;
     for (int i = 0; i < 4; i++) {
         if (want[i] == cur[i] && !fresh) continue;
         prev[i]  = cur[i];
         cur[i]   = want[i];
-        phase[i] = (fresh || cfg.roll == ROLL_NONE) ? 0 : ROLL_FRAMES;
+        phase[i] = (fresh || cfg.roll == ROLL_NONE) ? 0 : FRAMES;
+        changed |= !fresh;
     }
     fresh = false;
 
-    for (int i = 0; i < 4; i++) {
-        int x = DIGIT_X[i] + dx;
-        if (!phase[i]) {
-            drawDigit(x, 0, cur[i]);
-            continue;
-        }
-        int s = ROLL_FRAMES - phase[i];   // 0..7 pixels travelled
-        if (cfg.roll == ROLL_UP) {
-            drawDigit(x, -s, prev[i]);
-            drawDigit(x, ROLL_FRAMES - s, cur[i]);
-        } else {
-            drawDigit(x, s, prev[i]);
-            drawDigit(x, s - ROLL_FRAMES, cur[i]);
+    if (demoPending) {
+        demoPending = false;
+        if (cfg.roll != ROLL_NONE) {
+            for (int i = 0; i < 4; i++) {
+                prev[i]  = cur[i] == 8 ? 0 : 8;
+                phase[i] = FRAMES;
+            }
+            changed = true;
         }
     }
+
+    if (changed) {
+        static const uint8_t PICK[] = {ROLL_DOWN, ROLL_UP, ROLL_DISSOLVE, ROLL_SLIDE, ROLL_FLIP, ROLL_DROP};
+        style = cfg.roll == ROLL_RANDOM ? PICK[random(sizeof(PICK))] : cfg.roll;
+    }
+
+    for (int i = 0; i < 4; i++) drawSlot(i, DIGIT_X[i] + dx);
 
     if (!cfg.blinkColon || ms < 500) {
         for (int c = 0; c < 2; c++) {

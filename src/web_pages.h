@@ -77,15 +77,12 @@ static const char MAIN_HTML[] PROGMEM = R"HTML(<!DOCTYPE html><html lang=en><hea
 </div>
 
 <div class=card><h2>Animations</h2>
-<div class=row><span>Digit change</span><select id=roll><option value=0>Roll down</option><option value=1>Roll up</option><option value=2>Instant</option></select></div>
+<div class=row><span>Digit change<small>Plays on the clock when you pick one</small></span><select id=roll>
+<option value=0>Roll down</option><option value=1>Roll up</option><option value=3>Dissolve</option><option value=4>Slide</option>
+<option value=5>Flip</option><option value=6>Drop &amp; bounce</option><option value=7>Random</option><option value=2>Instant</option></select></div>
 <div class=row><span>Every hour</span><select id=hourlyAnim class=an></select></div>
 <div class=row><span>At power-on</span><select id=bootAnim class=an></select></div>
 <div class=btns id=try></div>
-</div>
-
-<div class=card><h2>Welcome message</h2>
-<input type=text id=welcome maxlength=63 class=full placeholder="Shown at power-on">
-<div class=btns style=margin-top:0><button class=p id=wsave>Save</button><button id=wshow>Show on clock</button></div>
 </div>
 
 <div class=card><h2>WiFi &amp; system</h2>
@@ -93,7 +90,7 @@ static const char MAIN_HTML[] PROGMEM = R"HTML(<!DOCTYPE html><html lang=en><hea
 <div class=btns><a class=btn href=/wifi>Change WiFi</a><button id=sip>Show IP on clock</button><button id=sync>Re-sync time</button>
 <button id=rst>Restart</button><button id=fac class=d>Factory reset</button></div>
 </div>
-<p class=foot>FLASH button: short press shows the IP &middot; hold 5 s for WiFi setup<br>Also reachable at http://matrixclock.local</p>
+<p class=foot>FLASH button: short press shows the IP &middot; hold 5 s for WiFi setup<br>Also reachable at http://matrixclock.local<br><br>manoranjan.dev</p>
 </div><div id=toast></div>
 <script>
 const $=i=>document.getElementById(i);
@@ -105,6 +102,7 @@ for(let b=0;b<=16;b++)$('nightBr').add(new Option(b==16?'Display off':b,b));
 const AN=['Off','Sparkle','Wipe','Rain','Boxes','Pac-Man','Random'];
 document.querySelectorAll('.an').forEach(s=>AN.forEach((n,i)=>s.add(new Option(n,i))));
 AN.slice(1,6).forEach((n,i)=>{const b=document.createElement('button');b.textContent='▶ '+n;b.onclick=()=>post('/api/anim',{n:i+1});$('try').appendChild(b)});
+{const b=document.createElement('button');b.textContent='▶ Digit change';b.onclick=()=>post('/api/digits');$('try').prepend(b)}
 const TZ=[['IST-5:30','India (UTC+5:30)'],['<+0545>-5:45','Nepal (UTC+5:45)'],['<+06>-6','Bangladesh (UTC+6)'],
 ['<+0530>-5:30','Sri Lanka (UTC+5:30)'],['<+04>-4','UAE / Oman (UTC+4)'],['<+03>-3','Saudi Arabia / Qatar / Kuwait (UTC+3)'],
 ['<+08>-8','Singapore / Malaysia (UTC+8)'],['GMT0','UTC / GMT'],['GMT0BST,M3.5.0/1,M10.5.0','UK (London)'],
@@ -114,7 +112,7 @@ TZ.forEach(z=>$('tz').add(new Option(z[1],z[0])));
 function set(k,v){return post('/api/set',{k,v}).then(r=>toast(r.ok?'Saved':'Could not save'))}
 const K=['autoDim','nightFrom','nightTo','nightBr','fmt24','tz','blinkColon','secondsBar','leadingZero','showDate','roll','hourlyAnim','bootAnim'];
 fetch('/api/config').then(r=>r.json()).then(c=>{
- $('br').value=c.br;$('brv').textContent=c.br;$('welcome').value=c.welcome;
+ $('br').value=c.br;$('brv').textContent=c.br;
  if(![...$('tz').options].some(o=>o.value==c.tz))$('tz').add(new Option(c.tz,c.tz));
  K.forEach(k=>{const e=$(k);if(e.type=='checkbox')e.checked=!!c[k];else e.value=c[k]});
  $('night').style.display=c.autoDim?'':'none';
@@ -123,8 +121,6 @@ K.forEach(k=>$(k).onchange=e=>{const t=e.target;set(k,t.type=='checkbox'?(t.chec
  if(k=='autoDim')$('night').style.display=t.checked?'':'none'});
 let bt;$('br').oninput=e=>{$('brv').textContent=e.target.value;clearTimeout(bt);bt=setTimeout(()=>post('/api/set',{k:'br',v:e.target.value,live:1}),60)};
 $('br').onchange=e=>{clearTimeout(bt);set('br',e.target.value)};
-$('wsave').onclick=()=>set('welcome',$('welcome').value);
-$('wshow').onclick=()=>set('welcome',$('welcome').value).then(()=>post('/api/show',{t:'welcome'}));
 $('sip').onclick=()=>post('/api/show',{t:'ip'}).then(()=>toast('Watch the clock'));
 $('sync').onclick=()=>post('/api/sync').then(()=>toast('Re-syncing time'));
 $('rst').onclick=()=>{if(confirm('Restart the clock?'))post('/api/restart').then(()=>toast('Restarting...'))};

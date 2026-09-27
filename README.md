@@ -5,8 +5,9 @@ The clock sets itself from the internet, and you configure everything from your 
 edit in the code before you flash it.
 
 - Internet time (NTP), India (IST) by default, any time zone selectable
-- 12 or 24 hour, rolling digits, blinking colon, seconds bar
-- Scrolling date, welcome message at power-on
+- 12 or 24 hour, blinking colon, seconds bar
+- Digit change animations: Roll down, Roll up, Dissolve, Slide, Flip, Drop & bounce, Random
+- Scrolling date, fixed welcome message at power-on
 - Animations: Sparkle, Wipe, Rain, Boxes, Pac-Man (every hour and/or at power-on)
 - Brightness slider and **night mode** (dim or switch off at night)
 - **First-time WiFi setup from a phone:** the clock opens its own hotspot with a setup page
@@ -60,11 +61,12 @@ the clock keeps retrying it every 2 minutes while in setup mode.
 |---|---|
 | Brightness | Brightness slider (live preview), night mode on/off, night hours, night brightness or display off |
 | Clock | 12/24 hour, time zone, blinking colon, seconds bar, leading zero, scrolling date |
-| Animations | Digit change (roll down / roll up / instant), hourly animation, power-on animation, try-out buttons |
-| Welcome message | Text shown at power-on, "Show on clock" button |
+| Animations | Digit change (roll down / roll up / dissolve / slide / flip / drop & bounce / random / instant, previewed on the clock when picked), hourly animation, power-on animation, try-out buttons |
 | WiFi & system | Network and signal, IP, uptime, change WiFi, show IP, re-sync time, restart, factory reset |
 
 Settings are stored in flash and survive power cuts.
+
+The welcome message is fixed in the firmware (`WELCOME_TEXT` in [`src/config.h`](src/config.h)) and can't be changed from the web page.
 
 ## FLASH button (NodeMCU)
 
