@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-enum AppMode : uint8_t { MODE_CLOCK, MODE_SETUP };
+enum AppMode : uint8_t { MODE_CLOCK, MODE_SETUP, MODE_SAFE };
 
 extern AppMode  appMode;
 extern String   apName;          // setup hotspot name, e.g. "MatrixClock-3F2A"

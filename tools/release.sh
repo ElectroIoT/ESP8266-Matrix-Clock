@@ -1,19 +1,30 @@
 #!/usr/bin/env bash
-# Build the firmware and publish it as a GitHub release.
-# Every clock with "Automatic updates" on installs it the following night
-# (or right away via "Check now" -> "Install update" on its web page).
+# Publish firmware for the clocks in two steps, so a bad build never reaches them:
 #
-# Usage:  tools/release.sh "What changed in this version"
-# Before: bump FW_VERSION in src/config.h and commit + push.
+#   tools/release.sh "What changed"   build + publish as a PRE-release.
+#                                      Clocks ignore pre-releases. Test release/firmware.bin
+#                                      on your own clock first (web page -> Upload .bin).
+#   tools/release.sh --promote        mark that version as the latest release.
+#                                      Every clock installs it the following night.
+#
+# Before: bump FW_VERSION in src/config.h, run tools/sync_arduino.sh, commit + push.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-VER=$(sed -n 's/^#define FW_VERSION *"\([^"]*\)".*/\1/p' src/config.h)
+# the release version (the CRASH_TEST line above it is a test build's)
+VER=$(sed -n 's/^#define FW_VERSION *"\([^"]*\)".*/\1/p' src/config.h | tail -1)
 [ -n "$VER" ] || { echo "FW_VERSION not found in src/config.h"; exit 1; }
 REPO=$(sed -n 's/^#define GITHUB_REPO *"\([^"]*\)".*/\1/p' src/config.h)
 
+if [ "${1:-}" = "--promote" ]; then
+    gh release view "v$VER" -R "$REPO" >/dev/null 2>&1 || { echo "v$VER has not been released yet"; exit 1; }
+    gh release edit "v$VER" -R "$REPO" --prerelease=false --latest
+    echo "v$VER is now the latest release - clocks will install it tonight."
+    exit 0
+fi
+
 if gh release view "v$VER" -R "$REPO" >/dev/null 2>&1; then
-    echo "v$VER is already released - bump FW_VERSION in src/config.h first"
+    echo "v$VER already exists - bump FW_VERSION in src/config.h first"
     exit 1
 fi
 if [ -n "$(git status --porcelain)" ]; then
@@ -28,6 +39,9 @@ mkdir -p release
 cp .pio/build/nodemcuv2/firmware.bin release/firmware.bin
 printf '%s\n' "$VER" > release/version.txt
 
-gh release create "v$VER" release/firmware.bin release/version.txt -R "$REPO" \
+gh release create "v$VER" release/firmware.bin release/version.txt -R "$REPO" --prerelease \
     --title "v$VER" --notes "${1:-Firmware $VER}" --target "$(git rev-parse HEAD)"
-echo "Released v$VER - clocks will pick it up automatically."
+echo
+echo "Published v$VER as a PRE-release (clocks don't see it yet)."
+echo "Test it: open your clock's web page -> Upload .bin -> release/firmware.bin"
+echo "Then:    tools/release.sh --promote"

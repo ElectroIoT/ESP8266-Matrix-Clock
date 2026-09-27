@@ -1,7 +1,11 @@
 // ESP8266 Matrix Clock -- build-time configuration
 #pragma once
 
-#define FW_VERSION      "1.1.2"               // bump for every release (tools/release.sh reads it from here)
+#ifdef CRASH_TEST
+#define FW_VERSION      "1.0.0"               // safe-mode test build (env:crashtest): always older than any release
+#else
+#define FW_VERSION      "1.2.0"               // bump for every release (tools/release.sh reads it from here)
+#endif
 
 #include <MD_MAX72xx.h>
 
@@ -28,6 +32,12 @@
 #define NTP_SERVER_1    "in.pool.ntp.org"
 #define NTP_SERVER_2    "time.google.com"
 #define NTP_SERVER_3    "pool.ntp.org"
+
+// ---- Safe mode -----------------------------------------------------------------
+// After this many crashes in a row the clock starts in safe mode (WiFi + update page only).
+#define SAFE_MODE_CRASHES   3
+#define SAFE_MODE_STABLE_MS 120000            // running this long counts as "not crashing"
+#define SAFE_MODE_CHECK_MS  1800000           // in safe mode, look for a fixed release this often
 
 // ---- Updates -------------------------------------------------------------------
 // The clock installs new releases published at github.com/<GITHUB_REPO>/releases.

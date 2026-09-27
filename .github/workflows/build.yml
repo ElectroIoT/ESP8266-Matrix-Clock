@@ -1,0 +1,58 @@
+# Compiles both copies of the firmware on every push and pull request, so a broken
+# build is caught before it can be released to clocks.
+name: Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  platformio:
+    name: PlatformIO (NodeMCU + D1 mini)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.platformio
+            ~/.cache/pip
+          key: pio-${{ hashFiles('platformio.ini') }}
+      - run: pip install --upgrade platformio
+      - run: pio run -e nodemcuv2 -e d1_mini
+      - name: Firmware size check
+        run: |
+          size=$(stat -c %s .pio/build/nodemcuv2/firmware.bin)
+          echo "firmware.bin: $size bytes"
+          # hard limit for an ESP8266 program is 1044464 bytes; warn well before it
+          if [ "$size" -gt 950000 ]; then
+            echo "::error::firmware.bin is $size bytes - close to the 1 MB program limit"
+            exit 1
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: firmware-nodemcuv2
+          path: .pio/build/nodemcuv2/firmware.bin
+
+  arduino:
+    name: Arduino IDE sketch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Arduino copy is in sync with src/
+        run: |
+          bash tools/sync_arduino.sh
+          git diff --exit-code arduino/ || { echo "::error::arduino/ is out of date - run tools/sync_arduino.sh and commit"; exit 1; }
+      - uses: arduino/setup-arduino-cli@v2
+      - name: Install ESP8266 core and MD_MAX72XX
+        run: |
+          URL=https://arduino.esp8266.com/stable/package_esp8266com_index.json
+          arduino-cli core update-index --additional-urls "$URL"
+          arduino-cli core install esp8266:esp8266 --additional-urls "$URL"
+          arduino-cli lib install MD_MAX72XX
+      - name: Compile (NodeMCU, 160 MHz, 4MB FS:2MB OTA)
+        run: arduino-cli compile --fqbn esp8266:esp8266:nodemcuv2:xtal=160,eesz=4M2M arduino/MatrixClock

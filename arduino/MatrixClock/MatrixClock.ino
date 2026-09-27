@@ -33,6 +33,7 @@
 #include "config.h"
 #include "display.h"
 #include "ota.h"
+#include "safemode.h"
 #include "settings.h"
 #include "web.h"
 
@@ -312,9 +313,46 @@ static void clockLoop() {
 
 // =================================================================================
 
+// Safe mode: WiFi, update page and GitHub updates only -- none of the clock features,
+// in case one of them is what keeps crashing.
+static void startSafeMode() {
+    Serial.println(F("SAFE MODE: the firmware crashed several times in a row"));
+    scrollText("Safe mode");
+    if (!cfg.ssid[0] || !connectWiFi()) {
+        startSetupMode();   // no WiFi: the setup hotspot is all we can offer
+        return;
+    }
+    appMode = MODE_SAFE;
+    WiFi.setAutoReconnect(true);
+    startNtp();
+    mdnsOn = MDNS.begin(HOSTNAME);
+    if (mdnsOn) MDNS.addService("http", "tcp", 80);
+    Serial.printf("Safe mode, update page at http://%s/\n", WiFi.localIP().toString().c_str());
+}
+
+static void safeLoop() {
+    static Marquee  msg;
+    static uint32_t lastFrame = 0;
+    static uint32_t lastCheck = 0;
+
+    if (!msg.text.length()) msg.start(String("Safe mode - open ") + WiFi.localIP().toString());
+    if (millis() - lastFrame >= 30) {
+        lastFrame = millis();
+        msg.step();
+    }
+    // Keep looking for a fixed release and install it as soon as one is published.
+    if (timeValid() && !otaRequest && (!lastCheck || millis() - lastCheck > SAFE_MODE_CHECK_MS)) {
+        lastCheck = millis() | 1;
+        otaRequest = OTA_INSTALL;
+    }
+    if (otaRequest) runOta();
+}
+
 void setup() {
     Serial.begin(115200);
-    Serial.println(F("\nESP8266 Matrix Clock"));
+    Serial.println(F("\nESP8266 Matrix Clock " FW_VERSION));
+    bool safe = safeModeCheck();
+    Serial.printf("Firmware %u bytes, %u bytes free for updates\n", ESP.getSketchSize(), ESP.getFreeSketchSpace());
     pinMode(PIN_BUTTON, INPUT_PULLUP);
     randomSeed(RANDOM_REG32);
 
@@ -327,6 +365,11 @@ void setup() {
     snprintf(id, sizeof(id), "%04X", (unsigned)(ESP.getChipId() & 0xFFFF));
     apName = String(AP_PREFIX) + id;
     webBegin();
+
+    if (safe) {
+        startSafeMode();
+        return;
+    }
 
     if (cfg.bootAnim) playAnim(cfg.bootAnim);
     scrollText(WELCOME_TEXT);
@@ -345,8 +388,21 @@ void setup() {
 }
 
 void loop() {
+#ifdef CRASH_TEST
+    if (appMode == MODE_CLOCK && millis() > 15000) {
+        Serial.println(F("CRASH_TEST: simulated crash"));
+        abort();
+    }
+#endif
+    static bool stable = false;
+    if (!stable && appMode != MODE_SAFE && millis() > SAFE_MODE_STABLE_MS) {
+        stable = true;
+        safeModeStable();
+    }
+
     service();
     handleButton();
-    if (appMode == MODE_SETUP) setupLoop();
-    else                       clockLoop();
+    if      (appMode == MODE_SETUP) setupLoop();
+    else if (appMode == MODE_SAFE)  safeLoop();
+    else                            clockLoop();
 }

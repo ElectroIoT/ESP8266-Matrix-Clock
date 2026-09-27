@@ -33,7 +33,8 @@ static void sendOk() {
 // ---- pages ---------------------------------------------------------------------
 
 static void handleRoot() {
-    server.send_P(200, "text/html", appMode == MODE_SETUP ? WIFI_HTML : MAIN_HTML);
+    const char* page = appMode == MODE_SETUP ? WIFI_HTML : appMode == MODE_SAFE ? SAFE_HTML : MAIN_HTML;
+    server.send_P(200, "text/html", page);
 }
 
 // Captive portal: phones probe URLs like /generate_204 or /hotspot-detect.html;
@@ -68,7 +69,8 @@ static void handleStatus() {
                ",\"rssi\":" + String(sta ? WiFi.RSSI() : 0) + ",\"up\":" + String(millis() / 1000) +
                ",\"version\":" + jsonStr(FW_VERSION) + ",\"latest\":" + jsonStr(ota.latest) +
                ",\"newer\":" + (ota.latest.length() && otaNewer(ota.latest) ? "true" : "false") +
-               ",\"otaMsg\":" + jsonStr(ota.message) + ",\"otaBusy\":" + (otaRequest ? "true" : "false") + "}";
+               ",\"otaMsg\":" + jsonStr(ota.message) + ",\"otaBusy\":" + (otaRequest ? "true" : "false") +
+               ",\"safe\":" + (appMode == MODE_SAFE ? "true" : "false") + "}";
     server.send(200, "application/json", j);
 }
 

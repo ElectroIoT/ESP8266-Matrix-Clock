@@ -262,3 +262,28 @@ $('go').onclick=()=>{const f=$('f').files[0];
  x.onerror=()=>{$('st').textContent='Connection lost';$('go').disabled=false};
  $('go').disabled=true;$('st').textContent='Uploading...';x.send(d)};
 </script></body></html>)HTML";
+
+static const char SAFE_HTML[] PROGMEM = R"HTML(<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1"><title>Clock Safe Mode</title>
+<link rel=stylesheet href=/style.css></head><body><div class=w>
+<div class=hero><div class=clk style=font-size:32px>Safe mode</div><div class=dt>The clock's firmware crashed several times in a row</div></div>
+<div class=card><h2>What happens now</h2>
+<p style=margin-top:0>The clock checks GitHub every 30 minutes and installs a fixed version as soon as one is published.
+You can also try it right now, or upload a firmware file.</p>
+<div class=stat><span>Installed</span><b id=ver>-</b><span>Latest on GitHub</span><b id=lat>-</b></div>
+<p class=mut id=msg></p>
+<div class=btns><button class=p id=go>Install latest from GitHub</button><a class=btn href=/update>Upload .bin</a>
+<button id=rst>Restart normally</button></div>
+<p class=mut>Restart normally (or unplugging the clock) tries the installed firmware again.</p></div>
+</div><div id=toast></div>
+<script>
+const $=i=>document.getElementById(i);
+const post=u=>fetch(u,{method:'POST'});
+function toast(t){const e=$('toast');e.textContent=t;e.style.opacity=1;clearTimeout(e.t);e.t=setTimeout(()=>e.style.opacity=0,1800)}
+$('go').onclick=()=>post('/api/ota/install').then(()=>toast('Working - watch the clock'));
+$('rst').onclick=()=>post('/api/restart').then(()=>toast('Restarting...'));
+function poll(){fetch('/api/status').then(r=>r.json()).then(s=>{$('ver').textContent='v'+s.version;
+ $('lat').textContent=s.latest?'v'+s.latest:'-';$('msg').textContent=s.otaBusy?'Working...':s.otaMsg})
+ .catch(()=>$('msg').textContent='Clock busy or restarting...').finally(()=>setTimeout(poll,2000))}
+poll();
+</script></body></html>)HTML";
