@@ -4,3 +4,4 @@
 
 bool safeModeCheck();    // call first thing in setup(); true = start in safe mode
 void safeModeStable();   // call once the firmware has run fine for a while
+void restart();          // deliberate restart: use instead of ESP.restart() so it isn't counted as a crash

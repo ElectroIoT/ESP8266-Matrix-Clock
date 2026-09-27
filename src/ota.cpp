@@ -2,6 +2,7 @@
 #include "config.h"
 #include "display.h"
 #include "github_roots.h"
+#include "safemode.h"
 #include "web.h"
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
@@ -199,7 +200,7 @@ void otaInstall() {
     if (r == HTTP_UPDATE_OK) {
         Serial.println(F("Update OK, restarting"));
         scrollText("Updated!");
-        ESP.restart();
+        restart();
     }
     ota.message = "Update failed: " + ESPhttpUpdate.getLastErrorString();
     Serial.println(ota.message);

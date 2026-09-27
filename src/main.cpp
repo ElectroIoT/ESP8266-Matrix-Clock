@@ -104,7 +104,7 @@ static void runOta() {
 static void service() {
     webLoop();
     if (mdnsOn) MDNS.update();
-    if (restartAt && (int32_t)(millis() - restartAt) >= 0) ESP.restart();
+    if (restartAt && (int32_t)(millis() - restartAt) >= 0) restart();
 }
 
 void serviceWait(uint32_t ms) {
@@ -132,7 +132,7 @@ static void handleButton() {
             cfg.pass[0] = 0;
             settingsSave();
             scrollText("WiFi reset");
-            ESP.restart();
+            restart();
         }
     } else if (downAt) {
         if (!held && millis() - downAt > 40 && appMode == MODE_CLOCK)
@@ -194,7 +194,7 @@ static void setupLoop() {
             spinnerFrame(frame++);
             serviceWait(40);
         }
-        if (WiFi.status() == WL_CONNECTED) ESP.restart();   // come back up in normal clock mode
+        if (WiFi.status() == WL_CONNECTED) restart();   // come back up in normal clock mode
         WiFi.disconnect();
         lastRetry = millis();
     }
