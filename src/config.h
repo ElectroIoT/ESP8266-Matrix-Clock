@@ -1,7 +1,7 @@
 // ESP8266 Matrix Clock -- build-time configuration
 #pragma once
 
-#define FW_VERSION      "1.1.1"               // bump for every release (tools/release.sh reads it from here)
+#define FW_VERSION      "1.1.2"               // bump for every release (tools/release.sh reads it from here)
 
 #include <MD_MAX72xx.h>
 

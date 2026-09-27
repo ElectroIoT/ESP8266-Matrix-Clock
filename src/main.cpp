@@ -238,7 +238,7 @@ static void clockLoop() {
     }
     if (!haveTime) {
         haveTime = true;
-        Serial.println(F("Time synced"));
+        Serial.printf("Time synced, heap %u (largest block %u)\n", ESP.getFreeHeap(), ESP.getMaxFreeBlockSize());
         face.reset();
         applyBrightness(true);
         showEventsToday();
