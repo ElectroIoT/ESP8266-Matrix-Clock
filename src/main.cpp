@@ -13,6 +13,7 @@
 #include "app.h"
 #include "config.h"
 #include "display.h"
+#include "ota.h"
 #include "settings.h"
 #include "web.h"
 
@@ -22,6 +23,7 @@ uint8_t  animRequest = ANIM_OFF;
 String   scrollRequest;
 uint32_t restartAt = 0;
 bool     digitDemo = false;
+uint8_t  otaRequest = OTA_NONE;
 
 static bool      mdnsOn = false;
 static uint8_t   appliedBr = 255;   // brightness currently on the display, 16 = switched off
@@ -65,6 +67,33 @@ void applyBrightness(bool force) {
         displayIntensity(want);
     }
     appliedBr = want;
+}
+
+// Special days: text of every event matching today, animation of the first one.
+void showEventsToday() {
+    if (!timeValid()) return;
+    time_t now = time(nullptr);
+    struct tm t;
+    localtime_r(&now, &t);
+    String text;
+    uint8_t anim = ANIM_OFF;
+    bool first = true;
+    for (const Event& e : cfg.events) {
+        if (e.month != t.tm_mon + 1 || e.day != t.tm_mday || !e.text[0]) continue;
+        if (!first) text += "  *  ";
+        else anim = e.anim;
+        text += e.text;
+        first = false;
+    }
+    if (!text.length()) return;
+    if (anim) animRequest = anim;
+    scrollRequest = text;
+}
+
+static void runOta() {
+    uint8_t req = otaRequest;
+    otaRequest = OTA_NONE;
+    if (otaCheck() && req == OTA_INSTALL) otaInstall();
 }
 
 // =================================================================================
@@ -194,6 +223,10 @@ static void clockLoop() {
         digitDemo = false;
         face.demo();
     }
+    if (otaRequest) {
+        runOta();
+        face.reset();
+    }
 
     if (millis() - lastFrame < 30) return;   // ~33 frames per second
     lastFrame = millis();
@@ -208,6 +241,8 @@ static void clockLoop() {
         Serial.println(F("Time synced"));
         face.reset();
         applyBrightness(true);
+        showEventsToday();
+        otaCheck();   // so the web page can tell whether an update is waiting
     }
 
     time_t now = time(nullptr);
@@ -218,8 +253,16 @@ static void clockLoop() {
         lastSec = t.tm_sec;
         secStart = millis();
         applyBrightness(false);
+        // Nightly update, at a per-clock minute so not every clock hits GitHub at once
+        if (cfg.autoUpdate && t.tm_hour == AUTO_UPDATE_HOUR && t.tm_min == (int)(ESP.getChipId() % 60) && t.tm_sec == 5)
+            otaRequest = OTA_INSTALL;
+
         if (t.tm_min == 0 && t.tm_sec == 0 && cfg.hourlyAnim) {
             animRequest = cfg.hourlyAnim;
+        } else if (t.tm_sec == 10 && cfg.msgEvery && cfg.msg[0] && t.tm_min % cfg.msgEvery == 0 && !scrollRequest.length()) {
+            scrollRequest = cfg.msg;
+        } else if (t.tm_sec == 45 && t.tm_min % 15 == 0 && !scrollRequest.length()) {
+            showEventsToday();
         } else if (t.tm_sec == 30 && cfg.showDate && slidePos < 0 && !scrollRequest.length()) {
             char d[32];
             strftime(d, sizeof(d), "%a %d %b %Y", &t);

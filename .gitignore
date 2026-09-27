@@ -1,3 +1,5 @@
 .pio/
 .vscode/
 *.bin
+src/private_config.h
+release/

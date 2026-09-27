@@ -10,6 +10,8 @@ edit in the code before you flash it.
 - Scrolling date, fixed welcome message at power-on
 - Animations: Sparkle, Wipe, Rain, Boxes, Pac-Man (every hour and/or at power-on)
 - Brightness slider and **night mode** (dim or switch off at night)
+- **Custom message** (show once or repeat every few minutes) and **special days** (birthdays, anniversaries: shown with an animation all day, every year)
+- **Updates over WiFi:** installs new GitHub releases by itself at night, or upload a `.bin` from the web page (password protected)
 - **First-time WiFi setup from a phone:** the clock opens its own hotspot with a setup page
 - Settings web page at the clock's IP address or `http://matrixclock.local`
 
@@ -62,11 +64,38 @@ the clock keeps retrying it every 2 minutes while in setup mode.
 | Brightness | Brightness slider (live preview), night mode on/off, night hours, night brightness or display off |
 | Clock | 12/24 hour, time zone, blinking colon, seconds bar, leading zero, scrolling date |
 | Animations | Digit change (roll down / roll up / dissolve / slide / flip / drop & bounce / random / instant, previewed on the clock when picked), hourly animation, power-on animation, try-out buttons |
+| Message | Custom text, show now, repeat every 1/5/15/30/60 minutes |
+| Special days | Up to 8 yearly dates with a text and an animation, shown every 15 minutes on that day |
+| Updates | Installed / latest version, automatic updates on/off, check now, install, upload .bin |
 | WiFi & system | Network and signal, IP, uptime, change WiFi, show IP, re-sync time, restart, factory reset |
 
 Settings are stored in flash and survive power cuts.
 
 The welcome message is fixed in the firmware (`WELCOME_TEXT` in [`src/config.h`](src/config.h)) and can't be changed from the web page.
+
+## Updates
+
+### From GitHub (automatic)
+
+Clocks with **Automatic updates** on (the default) check this repo's
+[latest release](https://github.com/ElectroIoT/ESP8266-Matrix-Clock/releases/latest) every night at
+around 03:00 and install it if it's newer. The web page also has **Check now** / **Install update**.
+Settings and WiFi are kept. Downloads go over HTTPS and the server certificate is verified against the
+roots in [`src/github_roots.h`](src/github_roots.h).
+
+To publish an update:
+
+1. Bump `FW_VERSION` in [`src/config.h`](src/config.h), then commit and push.
+2. Run `tools/release.sh "What changed"`. It builds the firmware and creates a GitHub release with
+   `firmware.bin` and `version.txt` attached, which is what the clocks look for.
+
+### Upload a .bin (manual)
+
+Open `http://<clock-ip>/update`, choose `.pio/build/nodemcuv2/firmware.bin` and enter the update password.
+Only the password's SHA-256 is compiled in, taken from `src/private_config.h` (not in git; copy
+[`src/private_config.example.h`](src/private_config.example.h)). Without that file, manual upload is
+switched off; GitHub updates still work. The firmware is about 520 KB. Updates need the same amount of
+free space, so keep new versions under roughly 520 KB.
 
 ## FLASH button (NodeMCU)
 
@@ -85,7 +114,11 @@ src/
   web.*          settings page, WiFi setup page, captive portal, JSON API
   web_pages.h    HTML / CSS
   settings.*     settings stored in flash
-  config.h       pins, display type, defaults
+  ota.*          updates from GitHub releases
+  github_roots.h root certificates for verifying GitHub downloads
+  config.h       pins, display type, version, defaults
+tools/
+  release.sh     build + publish a GitHub release
 ```
 
 ## License

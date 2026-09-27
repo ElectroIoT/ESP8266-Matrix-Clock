@@ -1,6 +1,8 @@
 // ESP8266 Matrix Clock -- build-time configuration
 #pragma once
 
+#define FW_VERSION      "1.1.0"               // bump for every release (tools/release.sh reads it from here)
+
 #include <MD_MAX72xx.h>
 
 // ---- Display wiring (MAX7219 8x8 modules, chained) ---------------------------
@@ -26,6 +28,21 @@
 #define NTP_SERVER_1    "in.pool.ntp.org"
 #define NTP_SERVER_2    "time.google.com"
 #define NTP_SERVER_3    "pool.ntp.org"
+
+// ---- Updates -------------------------------------------------------------------
+// The clock installs new releases published at github.com/<GITHUB_REPO>/releases.
+// Each release needs two assets: firmware.bin and version.txt (see tools/release.sh).
+#define GITHUB_REPO     "ElectroIoT/ESP8266-Matrix-Clock"
+#define AUTO_UPDATE_HOUR 3                    // nightly check at 03:xx local time
+
+// Password for uploading a .bin from the web page. Only its SHA-256 is compiled in, taken
+// from src/private_config.h (not in git); without it, manual upload is disabled.
+#if __has_include("private_config.h")
+#include "private_config.h"
+#endif
+#ifndef UPDATE_PASS_SHA256
+#define UPDATE_PASS_SHA256 ""
+#endif
 
 // ---- Welcome text ----------------------------------------------------------------
 // Scrolls at every power-on. Fixed in the firmware on purpose: it is not a setting

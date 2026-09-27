@@ -7,6 +7,15 @@ enum Anim : uint8_t { ANIM_OFF, ANIM_SPARKLE, ANIM_WIPE, ANIM_RAIN, ANIM_BOXES, 
 // Digit change animation. Values are stored in flash: only ever append.
 enum Roll : uint8_t { ROLL_DOWN, ROLL_UP, ROLL_NONE, ROLL_DISSOLVE, ROLL_SLIDE, ROLL_FLIP, ROLL_DROP, ROLL_RANDOM };
 
+// A yearly special day (birthday, anniversary...). month 0 = empty slot.
+struct Event {
+    uint8_t month;          // 1..12
+    uint8_t day;            // 1..31
+    uint8_t anim;           // Anim played before the text
+    char    text[41];
+};
+static const int MAX_EVENTS = 8;
+
 struct Settings {
     uint32_t magic;
     char     ssid[33];
@@ -26,6 +35,12 @@ struct Settings {
     uint8_t  bootAnim;      // Anim
     char     tz[48];
     char     unused[64];    // was the editable welcome text; kept so the flash layout stays compatible
+    // ---- added in layout version 2 (append new fields below, bump SETTINGS_VER) ----
+    uint8_t  ver;
+    uint8_t  autoUpdate;    // install new GitHub releases by itself at night
+    uint8_t  msgEvery;      // minutes between repeats of msg, 0 = off
+    char     msg[65];       // custom scrolling message
+    Event    events[MAX_EVENTS];
 };
 
 extern Settings cfg;
