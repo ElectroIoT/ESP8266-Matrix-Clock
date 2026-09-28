@@ -1,0 +1,172 @@
+<!-- wp:paragraph -->
+<p>This is a WiFi LED-matrix clock built from an <strong>ESP8266</strong> (NodeMCU or Wemos D1 mini) and a <strong>MAX7219 8x32 LED module</strong>. It gets the time from the internet, and everything is set up from a phone. You don't edit any code, and no WiFi password goes into the firmware. It also updates itself from GitHub, so a clock you give away as a gift keeps getting new features.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"align":"center","sizeSlug":"full"} -->
+<figure class="wp-block-image aligncenter size-full"><img src="https://cdn.jsdelivr.net/gh/ElectroIoT/ESP8266-Matrix-Clock@v1.4.0/docs/banner.svg" alt="ESP8266 LED matrix clock showing 12:45 rolling to 12:46"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The full source code is open source (MIT) on GitHub: <a href="https://github.com/ElectroIoT/ESP8266-Matrix-Clock">github.com/ElectroIoT/ESP8266-Matrix-Clock</a>. It works with both <strong>PlatformIO</strong> and the <strong>Arduino IDE</strong>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Features</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><li><strong>Internet time (NTP)</strong>: India (IST) by default, 14 time zones to choose from, 12 or 24 hour</li><li><strong>Set up from your phone</strong>: on first power-up the clock opens its own WiFi hotspot with a setup page</li><li><strong>Settings web page</strong>: brightness, night mode, time format, animations, messages and more</li><li><strong>8 digit animations</strong>: roll down, roll up, dissolve, slide, flip, drop &amp; bounce, random or instant</li><li><strong>5 effects</strong>: sparkle, wipe, rain, boxes and a Pac-Man-style chase, every hour and/or at power-on</li><li><strong>Night mode</strong>: dims or switches the display off between hours you choose</li><li><strong>Custom messages</strong> and <strong>special days</strong>: birthdays and anniversaries scroll with an animation all day, every year</li><li><strong>Updates over WiFi</strong>: installs new GitHub releases by itself, over verified HTTPS</li><li><strong>Safe mode</strong>: if an update ever crashes, the clock can still be fixed over WiFi</li><li><strong>Optional password</strong> for the settings page</li><li><strong>Any size</strong>: 4 to 16 modules (8x32 up to 8x128), and it can be mirrored or turned upside down</li><li><strong>Optional light sensor</strong> for automatic brightness</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">What you need</h2>
+<!-- /wp:heading -->
+
+<!-- wp:table -->
+<figure class="wp-block-table"><table><thead><tr><th>Part</th><th>Notes</th></tr></thead><tbody><tr><td>ESP8266 board</td><td>NodeMCU v2/v3 or Wemos D1 mini</td></tr><tr><td>MAX7219 4-in-1 LED matrix</td><td>8x32, the common blue "FC-16" module</td></tr><tr><td>5 V / 1 A USB adapter and cable</td><td>A weak supply makes the clock restart at high brightness</td></tr><tr><td>5 jumper wires</td><td>Female-female for most modules</td></tr><tr><td><em>Optional:</em> 470-1000 µF capacitor</td><td>Across 5 V and GND at the display, stops random restarts</td></tr><tr><td><em>Optional:</em> LDR + 10 kΩ resistor</td><td>For automatic brightness</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Wiring</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"align":"center","sizeSlug":"full"} -->
+<figure class="wp-block-image aligncenter size-full"><img src="https://cdn.jsdelivr.net/gh/ElectroIoT/ESP8266-Matrix-Clock@v1.4.0/docs/wiring.svg" alt="Wiring: VCC to 5V/VIN, GND to GND, DIN to D7, CS to D6, CLK to D5"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:table -->
+<figure class="wp-block-table"><table><thead><tr><th>MAX7219 pin</th><th>ESP8266 pin</th><th>GPIO</th></tr></thead><tbody><tr><td>VCC</td><td>5V (VIN / VU)</td><td>-</td></tr><tr><td>GND</td><td>GND</td><td>-</td></tr><tr><td>DIN</td><td>D7</td><td>GPIO13 (SPI MOSI)</td></tr><tr><td>CS</td><td>D6</td><td>GPIO12</td></tr><tr><td>CLK</td><td>D5</td><td>GPIO14 (SPI SCK)</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Step 1: Flash the firmware</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Download the code from <a href="https://github.com/ElectroIoT/ESP8266-Matrix-Clock">GitHub</a> (green <em>Code</em> button → <em>Download ZIP</em>) and pick one of the two ways below.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Option A: Arduino IDE</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><li>In <strong>File → Preferences → Additional boards manager URLs</strong>, add <code>https://arduino.esp8266.com/stable/package_esp8266com_index.json</code></li><li><strong>Tools → Board → Boards Manager</strong>: install <strong>esp8266 by ESP8266 Community</strong> (version 3.x).</li><li><strong>Tools → Manage Libraries</strong>: install <strong>MD_MAX72XX</strong> by majicdesigns.</li><li>Open <code>arduino/MatrixClock/MatrixClock.ino</code>. The other files open as tabs.</li><li>Set <strong>Tools → Board</strong> to <em>NodeMCU 1.0 (ESP-12E Module)</em> (or <em>LOLIN(WEMOS) D1 R2 &amp; mini</em>), <strong>Flash Size</strong> to <em>4MB (FS:2MB OTA:~1019KB)</em> and <strong>CPU Frequency</strong> to <em>160 MHz</em>.</li><li>Plug in the board and press <strong>Upload</strong>.</li></ol>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Option B: PlatformIO (VS Code)</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Open the project folder in VS Code with the PlatformIO extension and run:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>pio run -e nodemcuv2 -t upload      # NodeMCU
+pio run -e d1_mini   -t upload      # Wemos D1 mini</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>The MD_MAX72XX library is downloaded automatically.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Step 2: Connect it to WiFi from your phone</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"align":"center","sizeSlug":"full"} -->
+<figure class="wp-block-image aligncenter size-full"><img src="https://cdn.jsdelivr.net/gh/ElectroIoT/ESP8266-Matrix-Clock@v1.4.0/docs/setup.svg" alt="Setup in 4 steps: power on, join the MatrixClock hotspot, pick your network, the clock shows its IP"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><li><strong>Plug the clock in.</strong> It plays an animation, shows its welcome text and then scrolls <em>"WiFi setup: join MatrixClock-XXXX then open 192.168.4.1"</em>.</li><li><strong>On your phone, join the WiFi network <code>MatrixClock-XXXX</code></strong>. It has no password.</li><li><strong>The setup page opens by itself.</strong> If it doesn't, open <code>http://192.168.4.1</code> in the browser. Tap your home network, type its password and press <strong>Save &amp; connect</strong>.</li><li><strong>Done.</strong> The clock restarts, scrolls its <strong>IP address</strong> and shows the time. Switch your phone back to your home WiFi and open that IP address (or <code>http://matrixclock.local</code>) to reach the settings page.</li></ol>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>If you typed the password wrong, the setup hotspot comes back, so just try again. If your router is only down for a while (for example after a power cut), the clock keeps trying your WiFi every 2 minutes.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Step 3: Make it yours on the settings page</h2>
+<!-- /wp:heading -->
+
+<!-- wp:table -->
+<figure class="wp-block-table"><table><thead><tr><th>Section</th><th>What you can change</th></tr></thead><tbody><tr><td><strong>Brightness</strong></td><td>Live slider, night mode with hours and night brightness (or display off), automatic brightness with a light sensor</td></tr><tr><td><strong>Display</strong></td><td>Number of modules (4-16), module type, mirror, flip (both = upside down), show seconds, show module numbers</td></tr><tr><td><strong>Clock</strong></td><td>12/24 hour, time zone, blinking colon, seconds bar, leading zero, scrolling date</td></tr><tr><td><strong>Animations</strong></td><td>Digit change style (previewed on the clock), hourly and power-on effect, try-out buttons</td></tr><tr><td><strong>Message</strong></td><td>Your own scrolling text: show once, or repeat every 1 to 60 minutes</td></tr><tr><td><strong>Special days</strong></td><td>Up to 8 yearly dates, each with a text and an animation</td></tr><tr><td><strong>Updates</strong></td><td>Installed and latest version, automatic updates on/off, check now, install</td></tr><tr><td><strong>Settings password</strong></td><td>Protect this page with a password</td></tr><tr><td><strong>WiFi &amp; system</strong></td><td>Change WiFi, show IP, re-sync time, restart, factory reset</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:paragraph -->
+<p><strong>FLASH button</strong> (NodeMCU): a short press scrolls the IP address. Hold it for 5 seconds to go back to WiFi setup, or for 10 seconds to remove a forgotten settings password.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Animations</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>These pictures are generated from the same digits and logic as the firmware, so they show exactly what the clock does. The digit changes are shown at half speed.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table {"className":"is-style-regular"} -->
+<figure class="wp-block-table is-style-regular"><table><tbody><tr><td><img src="https://cdn.jsdelivr.net/gh/ElectroIoT/ESP8266-Matrix-Clock@v1.4.0/docs/digits-down.svg" alt="Roll down"><br>Roll down</td><td><img src="https://cdn.jsdelivr.net/gh/ElectroIoT/ESP8266-Matrix-Clock@v1.4.0/docs/digits-dissolve.svg" alt="Dissolve"><br>Dissolve</td></tr><tr><td><img src="https://cdn.jsdelivr.net/gh/ElectroIoT/ESP8266-Matrix-Clock@v1.4.0/docs/digits-flip.svg" alt="Flip"><br>Flip</td><td><img src="https://cdn.jsdelivr.net/gh/ElectroIoT/ESP8266-Matrix-Clock@v1.4.0/docs/digits-drop.svg" alt="Drop and bounce"><br>Drop &amp; bounce</td></tr><tr><td><img src="https://cdn.jsdelivr.net/gh/ElectroIoT/ESP8266-Matrix-Clock@v1.4.0/docs/fx-rain.svg" alt="Rain effect"><br>Rain</td><td><img src="https://cdn.jsdelivr.net/gh/ElectroIoT/ESP8266-Matrix-Clock@v1.4.0/docs/pacman.svg" alt="Pac-Man style chase"><br>Pac-Man chase</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:paragraph -->
+<p>All 6 digit styles and 5 effects are shown on the <a href="https://github.com/ElectroIoT/ESP8266-Matrix-Clock#-animations">GitHub page</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Making it bigger: adding more modules</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"align":"center","sizeSlug":"full"} -->
+<figure class="wp-block-image aligncenter size-full"><img src="https://cdn.jsdelivr.net/gh/ElectroIoT/ESP8266-Matrix-Clock@v1.4.0/docs/chain.svg" alt="Chaining two 4-in-1 boards with a separate 5 V supply and a 1000 µF capacitor at each board"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><li>Connect <strong>OUT</strong> of the last board (DOUT, CS, CLK) to <strong>IN</strong> of the next one (DIN, CS, CLK).</li><li>On the settings page, under <strong>Display</strong>, set <strong>Modules</strong> to the new total. The clock restarts.</li><li>Press <strong>Show module numbers</strong>: module 1 must be the one next to the ESP8266 wires.</li><li>With 6 or more modules the clock also shows <strong>seconds</strong>.</li></ol>
+<!-- /wp:list -->
+
+<!-- wp:table -->
+<figure class="wp-block-table"><table><thead><tr><th>Modules</th><th>5 V supply</th><th>Notes</th></tr></thead><tbody><tr><td>4</td><td>1 A (good USB adapter)</td><td>Powered through VIN is fine</td></tr><tr><td>8</td><td>2 A</td><td>Separate 5 V supply to the boards, ESP8266 VIN from the same 5 V</td></tr><tr><td>12</td><td>3 A</td><td>Feed 5 V into both ends of the chain</td></tr><tr><td>16</td><td>4 A</td><td>Feed 5 V into both ends, thick wires</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:paragraph -->
+<p>Put a <strong>470-1000 µF electrolytic capacitor</strong> (10 V or more) across 5 V and GND at each board's power input, <strong>+ leg to 5 V</strong>. Connect all GNDs together.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Optional: automatic brightness</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Connect an LDR (photoresistor) from <strong>3V3 to A0</strong>, and a <strong>10 kΩ resistor from A0 to GND</strong>. Then turn on <strong>Auto brightness</strong> on the settings page and choose the brightness for dark and for bright light. The page shows the live light level to help you choose. Night mode, when it's on, takes priority.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Updates and safe mode</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>With <strong>Automatic updates</strong> on (the default), the clock checks the <a href="https://github.com/ElectroIoT/ESP8266-Matrix-Clock/releases/latest">latest GitHub release</a> every night around 3 AM and a minute after power-on, and installs it if it's newer. Downloads use HTTPS with a verified certificate, and your settings and WiFi are kept. If a new version ever crashes 3 times in a row, the clock starts in <strong>safe mode</strong>. It keeps WiFi and the update page running and installs the next fixed release by itself.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Troubleshooting</h2>
+<!-- /wp:heading -->
+
+<!-- wp:table -->
+<figure class="wp-block-table"><table><thead><tr><th>Problem</th><th>Fix</th></tr></thead><tbody><tr><td>All LEDs on, nothing else</td><td>Check that CS is on <strong>D6</strong> and the display gets 5 V</td></tr><tr><td>Clock keeps restarting</td><td>Use a better 5 V supply or a shorter cable, add the capacitor, lower the brightness</td></tr><tr><td>Text scrambled or mirrored</td><td>Settings page → Display: try another module type, or mirror / flip</td></tr><tr><td>Setup page doesn't pop up</td><td>Stay connected to <code>MatrixClock-XXXX</code> and open <code>http://192.168.4.1</code></td></tr><tr><td><code>matrixclock.local</code> doesn't open</td><td>Some Android phones don't support it. Use the IP address instead (short-press FLASH to see it)</td></tr><tr><td>Forgot the settings password</td><td>Hold FLASH for 10 s until the display shows "PW off"</td></tr><tr><td>"Getting time..." forever</td><td>Your WiFi has no internet, or NTP is blocked. Check the router</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Download and credits</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>Source code:</strong> <a href="https://github.com/ElectroIoT/ESP8266-Matrix-Clock">github.com/ElectroIoT/ESP8266-Matrix-Clock</a> (MIT license). It builds on the open-source <a href="https://github.com/MajicDesigns/MD_MAX72XX">MD_MAX72XX</a> library by Marco Colli (LGPL-2.1) and the <a href="https://github.com/esp8266/Arduino">ESP8266 Arduino core</a>. The clock digits and all animations were drawn for this project. Pac-Man is a trademark of Bandai Namco Entertainment; the chase effect is an unofficial homage.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Made by <a href="https://manoranjan.dev">manoranjan.dev</a>. If you build one, share a photo with us!</p>
+<!-- /wp:paragraph -->
